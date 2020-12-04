@@ -1,0 +1,7 @@
+[Desktop Entry]
+_Name=To Do List
+Exec=qmlscene %U qml/Main.qml
+Icon=assets/logo.svg
+Terminal=false
+Type=Application
+X-Ubuntu-Touch=true

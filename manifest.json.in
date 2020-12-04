@@ -1,0 +1,15 @@
+{
+    "name": "todolist.todolist.mdahl",
+    "description": "A simple app to manage your to dos ",
+    "architecture": "@CLICK_ARCH@",
+    "title": "To Do List",
+    "hooks": {
+        "todolist": {
+            "apparmor": "todolist.apparmor",
+            "desktop":  "todolist.desktop"
+        }
+    },
+    "version": "1.0.0",
+    "maintainer": "Matthias Dahlmanns <email@domain.org>",
+    "framework" : "ubuntu-sdk-16.04"
+}
