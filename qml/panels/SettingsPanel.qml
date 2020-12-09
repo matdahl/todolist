@@ -11,6 +11,8 @@ Item{
     signal add_category(string name)
     signal delete_category(string name)
 
+    property bool useDarkMode: true
+
     Column{
         id: col
         width: root.width
@@ -19,27 +21,11 @@ Item{
             stack: root.stack
             subpage: catPanel
         }
-
-        Label{
-            id: lbToDo
-            text:"to dos:"
-            font.bold: true
-            textSize: Label.Large
-        }
-    }
-    UbuntuListView{
-        width: parent.width
-        anchors.top: col.bottom
-        anchors.bottom: parent.bottom
-        currentIndex: -1
-        model:["make done tasks accessible"]
-        delegate: ListItem{
-            height: units.gu(4)
-            Label{
-                text: modelData
-                anchors.fill: parent
-                verticalAlignment: Label.AlignVCenter
-            }
+        SettingsMenuSwitch{
+            id: itDarkMode
+            text: i18n.tr("Dark Mode")
+            checked: root.useDarkMode
+            onCheckedChanged: root.useDarkMode = checked
         }
     }
 

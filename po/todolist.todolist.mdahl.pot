@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: todolist.todolist.mdahl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-04 17:40+0100\n"
+"POT-Creation-Date: 2020-12-09 12:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,14 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../qml/Main.qml:43 todolist.desktop.in.h:1
+#: ../qml/Main.qml:51 todolist.desktop.in.h:1
 msgid "To Do List"
+msgstr ""
+
+#: ../qml/panels/SettingsPanel.qml:26
+msgid "Dark Mode"
+msgstr ""
+
+#: ../qml/panels/TodoEditPanel.qml:86
+msgid "other"
 msgstr ""

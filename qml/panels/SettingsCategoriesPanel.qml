@@ -17,22 +17,14 @@ Item{
 
     Column{
         id: col
-        padding: units.gu(1)
-        spacing: units.gu(1)
+        padding: units.gu(2)
+        spacing: units.gu(2)
         width: parent.width
         Label{
             textSize: Label.Large
             font.bold: true
             text: root.title+":"
         }
-
-        Label{
-            text: "add new category:"
-        }
-        Divider{
-            height: 1
-        }
-
         Row{
             id: addRow
 
@@ -52,12 +44,6 @@ Item{
                     inputNewCategory.text = ""
                 }
             }
-        }
-        Label{
-            text: "current list of categories:"
-        }
-        Divider{
-            height: 1
         }
     }
 

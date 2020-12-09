@@ -33,6 +33,14 @@ MainView {
     width: units.gu(45)
     height: units.gu(75)
 
+    theme.name: settings.useDarkMode ? "Ubuntu.Components.Themes.SuruDark" : "Ubuntu.Components.Themes.Ambiance"
+    property color headerBackgroundColor: settings.useDarkMode ? "#ff703908" : "#fff29b4d"
+
+    Settings{
+        id: settings
+        property bool useDarkMode: true
+    }
+
     property var categories: []
 
     Page {
@@ -41,6 +49,9 @@ MainView {
         header: PageHeader {
             id: header
             title: i18n.tr('To Do List')
+            StyleHints{
+                backgroundColor: root.headerBackgroundColor
+            }
 
             leadingActionBar.actions: [
                 Action{
@@ -74,6 +85,12 @@ MainView {
             ]
         }
 
+        Rectangle{
+            id: background
+            anchors.fill: parent
+            color: theme.palette.normal.background
+        }
+
         StackView{
             id: stack
             anchors.fill: parent
@@ -102,6 +119,7 @@ MainView {
                 stack: stack
                 onAdd_category:    db_add_category(name)
                 onDelete_category: db_delete_category(name)
+                onUseDarkModeChanged: settings.useDarkMode = useDarkMode
             }
 
             TodoEditPanel{
