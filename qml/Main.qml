@@ -23,6 +23,7 @@ import Qt.labs.settings 1.0
 import QtQuick.LocalStorage 2.0 as Sql
 
 import "panels"
+import "data"
 
 MainView {
     id: root
@@ -41,6 +42,10 @@ MainView {
         property bool useDarkMode: true
     }
 
+    DBtodos{
+        id: dbtodos
+    }
+
     property var categories: []
 
     Page {
@@ -48,7 +53,7 @@ MainView {
 
         header: PageHeader {
             id: header
-            title: i18n.tr('To Do List')
+            title: i18n.tr('To Do List') + (stack.currentItem.headerSuffix ? " - "+stack.currentItem.headerSuffix : "")
             StyleHints{
                 backgroundColor: root.headerBackgroundColor
             }
@@ -65,6 +70,7 @@ MainView {
                 Action{
                     iconName: "add"
                     text: "Add todo"
+                    visible: stack.currentItem===listPanel
                     onTriggered: {
                         if (stack.currentItem!==editPanel){
                             stack.collapse()
@@ -75,6 +81,7 @@ MainView {
                 Action{
                     iconName: "settings"
                     text:     "Settings"
+                    visible: stack.currentItem===listPanel || stack.currentItem===editPanel
                     onTriggered: {
                         if (stack.currentItem!==settingsPanel){
                             while (stack.depth>1) stack.pop()
@@ -133,13 +140,14 @@ MainView {
     }
 
     Component.onCompleted: {
-        initDB()
-        db_read_categories()
-        db_read_opentodos()
+        dbtodos.init()
+        //initDB()
+        //db_read_categories()
+        //db_read_opentodos()
     }
 
     /* database functions */
-    property var    db
+/*    property var    db
     property string db_name: "todos.db"
     property string db_version: "1.0"
     property string db_description: "todos storage"
@@ -189,7 +197,7 @@ MainView {
             }
         })
     }
-    function db_test_callback(db){ /* do nothing */ }
+    function db_test_callback(db){  }
 
     // checks whether certain category names are invalid
     property var invalidCategories: ["All","other",""]
@@ -356,4 +364,5 @@ MainView {
             console.error("Error when delete from table '"+db_table_todos_done+"' in database '"+db_name+"': " + err)
         }
     }
+*/
 }

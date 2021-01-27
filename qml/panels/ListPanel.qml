@@ -26,8 +26,12 @@ Item {
             left: parent.left
             right: parent.right
         }
-        height: units.gu(4)
-        model: ["All"].concat(categories).concat(["other"])
+        height: units.gu(5)
+        model: ["All","other"]
+        Component.onCompleted: dbtodos.categoriesChanged.connect(refresh)
+        function refresh(){
+            model = ["All"].concat(dbtodos.categoriesNameList).concat(["other"])
+        }
     }
 
     // the model containing all books

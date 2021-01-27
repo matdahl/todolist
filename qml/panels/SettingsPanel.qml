@@ -33,9 +33,5 @@ Item{
     SettingsCategoriesPanel{
         id: catPanel
         visible: false
-        categories: root.categories
-        title: "Manage categories"
-        onAdd_category:    root.add_category(name)
-        onDelete_category: root.delete_category(name)
     }
 }

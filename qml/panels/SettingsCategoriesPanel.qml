@@ -6,56 +6,40 @@ import "../components"
 Item{
     id: root
 
-    property var categories
-    signal add_category(string name)
-    signal delete_category(string name)
+    property string headerSuffix: i18n.tr("Manage Categories")
 
-    property string title: "Manage Categories"
+    Row{
+        id: addRow
 
-    Component.onCompleted: refreshList()
-    onCategoriesChanged:   refreshList()
-
-    Column{
-        id: col
-        padding: units.gu(2)
         spacing: units.gu(2)
-        width: parent.width
-        Label{
-            textSize: Label.Large
-            font.bold: true
-            text: root.title+":"
+        padding: units.gu(2)
+        TextField{
+            id: inputNewCategory
+            width: root.width - btAddCategory.width - 2*parent.padding - parent.spacing
+            placeholderText: "new category"
         }
-        Row{
-            id: addRow
-
-            spacing: units.gu(2)
-            padding: units.gu(1)
-            TextField{
-                id: inputNewCategory
-                placeholderText: "new category"
-            }
-            Button{
-                id: btAddCategory
-                width: 2*height
-                text: "add"
-                color: UbuntuColors.green
-                onClicked: {
-                    add_category(inputNewCategory.text)
-                    inputNewCategory.text = ""
-                }
+        Button{
+            id: btAddCategory
+            width: 2*height
+            text: "add"
+            color: UbuntuColors.green
+            onClicked: {
+                dbtodos.insertCategory(inputNewCategory.text)
+                inputNewCategory.text = ""
             }
         }
     }
 
     UbuntuListView{
         id: catListView
-
         anchors{
-            top: col.bottom
+            top: addRow.bottom
             bottom: parent.bottom
             left: parent.left
             right: parent.right
         }
+        clip: true
+        model: dbtodos.categoriesModel
 
         delegate: ListItem{
             Label{
@@ -64,22 +48,43 @@ Item{
                 horizontalAlignment: Label.AlignHCenter
                 text: name
             }
+            Icon{
+                anchors{
+                    top: parent.top
+                    left: parent.left
+                    bottom: parent.bottom
+                    margins: units.gu(1.5)
+                }
+                name: "up"
+                visible: index>0
+                MouseArea{
+                    anchors.fill: parent
+                    onClicked: dbtodos.swapCategories(index,index-1)
+                }
+            }
+            Icon{
+                anchors{
+                    top: parent.top
+                    right: parent.right
+                    bottom: parent.bottom
+                    margins: units.gu(1.5)
+                }
+                name: "down"
+                visible: index<catListView.model.count-1
+                MouseArea{
+                    anchors.fill: parent
+                    onClicked: dbtodos.swapCategories(index,index+1)
+                }
+            }
+
             leadingActions: ListItemActions{
                 actions:[
                     Action{
                         iconName: "delete"
-                        onTriggered: delete_category(categories[index])
+                        onTriggered: dbtodos.removeCategory(cid)
                     }
                 ]
             }
-        }
-        model: ListModel{}
-    }
-
-    function refreshList(){
-        catListView.model.clear()
-        for (var i=0; i<categories.length; i++){
-            catListView.model.append({name:categories[i]})
         }
     }
 }
