@@ -38,7 +38,7 @@ Item {
     function reset(){
         currentID           = -1
         inputTitle.text     = ""
-        inputCategory.currentIndex = inputCategory.count-1
+        inputCategory.selectedIndex = 0
         inputPriority.value = 2
         root.state = "new"
     }
@@ -70,20 +70,24 @@ Item {
             placeholderText: "title of to do"
         }
         Label {text: "Category:"}
-        ComboBox{
+        OptionSelector{
             id: inputCategory
-            height: units.gu(4)
             width: parent.width
-            function setText(text){
-                var i
-                for (i=0;i<count-1;i++){
-                    if (model[i]===text){
-                        currentIndex = i
+            Component.onCompleted: dbtodos.categoriesChanged.connect(refresh)
+            model:[i18n.tr("other")]
+            readonly property string currentCategory: model[selectedIndex]
+            function refresh(){
+                model = dbtodos.categoriesNameList.concat([i18n.tr("other")])
+            }
+            function setText(cat){
+                for (var i=0;i<model.length;i++){
+                    if (model[i]===cat){
+                        selectedIndex = i
                         break
                     }
                 }
+                selectedIndex = 0
             }
-            model: categories.concat([i18n.tr("other")])
         }
 
         Label {text: "Priority:"}
@@ -109,13 +113,13 @@ Item {
                     if (inputTitle.text !== ""){
                         if (root.state=="new"){
                             added({title:    inputTitle.text,
-                                   category: inputCategory.currentText,
+                                   category: inputCategory.currentCategory,
                                    priority: inputPriority.value
                                   })
                         } else if (root.state=="edit") {
                             edited({itemid:   currentID,
                                     title:    inputTitle.text,
-                                    category: inputCategory.currentText,
+                                    category: inputCategory.currentCategory,
                                     priority: inputPriority.value
                                    })
                         }

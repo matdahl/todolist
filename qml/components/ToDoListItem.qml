@@ -5,7 +5,7 @@ ListItem{
     id: root
 
     // signal to delete this item
-    signal deleteById(int itemid)
+    signal remove(int itemid)
     // signal to edit this item
     signal edit(var todo)
     // signal to mark this item as archieved
@@ -16,7 +16,7 @@ ListItem{
         actions: [
             Action{
                 iconName: "delete"
-                onTriggered: deleteById(itemid)
+                onTriggered: remove(itemid)
             }
         ]
     }

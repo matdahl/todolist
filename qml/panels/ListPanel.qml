@@ -6,19 +6,6 @@ import "../components"
 Item {
     id: root
 
-    // signals for database modifications
-    signal deleteItem(int itemid)
-    signal editItem(var todo)
-    signal achieved(int itemid)
-    signal refresh()
-
-    // list of all categories
-    property var categories
-
-    // the currently selected category to display
-    property string selectedCategory: sections.model[sections.selectedIndex]
-    onSelectedCategoryChanged: refresh()
-
     // the toolbar to select the current category to display
     Sections{
         id: sections
@@ -26,18 +13,48 @@ Item {
             left: parent.left
             right: parent.right
         }
-        height: units.gu(5)
-        model: ["All","other"]
+        height: units.gu(6)
+        model: [i18n.tr("All"),i18n.tr("other")]
+        readonly property string currentCategory: model[selectedIndex]
         Component.onCompleted: dbtodos.categoriesChanged.connect(refresh)
         function refresh(){
-            model = ["All"].concat(dbtodos.categoriesNameList).concat(["other"])
+            model = [i18n.tr("All")].concat(dbtodos.categoriesNameList).concat([i18n.tr("other")])
         }
     }
 
-    // the model containing all books
-    property var model: ToDoListModel{}
+    // the model containing all open todos with appropriate category
+    SortFilterModel{
+        id: filteredOpenTodos
+        model: dbtodos.openTodosModel
+        filter.property: "category"
+        filter.pattern: RegExp("^"+sections.currentCategory+"$")
+    }
 
-    // the list view
+    // the model containing all open todos of category "other"
+    ListModel{
+        id: otherOpenTodos
+        Component.onCompleted: {
+            refresh()
+            dbtodos.openTodosChanged.connect(refresh)
+            dbtodos.categoriesChanged.connect(refresh)
+        }
+        function refresh(){
+            clear()
+            for (var i=0;i<dbtodos.openTodosModel.count; i++){
+                var current = dbtodos.openTodosModel.get(i)
+                // keep this entry only if its name is not in list
+                var found = false
+                for (var j=0;j<dbtodos.categoriesNameList.length;j++){
+                    if (dbtodos.categoriesNameList[j]===current.category){
+                        found = true
+                        break
+                    }
+                }
+                if (!found) append(current)
+            }
+        }
+    }
+
     UbuntuListView{
         id: listView
         anchors {
@@ -46,13 +63,18 @@ Item {
             right: parent.right
             bottom: parent.bottom
         }
-
-        model: root.model
+        clip: true
+        model: sections.selectedIndex>0 ? sections.selectedIndex<sections.model.length-1 ? filteredOpenTodos
+                                                                                         : otherOpenTodos
+                                        : dbtodos.openTodosModel
         delegate: ToDoListItem{
-            onDeleteById: deleteItem(itemid)
-            onEdit: editItem(todo)
-            onAchieved: root.achieved(itemid)
+            onRemove: dbtodos.removeOpenTodo(itemid)
+            onEdit: {
+                editPanel.set(todo,"edit")
+                stack.push(editPanel)
+            }
+
+            onAchieved: print("achieving not implemented yet :(")
         }
-        spacing: units.gu(0.1)
     }
 }

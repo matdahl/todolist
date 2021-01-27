@@ -7,10 +7,6 @@ Item{
 
     property var stack
 
-    property var categories
-    signal add_category(string name)
-    signal delete_category(string name)
-
     property bool useDarkMode: true
 
     Column{

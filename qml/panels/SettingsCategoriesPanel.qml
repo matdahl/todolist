@@ -17,6 +17,7 @@ Item{
             id: inputNewCategory
             width: root.width - btAddCategory.width - 2*parent.padding - parent.spacing
             placeholderText: "new category"
+            onAccepted: btAddCategory.clicked()
         }
         Button{
             id: btAddCategory
@@ -59,7 +60,7 @@ Item{
                 visible: index>0
                 MouseArea{
                     anchors.fill: parent
-                    onClicked: dbtodos.swapCategories(index,index-1)
+                    onClicked: dbtodos.swapCategories(index-1,index)
                 }
             }
             Icon{
@@ -73,7 +74,7 @@ Item{
                 visible: index<catListView.model.count-1
                 MouseArea{
                     anchors.fill: parent
-                    onClicked: dbtodos.swapCategories(index,index+1)
+                    onClicked: dbtodos.swapCategories(index+1,index)
                 }
             }
 

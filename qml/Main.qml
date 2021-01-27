@@ -108,24 +108,13 @@ MainView {
 
             ListPanel{
                 id: listPanel
-                categories: root.categories
                 Component.onCompleted: stack.push(listPanel)
-                onDeleteItem: db_delete_opentodo(itemid)
-                onAchieved: db_move_to_done(itemid)
-                onRefresh: db_read_opentodos()
-                onEditItem: {
-                    editPanel.set(todo,"edit")
-                    stack.push(editPanel)
-                }
             }
 
             SettingsPanel{
                 id: settingsPanel
-                categories: root.categories
                 visible: false
                 stack: stack
-                onAdd_category:    db_add_category(name)
-                onDelete_category: db_delete_category(name)
                 onUseDarkModeChanged: settings.useDarkMode = useDarkMode
             }
 
@@ -133,49 +122,18 @@ MainView {
                 id: editPanel
                 categories: root.categories
                 visible: false
-                onAdded:  db_add_opentodo(todo)
-                onEdited: db_edit_opentodo(todo)
+                onAdded:  dbtodos.insertOpenTodo(todo)
+                onEdited: dbtodos.updateOpenTodo(todo)
             }
         }
     }
 
     Component.onCompleted: {
         dbtodos.init()
-        //initDB()
-        //db_read_categories()
-        //db_read_opentodos()
     }
 
-    /* database functions */
-/*    property var    db
-    property string db_name: "todos.db"
-    property string db_version: "1.0"
-    property string db_description: "todos storage"
-    property int    db_size: 1024
-    property string db_table_todos_open: "open"
-    property string db_table_todos_done: "done"
-    property string db_table_categories: "categories1"
-
-    // initialise the database
-    function initDB(){
-        // open database
-        db = Sql.LocalStorage.openDatabaseSync(db_name,
-                                               db_version,
-                                               db_description,
-                                               db_size,
-                                               db_test_callback(db))
-
+    /* database functions
         // create open todo table if needed
-        var cmd = 'CREATE TABLE IF NOT EXISTS ' + db_table_todos_open + '('
-        cmd += 'itemid INTEGER PRIMARY KEY AUTOINCREMENT,'
-        cmd += 'title TEXT, category TEXT, priority INTEGER)'
-        db.transaction(function(tx){
-            try {
-                tx.executeSql(cmd)
-            } catch(err){
-                console.error("Error when creating table '"+db_table_todos_open+"' in database '"+db_name+"': " + err)
-            }
-        })
 
         // create done todo table if needed
         cmd  = 'CREATE TABLE IF NOT EXISTS ' + db_table_todos_done + '('
