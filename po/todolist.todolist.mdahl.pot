@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: todolist.todolist.mdahl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-02 19:12+0100\n"
+"POT-Creation-Date: 2021-02-02 20:18+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,20 +21,28 @@ msgstr ""
 msgid "To Do List"
 msgstr ""
 
-#: ../qml/components/TaskInsertPanel.qml:71
-msgid "Insert task"
+#: ../qml/components/TaskInsertPanel.qml:77
+msgid "New task"
 msgstr ""
 
-#: ../qml/components/TaskInsertPanel.qml:127
+#: ../qml/components/TaskInsertPanel.qml:124
 msgid "insert title"
 msgstr ""
 
-#: ../qml/components/TaskInsertPanel.qml:137
-msgid "due"
+#: ../qml/components/TaskInsertPanel.qml:134
+msgid "Priority"
 msgstr ""
 
-#: ../qml/components/TaskInsertPanel.qml:159
+#: ../qml/components/TaskInsertPanel.qml:145
+msgid "Deadline"
+msgstr ""
+
+#: ../qml/components/TaskInsertPanel.qml:181
 msgid "no deadline"
+msgstr ""
+
+#: ../qml/components/TaskInsertPanel.qml:195
+msgid "Insert"
 msgstr ""
 
 #: ../qml/panels/ListPanel.qml:53 ../qml/panels/ListPanel.qml:57

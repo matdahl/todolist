@@ -1,3 +1,4 @@
 build
 .clickable
-CMakeLists.txt.*
+CMakeLists.txt.user
+CMakeLists.txt.user.shared

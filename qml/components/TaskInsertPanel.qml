@@ -10,12 +10,18 @@ Item{
     }
     height: headerHeight + contentHeight
     property int headerHeight: units.gu(4)
-    property int contentHeight: units.gu(11)
+    property int contentHeight: body.height
     property bool expanded: false
 
+    property int spacing: units.gu(2)
 
+    signal add()
+
+    // the current date of the task
+    property alias title: inputTitle.text
+    property alias priority: inputPriority.value
     property alias hasDue: switchDue.checked
-    property date  due: new Date()
+    property alias due: btDate.due
 
 
     states: [
@@ -68,18 +74,8 @@ Item{
         }
         Label{
             anchors.centerIn: parent
-            text: i18n.tr("Insert task")
+            text: i18n.tr("New task")
             font.bold: true
-            Icon{
-                anchors{
-                    top: parent.top
-                    right: parent.left
-                    bottom: parent.bottom
-                    rightMargin: units.gu(1)
-                }
-                name: "add"
-                color: theme.palette.normal.backgroundText
-            }
         }
 
         Icon{
@@ -106,8 +102,9 @@ Item{
             top: header.bottom
             left: parent.left
             right: parent.right
-            bottom: parent.bottom
         }
+
+        height: units.gu(3*4 + 2 + 5*2 )
         color: colors.currentBackground
         Rectangle{
             anchors.fill: parent
@@ -120,55 +117,84 @@ Item{
             anchors{
                 top: parent.top
                 left: parent.left
-                right: inputPriority.left
-                margins: units.gu(1)
+                right: parent.right
+                margins: root.spacing
             }
 
             placeholderText: i18n.tr("insert title") + " ..."
         }
 
         Label{
-            id: lbDue
             anchors{
-                verticalCenter: btDate.verticalCenter
+                top: inputTitle.bottom
                 left: parent.left
-                leftMargin: units.gu(2)
+                right: inputPriority.right
+                margins: root.spacing
             }
-            text: i18n.tr("due") +":"
+            text: i18n.tr("Priority")+":"
+        }
+
+        Label{
+            id: lbDeadline
+            anchors{
+                top: inputTitle.bottom
+                left: inputPriority.right
+                right: inputPriority.right
+                margins: spacing
+            }
+            text: i18n.tr("Deadline")+":"
         }
 
         Switch{
             id: switchDue
             anchors{
-                verticalCenter: btDate.verticalCenter
-                left: lbDue.right
-                leftMargin: units.gu(1)
+                verticalCenter: lbDeadline.verticalCenter
+                right: parent.right
+                margins: spacing
             }
+        }
+
+
+        PriorityManipulate{
+            id: inputPriority
+            anchors{
+                top: btDate.top
+                left: parent.left
+                bottom: btDate.bottom
+                leftMargin: root.spacing
+            }
+            maximalPriority: 3
+            width: units.gu(16)
         }
 
         Button{
             id: btDate
-            property alias due: root.due
+            property date due: new Date()
             anchors{
                 top: inputTitle.bottom
-                left: switchDue.right
-                right: inputPriority.left
-                margins: units.gu(1)
+                left: inputPriority.right
+                right: parent.right
+                margins: spacing
+                topMargin: 2*spacing + units.gu(2)
             }
             enabled: hasDue
             text: hasDue ? Qt.formatDate(due,"ddd dd/MM/yyyy") : i18n.tr("no deadline")
             onClicked: PickerPanel.openDatePicker(btDate,"due","Days|Months|Years")
         }
 
-        PriorityManipulate{
-            id: inputPriority
+        Button{
+            id: btInsert
             anchors{
-                top: parent.top
+                left: parent.left
                 right: parent.right
                 bottom: parent.bottom
-                margins: units.gu(1)
+                margins: units.gu(2)
             }
-            width: units.gu(4)
+            enabled: title.length>0 && sections.selectedIndex>0
+            height: body.lineHeight
+            text: i18n.tr("Insert")
+            color: UbuntuColors.orange
+            onClicked: add()
         }
     }
 }

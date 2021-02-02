@@ -202,8 +202,8 @@ Item{
         if (!db) init()
         try {
             db.transaction(function(tx){
-                tx.executeSql('INSERT OR IGNORE INTO ' + db_table_todos_open + '(title,category,priority) VALUES(?,?,?)',
-                              [todo.title,todo.category,todo.priority])
+                tx.executeSql('INSERT OR IGNORE INTO ' + db_table_todos_open + '(title,category,priority,due) VALUES(?,?,?,?)',
+                              [todo.title,todo.category,todo.priority,todo.due])
             })
             refreshOpenTodos()
         } catch(err){

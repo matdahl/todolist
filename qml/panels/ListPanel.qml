@@ -83,5 +83,10 @@ Item {
 
     TaskInsertPanel{
         id: taskInsertPanel
+        onAdd: dbtodos.insertOpenTodo({ title: title,
+                                        category: sections.model[sections.selectedIndex],
+                                        priority: priority,
+                                        due: hasDue ? due.getTime() : 0
+                                      })
     }
 }

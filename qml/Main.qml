@@ -74,17 +74,6 @@ MainView {
             ]
             trailingActionBar.actions:[
                 Action{
-                    iconName: "add"
-                    text: "Add todo"
-                    visible: stack.currentItem===listPanel
-                    onTriggered: {
-                        if (stack.currentItem!==editPanel){
-                            stack.collapse()
-                            stack.push(editPanel)
-                        }
-                    }
-                },
-                Action{
                     iconName: "settings"
                     text:     "Settings"
                     visible: stack.currentItem===listPanel || stack.currentItem===editPanel
@@ -122,14 +111,6 @@ MainView {
                 visible: false
                 stack: stack
             }
-
-            /*TodoEditPanel{
-                id: editPanel
-                categories: root.categories
-                visible: false
-                onAdded:  dbtodos.insertOpenTodo(todo)
-                onEdited: dbtodos.updateOpenTodo(todo)
-            }*/
         }
     }
 }
