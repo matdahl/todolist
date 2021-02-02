@@ -123,13 +123,13 @@ MainView {
                 stack: stack
             }
 
-            TodoEditPanel{
+            /*TodoEditPanel{
                 id: editPanel
                 categories: root.categories
                 visible: false
                 onAdded:  dbtodos.insertOpenTodo(todo)
                 onEdited: dbtodos.updateOpenTodo(todo)
-            }
+            }*/
         }
     }
 }

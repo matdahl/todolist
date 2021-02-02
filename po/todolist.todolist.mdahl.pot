@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: todolist.todolist.mdahl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-27 19:48+0100\n"
+"POT-Creation-Date: 2021-02-02 19:12+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,15 +17,31 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../qml/Main.qml:56 todolist.desktop.in.h:1
+#: ../qml/Main.qml:64 todolist.desktop.in.h:1
 msgid "To Do List"
 msgstr ""
 
-#: ../qml/panels/ListPanel.qml:17 ../qml/panels/ListPanel.qml:21
+#: ../qml/components/TaskInsertPanel.qml:71
+msgid "Insert task"
+msgstr ""
+
+#: ../qml/components/TaskInsertPanel.qml:127
+msgid "insert title"
+msgstr ""
+
+#: ../qml/components/TaskInsertPanel.qml:137
+msgid "due"
+msgstr ""
+
+#: ../qml/components/TaskInsertPanel.qml:159
+msgid "no deadline"
+msgstr ""
+
+#: ../qml/panels/ListPanel.qml:53 ../qml/panels/ListPanel.qml:57
 msgid "All"
 msgstr ""
 
-#: ../qml/panels/ListPanel.qml:17 ../qml/panels/ListPanel.qml:21
+#: ../qml/panels/ListPanel.qml:53 ../qml/panels/ListPanel.qml:57
 #: ../qml/panels/TodoEditPanel.qml:77 ../qml/panels/TodoEditPanel.qml:80
 msgid "other"
 msgstr ""
