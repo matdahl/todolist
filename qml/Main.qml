@@ -34,12 +34,20 @@ MainView {
     width: units.gu(45)
     height: units.gu(75)
 
-    theme.name: settings.useDarkMode ? "Ubuntu.Components.Themes.SuruDark" : "Ubuntu.Components.Themes.Ambiance"
-    property color headerBackgroundColor: settings.useDarkMode ? "#ff703908" : "#fff29b4d"
+    Colors{
+        id: colors
+        initialIndex: 7
+    }
+
+    theme.name: colors.darkMode ? "Ubuntu.Components.Themes.SuruDark" : "Ubuntu.Components.Themes.Ambiance"
+    backgroundColor: colors.currentBackground
+
+    Component.onCompleted: dbtodos.init()
 
     Settings{
         id: settings
-        property bool useDarkMode: true
+        category: "General"
+        property int maximalPriority: 3
     }
 
     DBtodos{
@@ -54,9 +62,7 @@ MainView {
         header: PageHeader {
             id: header
             title: i18n.tr('To Do List') + (stack.currentItem.headerSuffix ? " - "+stack.currentItem.headerSuffix : "")
-            StyleHints{
-                backgroundColor: root.headerBackgroundColor
-            }
+            StyleHints{backgroundColor:colors.currentHeader}
 
             leadingActionBar.actions: [
                 Action{
@@ -95,7 +101,7 @@ MainView {
         Rectangle{
             id: background
             anchors.fill: parent
-            color: theme.palette.normal.background
+            color: colors.currentBackground
         }
 
         StackView{
@@ -115,7 +121,6 @@ MainView {
                 id: settingsPanel
                 visible: false
                 stack: stack
-                onUseDarkModeChanged: settings.useDarkMode = useDarkMode
             }
 
             TodoEditPanel{
@@ -127,200 +132,4 @@ MainView {
             }
         }
     }
-
-    Component.onCompleted: {
-        dbtodos.init()
-    }
-
-    /* database functions
-        // create open todo table if needed
-
-        // create done todo table if needed
-        cmd  = 'CREATE TABLE IF NOT EXISTS ' + db_table_todos_done + '('
-        cmd += 'itemid INTEGER, title TEXT, category TEXT, date TEXT)'
-        db.transaction(function(tx){
-            try {
-                tx.executeSql(cmd)
-            } catch(err){
-                console.error("Error when creating table '"+db_table_todos_done+"' in database '"+db_name+"': " + err)
-            }
-        })
-
-        // create categories table if needed
-        db.transaction(function(tx){
-            try {
-                tx.executeSql('CREATE TABLE IF NOT EXISTS ' + db_table_categories + '(name TEXT, UNIQUE(name))')
-            } catch(err){
-                console.log("Error when creating table '"+db_table_categories+"' in database '"+db_name+"': " + err)
-            }
-        })
-    }
-    function db_test_callback(db){  }
-
-    // checks whether certain category names are invalid
-    property var invalidCategories: ["All","other",""]
-    function isValidCategory(name){
-        for (var i=0; i<invalidCategories.length; i++){
-            if (name===invalidCategories[i]) return false
-        }
-        return true
-    }
-
-    // read categories from database
-    function db_read_categories(){
-        if (!db) return
-        db.transaction(function(tx){
-            try {
-                var rt = tx.executeSql("SELECT * FROM "+db_table_categories)
-                categories = []
-                for (var i=0; i<rt.rows.length; i++){
-                    categories.push(rt.rows[i].name)
-                }
-            } catch (err){
-                console.error("Error reading from table '"+db_table_categories+"' in database '"+db_name+"': " + err)
-            }
-        })
-        listPanel.categories = categories
-        settingsPanel.categories = categories
-        editPanel.categories = categories
-    }
-    // add category to database
-    function db_add_category(name){
-        // check if everything is correct
-        if (!(db && isValidCategory(name))) return
-
-        db.transaction(function(tx){
-            try {
-                tx.executeSql("INSERT OR IGNORE INTO "+db_table_categories+" VALUES ('"+name+"')")
-            } catch (err){
-                console.error("Error insert into table '"+db_table_categories+"' in database '"+db_name+"': " + err)
-            }
-        })
-        db_read_categories()
-    }
-    // remove category from database
-    function db_delete_category(name){
-        if (!db) return
-        db.transaction(function(tx){
-            try {
-                tx.executeSql("DELETE FROM "+db_table_categories+" WHERE name='"+name+"'")
-            } catch (err){
-                console.error("Error deleting '"+name+"' from table '"+db_table_categories+"' in database '"+db_name+"': " + err)
-            }
-        })
-        db_read_categories()
-    }
-
-    // read open todos from database
-    function db_read_opentodos(){
-        if (!db) return
-        try {
-            // assemble SQL statement
-            var currentCategory = listPanel.selectedCategory
-            var sqlStatement = "SELECT * FROM " + db_table_todos_open
-            if (currentCategory !== "All" && currentCategory !== "other")
-                sqlStatement += " WHERE category='"+currentCategory+"'"
-
-            // request data
-            var rt
-            db.transaction(function(tx){rt = tx.executeSql(sqlStatement)})
-
-            // import data into listModel
-            listPanel.model.clear()
-            for (var i=0; i<rt.rows.length; i++){
-                // if "other" is selected, insert only if category is not in current category list
-                if (currentCategory==="other" && categories.indexOf(rt.rows.item(i).category) !== -1)
-                    continue
-                listPanel.model.append(rt.rows.item(i))
-            }
-            listPanel.model.sort()
-        } catch (err){
-            console.error("Error reading from table '"+db_table_todos_open+"' in database '"+db_name+"': " + err)
-        }
-
-    }
-    // insert new open todo into database
-    function db_add_opentodo(todo){
-        if (!db) return
-        db.transaction(function(tx){
-            try {
-                tx.executeSql("INSERT INTO "+db_table_todos_open+" VALUES (NULL,?,?,?)",
-                              [todo.title,todo.category,todo.priority])
-            } catch (err){
-                console.error("Error when insert into table '"+db_table_todos_open+"' in database '"+db_name+"': " + err)
-            }
-        })
-        db_read_opentodos()
-    }
-    // delete open todo from database
-    function db_delete_opentodo(itemid){
-        if (!db) return
-        try {
-            db.transaction(function(tx){
-                tx.executeSql("DELETE FROM "+db_table_todos_open+" WHERE itemid=?",[itemid])
-            })
-        } catch (err){
-            console.error("Error when delete from table '"+db_table_todos_open+"' in database '"+db_name+"': " + err)
-        }
-        db_read_opentodos()
-    }
-    // edit open todo in database
-    function db_edit_opentodo(todo){
-        if (!db) return
-        try{
-            db.transaction(function(tx){
-                tx.executeSql("UPDATE "+db_table_todos_open+" SET title=?,category=?,priority=? WHERE itemid=?",
-                              [todo.title,todo.category,todo.priority,todo.itemid])
-            })
-        } catch(err){
-            console.error("Error when updating in table '"+db_table_todos_open+"' in database '"+db_name+"': " + err)
-        }
-        db_read_opentodos()
-    }
-
-    // move a todo from open to done in database
-    function db_move_to_done(itemid){
-        // request item from database
-        var rt
-        db.transaction(function(tx){
-            rt = tx.executeSql("SELECT * FROM "+db_table_todos_open+" WHERE itemid=?",
-                          [itemid])
-        })
-        if (rt.rows.length !== 1){
-            console.error("Invalid number of matches("+rt.rows.length+") when moving todo with id "+itemid+" from open to done.")
-            return
-        }
-
-        // insert todo into done table
-        db.transaction(function(tx){
-            tx.executeSql("INSERT INTO "+db_table_todos_done+" VALUES(?,?,?,?)",
-                          [itemid,rt.rows.item(0).title,rt.rows.item(0).category,Date()])
-        })
-
-        // remove todo from open table
-        db.transaction(function(tx){
-            tx.executeSql("DELETE FROM "+db_table_todos_open+" WHERE itemid=?",
-                          [itemid])
-        })
-
-        // refresh GUI
-        db_read_opentodos()
-    }
-    // read done todos from database
-    function db_read_donetodos(){
-        if (!db) return
-    }
-    // delete done todo from database
-    function db_delete_donetodo(itemid){
-        if (!db) return
-        try {
-            db.transaction(function(tx){
-                tx.executeSql("DELETE FROM "+db_table_todos_done+" WHERE itemid=?",
-                              [itemid])
-            })
-        } catch (err){
-            console.error("Error when delete from table '"+db_table_todos_done+"' in database '"+db_name+"': " + err)
-        }
-    }
-*/
 }

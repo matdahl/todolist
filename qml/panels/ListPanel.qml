@@ -5,23 +5,6 @@ import "../components"
 
 Item {
     id: root
-
-    // the toolbar to select the current category to display
-    Sections{
-        id: sections
-        anchors{
-            left: parent.left
-            right: parent.right
-        }
-        height: units.gu(6)
-        model: [i18n.tr("All"),i18n.tr("other")]
-        readonly property string currentCategory: model[selectedIndex]
-        Component.onCompleted: dbtodos.categoriesChanged.connect(refresh)
-        function refresh(){
-            model = [i18n.tr("All")].concat(dbtodos.categoriesNameList).concat([i18n.tr("other")])
-        }
-    }
-
     // the model containing all open todos with appropriate category
     SortFilterModel{
         id: filteredOpenTodos
@@ -55,13 +38,33 @@ Item {
         }
     }
 
+    /* ------------------------ *
+     * ------ Components ------ *
+     * ------------------------ */
+
+    // the toolbar to select the current category to display
+    Sections{
+        id: sections
+        anchors{
+            left: parent.left
+            right: parent.right
+        }
+        height: units.gu(6)
+        model: [i18n.tr("All"),i18n.tr("other")]
+        readonly property string currentCategory: model[selectedIndex]
+        Component.onCompleted: dbtodos.categoriesChanged.connect(refresh)
+        function refresh(){
+            model = [i18n.tr("All")].concat(dbtodos.categoriesNameList).concat([i18n.tr("other")])
+        }
+    }
+
     UbuntuListView{
         id: listView
         anchors {
             top: sections.bottom
             left: parent.left
             right: parent.right
-            bottom: parent.bottom
+            bottom: taskInsertPanel.top
         }
         clip: true
         model: sections.selectedIndex>0 ? sections.selectedIndex<sections.model.length-1 ? filteredOpenTodos
@@ -76,5 +79,9 @@ Item {
 
             onAchieved: print("achieving not implemented yet :(")
         }
+    }
+
+    TaskInsertPanel{
+        id: taskInsertPanel
     }
 }

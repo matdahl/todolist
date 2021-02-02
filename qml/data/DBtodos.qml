@@ -95,7 +95,7 @@ Item{
     }
     function init_openTodos(){
         var cmd = 'CREATE TABLE IF NOT EXISTS ' + db_table_todos_open + '('
-        cmd    += 'itemid INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, category TEXT, priority INTEGER)'
+        cmd    += 'itemid INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, category TEXT, priority INTEGER, due INTEGER)'
         db.transaction(function(tx){
             try {
                 tx.executeSql(cmd)
@@ -103,6 +103,23 @@ Item{
                 console.error("Error when creating table '"+db_table_todos_open+"' in database '"+db_name+"': " + err)
             }
         })
+        try{
+            var colnames = []
+            db.transaction(function(tx){
+                var rt = tx.executeSql("PRAGMA table_info("+db_table_todos_open+")")
+                for(var i=0;i<rt.rows.length;i++){
+                    colnames.push(rt.rows[i].name)
+                }
+            })
+            // since v1.1.0: require due column
+            if (colnames.indexOf("due")<0){
+                db.transaction(function(tx){
+                    tx.executeSql("ALTER TABLE "+db_table_todos_open+" ADD COLUMN due INTEGER")
+                })
+            }
+        } catch (err){
+            console.error("Error when checking columns of table '"+db_table_todos_open+"': " + err)
+        }
         refreshOpenTodos()
     }
     function init_doneTodos(){
