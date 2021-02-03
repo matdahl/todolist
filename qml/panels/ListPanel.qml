@@ -51,11 +51,43 @@ Item {
         }
         height: units.gu(6)
         model: [i18n.tr("All"),i18n.tr("other")]
-        readonly property string currentCategory: model[selectedIndex]
-        Component.onCompleted: dbtodos.categoriesChanged.connect(refresh)
-        function refresh(){
-            model = [i18n.tr("All")].concat(dbtodos.categoriesNameList).concat([i18n.tr("other")])
+        readonly property string currentCategory: model.length>0 ? selectedIndex===0 ? i18n.tr("all")
+                                                                                     : selectedIndex===model.length-1 ? i18ntr("other")
+                                                                                                                      : dbtodos.categoriesNameList[selectedIndex-1]
+                                                                 : ""
+        Component.onCompleted: {
+            dbtodos.categoriesChanged.connect(refresh)
+            dbtodos.openTodosChanged.connect(recount)
         }
+        function refresh(){
+            model = [i18n.tr("all")].concat(dbtodos.categoriesNameList).concat([i18n.tr("other")])
+            recount()
+        }
+        function recount(){
+            if (dbtodos.totalCount>0){
+                model[0] = "<b>"+i18n.tr("all")+" ("+dbtodos.totalCount+")</b>"
+            } else {
+                model[0] = i18n.tr("all")+" (0)"
+            }
+            var i
+            for (i=0;i<dbtodos.categoriesNameList.length;i++){
+                if (dbtodos.categoriesCount[i]>0){
+                    model[i+1] = "<b>"+dbtodos.categoriesNameList[i]+" ("+dbtodos.categoriesCount[i]+")</b>"
+                } else {
+                    model[i+1] = dbtodos.categoriesNameList[i]+" (0)"
+                }
+            }
+            if (dbtodos.categoriesCount[i]>0){
+                model[i+1] = "<b>"+i18n.tr("other")+" ("+dbtodos.categoriesCount[i]+")</b>"
+            } else {
+                model[i+1] = i18n.tr("other")+" (0)"
+            }
+            var index = selectedIndex
+            modelChanged()
+            selectedIndex = index
+        }
+
+        onSelectedIndexChanged: taskInsertPanel.expanded = false
     }
 
     TaskInsertPanel{
@@ -65,7 +97,7 @@ Item {
         }
         enabled: sections.selectedIndex>0
         onAdd: dbtodos.insertOpenTodo({ title: title,
-                                        category: sections.model[sections.selectedIndex],
+                                        category: sections.currentCategory,
                                         priority: priority,
                                         due: hasDue ? due.getTime() : 0
                                       })

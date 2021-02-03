@@ -9,7 +9,12 @@ Item{
     signal openTodosChanged()
     signal doneTodosChanged()
 
+    // list of names of all categories
     property var categoriesNameList: []
+
+    // list of task numbers for each category
+    property var categoriesCount: [0]
+    property int totalCount: 0
 
     property var categoriesModel: ListModel{}
     property var openTodosModel:  ListModel{}
@@ -24,6 +29,7 @@ Item{
             categoriesModel.append(cats[i])
             categoriesNameList.push(cats[i].name)
         }
+        recount()
         categoriesChanged()
     }
 
@@ -34,7 +40,27 @@ Item{
         for (var i=0; i<todos.length; i++){
             openTodosModel.append(todos[i])
         }
+        recount()
         openTodosChanged()
+    }
+
+    function recount(){
+        totalCount = openTodosModel.count
+        var n = categoriesCount.length = categoriesNameList.length+1
+        for (var j=0;j<categoriesCount.length;j++){
+            categoriesCount[j] = 0
+        }
+        for (var i=0;i<totalCount;i++){
+            var k
+            for (k=0;k<categoriesNameList.length;k++){
+                if (categoriesNameList[k] === openTodosModel.get(i).category){
+                    categoriesCount[k] += 1
+                    break
+                }
+            }
+            // if not found -> add to "other"
+            if (k===n-1) categoriesCount[n-1] += 1
+        }
     }
 
     property var db

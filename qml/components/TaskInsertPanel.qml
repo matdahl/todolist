@@ -180,7 +180,6 @@ Item{
                 margins: root.spacing
                 rightMargin: root.padding
             }
-            enabled: title.length>0
             color: UbuntuColors.orange
             width: lbInsert.width> units.gu(6) ? lbInsert.width + units.gu(2) : units.gu(8)
             Label{
@@ -189,8 +188,10 @@ Item{
                 text: i18n.tr("Insert")
             }
             onClicked: {
-                add()
-                title = ""
+                if(title.length>0){
+                    add()
+                    title = ""
+                }
             }
         }
     }
