@@ -30,6 +30,7 @@ MainView {
     objectName: 'mainView'
     applicationName: 'todolist.todolist.mdahl'
     automaticOrientation: true
+    anchorToKeyboard: true
 
     width: units.gu(45)
     height: units.gu(75)

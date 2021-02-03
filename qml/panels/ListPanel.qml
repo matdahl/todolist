@@ -58,13 +58,26 @@ Item {
         }
     }
 
+    TaskInsertPanel{
+        id: taskInsertPanel
+        anchors{
+            top: sections.bottom
+        }
+        enabled: sections.selectedIndex>0
+        onAdd: dbtodos.insertOpenTodo({ title: title,
+                                        category: sections.model[sections.selectedIndex],
+                                        priority: priority,
+                                        due: hasDue ? due.getTime() : 0
+                                      })
+    }
+
     UbuntuListView{
         id: listView
         anchors {
-            top: sections.bottom
+            top: taskInsertPanel.bottom
             left: parent.left
             right: parent.right
-            bottom: taskInsertPanel.top
+            bottom: parent.bottom
         }
         clip: true
         model: sections.selectedIndex>0 ? sections.selectedIndex<sections.model.length-1 ? filteredOpenTodos
@@ -79,14 +92,5 @@ Item {
 
             onAchieved: print("achieving not implemented yet :(")
         }
-    }
-
-    TaskInsertPanel{
-        id: taskInsertPanel
-        onAdd: dbtodos.insertOpenTodo({ title: title,
-                                        category: sections.model[sections.selectedIndex],
-                                        priority: priority,
-                                        due: hasDue ? due.getTime() : 0
-                                      })
     }
 }
