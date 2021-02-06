@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: todolist.todolist.mdahl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-06 23:06+0100\n"
+"POT-Creation-Date: 2021-02-06 22:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,6 +40,18 @@ msgstr ""
 
 #: ../qml/components/TaskInsertPanel.qml:227
 msgid "new task"
+msgstr ""
+
+#: ../qml/components/ToDoListHeader.qml:67
+msgid "due"
+msgstr ""
+
+#: ../qml/components/ToDoListHeader.qml:90
+msgid "task"
+msgstr ""
+
+#: ../qml/components/ToDoListHeader.qml:113
+msgid "priority"
 msgstr ""
 
 #: ../qml/components/ToDoListItem.qml:85

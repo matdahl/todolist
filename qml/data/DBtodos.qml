@@ -63,6 +63,35 @@ Item{
         }
     }
 
+    property string openTasksSorting: "priority"
+    onOpenTasksSortingChanged: sortOpenTasks()
+
+    function sortOpenTasks(){
+        var i,j
+        switch(openTasksSorting){
+        case "priority":
+            for (i=1;i<openTodosModel.count;i++){
+                j = i
+                var curprio = openTodosModel.get(i).priority
+                while (j>0 && openTodosModel.get(j-1).priority<curprio) j--
+                if (j!==i) openTodosModel.move(i,j,1)
+            }
+            break
+        case "title":
+            for (i=1;i<openTodosModel.count;i++){
+                j = i
+                var curtitle = openTodosModel.get(i).title
+                while (j>0 && openTodosModel.get(j-1).title>curtitle) j--
+                if (j!==i) openTodosModel.move(i,j,1)
+            }
+            break
+        case "due":
+            print("TBA: sort by due not implemented yet")
+            break
+        }
+    }
+
+
     property var db
 
     property string db_name: "todos.db"

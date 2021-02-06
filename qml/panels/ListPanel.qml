@@ -103,10 +103,16 @@ Item {
                                       })
     }
 
+    ToDoListHeader{
+        id: listHeader
+        anchors.top: taskInsertPanel.bottom
+        onStateChanged: dbtodos.openTasksSorting = state
+    }
+
     UbuntuListView{
         id: listView
         anchors {
-            top: taskInsertPanel.bottom
+            top: listHeader.bottom
             left: parent.left
             right: parent.right
             bottom: parent.bottom
