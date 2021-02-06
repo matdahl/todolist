@@ -5,16 +5,13 @@ import "../components"
 Item{
     id: root
 
-    property var stack
-
-    property bool useDarkMode: true
+    property string headerSuffix: i18n.tr("Settings")
 
     Column{
         id: col
         width: root.width
         SettingsMenuItem{
             text: "Categories"
-            stack: root.stack
             subpage: catPanel
         }
         SettingsCaption{

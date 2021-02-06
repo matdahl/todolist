@@ -41,7 +41,6 @@ MainView {
     }
 
     theme.name: colors.darkMode ? "Ubuntu.Components.Themes.SuruDark" : "Ubuntu.Components.Themes.Ambiance"
-    backgroundColor: colors.currentBackground
 
     Component.onCompleted: dbtodos.init()
 
@@ -76,8 +75,7 @@ MainView {
             trailingActionBar.actions:[
                 Action{
                     iconName: "settings"
-                    text:     "Settings"
-                    visible: stack.currentItem===listPanel || stack.currentItem===editPanel
+                    visible: stack.currentItem===listPanel
                     onTriggered: {
                         if (stack.currentItem!==settingsPanel){
                             while (stack.depth>1) stack.pop()
@@ -97,26 +95,16 @@ MainView {
         StackView{
             id: stack
             anchors.fill: parent
+        }
 
-            function collapse(){
-                while (depth>1) pop()
-            }
+        ListPanel{
+            id: listPanel
+            Component.onCompleted: stack.push(listPanel)
+        }
 
-            ListPanel{
-                id: listPanel
-                Component.onCompleted: stack.push(listPanel)
-            }
-
-            TodoEditPanel{
-                id: editPanel
-                visible: false
-            }
-
-            SettingsPanel{
-                id: settingsPanel
-                visible: false
-                stack: stack
-            }
+        SettingsPanel{
+            id: settingsPanel
+            visible: false
         }
     }
 }

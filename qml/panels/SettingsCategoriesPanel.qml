@@ -16,17 +16,24 @@ Item{
         TextField{
             id: inputNewCategory
             width: root.width - btAddCategory.width - 2*parent.padding - parent.spacing
-            placeholderText: "new category"
+            placeholderText: i18n.tr("new category") + " ..."
             onAccepted: btAddCategory.clicked()
         }
         Button{
             id: btAddCategory
             width: 2*height
-            text: "add"
-            color: UbuntuColors.green
+            Icon{
+                anchors.centerIn: parent
+                height: 0.7*parent.height
+                name: "add"
+                color: theme.palette.normal.positiveText
+            }
+            color: theme.palette.normal.positive
             onClicked: {
-                dbtodos.insertCategory(inputNewCategory.text)
-                inputNewCategory.text = ""
+                if (inputNewCategory.text.length>0){
+                    dbtodos.insertCategory(inputNewCategory.text)
+                    inputNewCategory.text = ""
+                }
             }
         }
     }
