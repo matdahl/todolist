@@ -49,11 +49,50 @@ ListItem{
     Label{
         id: labelCategory
         anchors{
+            left: parent.left
             bottom: parent.bottom
+            leftMargin: units.gu(2)
         }
-        x: parent.x + units.gu(1)
         text: category
         textSize: Label.XSmall
+    }
+    Rectangle{
+        id: labelCategoryBack
+        anchors{
+            fill: labelDeadline
+            topMargin: units.gu(1)
+            bottomMargin: units.gu(1)
+        }
+        radius: units.gu(1)
+        opacity: 0.2
+        visible: due
+        color: labelDeadline.color
+    }
+    Label{
+        id: labelDeadline
+        anchors{
+            top: parent.top
+            bottom: labelCategory.top
+            left: parent.left
+            leftMargin: units.gu(2)
+        }
+        width: units.gu(8)
+        enabled: due
+        textSize: Label.Small
+        verticalAlignment: Label.AlignVCenter
+        horizontalAlignment: Label.AlignHCenter
+        property int nDays: ((new Date(due)).setHours(0,0,0,0)-(new Date()).setHours(0,0,0,0))/(24*3600*1000)
+        text: due ? nDays>7 ? i18n.tr("> 1 week")
+                  : nDays>1 ? i18n.tr("in " + nDays + " days")
+                  : nDays===1 ? i18n.tr("tomorrow")
+                  : nDays===0 ? i18n.tr("today")
+                  : i18n.tr("overdue")
+            : i18n.tr("no deadline")
+        color: due ? nDays > 7 ? Qt.hsla(0.333,1,colors.darkMode? 0.65 : 0.35)
+                               : nDays>-1 ? Qt.hsla(0.333*(nDays+1)/7,1,colors.darkMode? 0.65 : 0.35)
+                                          : Qt.hsla(0,1,colors.darkMode? 0.65 : 0.35)
+                   : theme.palette.disabled.backgroundText
+        font.bold: due && nDays<1
     }
 
     PriorityBar{

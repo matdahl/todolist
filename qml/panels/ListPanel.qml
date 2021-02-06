@@ -121,7 +121,6 @@ Item {
                 editPanel.set(todo,"edit")
                 stack.push(editPanel)
             }
-
             onAchieved: print("achieving not implemented yet :(")
         }
     }

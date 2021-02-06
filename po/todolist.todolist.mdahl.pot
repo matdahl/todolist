@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: todolist.todolist.mdahl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-06 21:55+0100\n"
+"POT-Creation-Date: 2021-02-06 23:06+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,15 +34,32 @@ msgid "Priority"
 msgstr ""
 
 #: ../qml/components/TaskInsertPanel.qml:159
+#: ../qml/components/ToDoListItem.qml:90
 msgid "no deadline"
 msgstr ""
 
-#: ../qml/components/TaskInsertPanel.qml:188
-msgid "Insert"
+#: ../qml/components/TaskInsertPanel.qml:227
+msgid "new task"
 msgstr ""
 
-#: ../qml/components/TaskInsertPanel.qml:226
-msgid "new task"
+#: ../qml/components/ToDoListItem.qml:85
+msgid "> 1 week"
+msgstr ""
+
+#: ../qml/components/ToDoListItem.qml:86
+msgid "in "
+msgstr ""
+
+#: ../qml/components/ToDoListItem.qml:87
+msgid "tomorrow"
+msgstr ""
+
+#: ../qml/components/ToDoListItem.qml:88
+msgid "today"
+msgstr ""
+
+#: ../qml/components/ToDoListItem.qml:89
+msgid "overdue"
 msgstr ""
 
 #: ../qml/panels/ListPanel.qml:53

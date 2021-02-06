@@ -180,12 +180,13 @@ Item{
                 margins: root.spacing
                 rightMargin: root.padding
             }
+            width: units.gu(6)
             color: UbuntuColors.orange
-            width: lbInsert.width> units.gu(6) ? lbInsert.width + units.gu(2) : units.gu(8)
-            Label{
-                id: lbInsert
+            Icon{
                 anchors.centerIn: parent
-                text: i18n.tr("Insert")
+                width: units.gu(3)
+                color: theme.palette.normal.backgroundText
+                name: "ok"
             }
             onClicked: {
                 if(title.length>0){
