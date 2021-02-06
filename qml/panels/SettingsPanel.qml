@@ -17,11 +17,19 @@ Item{
             stack: root.stack
             subpage: catPanel
         }
+        SettingsCaption{
+            title: i18n.tr("Appearance")
+        }
         SettingsMenuSwitch{
-            id: itDarkMode
             text: i18n.tr("Dark Mode")
-            checked: root.useDarkMode
-            onCheckedChanged: root.useDarkMode = checked
+            Component.onCompleted: checked = colors.darkMode
+            onCheckedChanged: colors.darkMode = checked
+        }
+        SettingsMenuDoubleColorSelect{
+            text: i18n.tr("Color")
+            model: colors.headerColors
+            Component.onCompleted: currentSelectedColor = colors.currentIndex
+            onCurrentSelectedColorChanged: colors.currentIndex = currentSelectedColor
         }
     }
 

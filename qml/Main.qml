@@ -107,6 +107,11 @@ MainView {
                 Component.onCompleted: stack.push(listPanel)
             }
 
+            TodoEditPanel{
+                id: editPanel
+                visible: false
+            }
+
             SettingsPanel{
                 id: settingsPanel
                 visible: false
