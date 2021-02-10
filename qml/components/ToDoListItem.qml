@@ -33,13 +33,15 @@ ListItem{
         ]
     }
 
-    Label {
+    TextArea {
         id: labelTitle
         anchors {
-            top: parent.top
-            left: parent.left
+            verticalCenter: parent.verticalCenter
+            left: labelDeadline.right
             right: priorityBar.left
+            margins: units.gu(1)
         }
+        readOnly: true
         height: 0.8*parent.height
         text: title
         //font.bold: true
@@ -102,6 +104,7 @@ ListItem{
             right:  parent.right
             top:    parent.top
             bottom: parent.bottom
+            rightMargin: units.gu(1)
         }
     }
 }

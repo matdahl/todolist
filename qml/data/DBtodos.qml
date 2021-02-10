@@ -269,12 +269,12 @@ Item{
         if (!db) init()
         try {
             db.transaction(function(tx){
-                tx.executeSql('UPDATE ' + db_table_todos_open + ' SET title=?,category=?,priority=? WHERE itemid='+todo.itemid,
-                              [todo.title,todo.category,todo.priority])
+                tx.executeSql('UPDATE ' + db_table_todos_open + ' SET title=?,category=?,priority=?,due=? WHERE itemid='+todo.itemid,
+                              [todo.title,todo.category,todo.priority,todo.due])
             })
             refreshOpenTodos()
         } catch(err){
-            console.log("Error when updating todo table '"+db_table_todos_open+"' in database '"+db_name+"': " + err)
+            console.log("Error when updating todo in table '"+db_table_todos_open+"' in database '"+db_name+"': " + err+"\n"+JSON.stringify(todo))
         }
     }
     function selectOpenTodos(){

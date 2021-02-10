@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: todolist.todolist.mdahl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-06 22:42+0000\n"
+"POT-Creation-Date: 2021-02-10 20:14+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,7 +34,7 @@ msgid "Priority"
 msgstr ""
 
 #: ../qml/components/TaskInsertPanel.qml:159
-#: ../qml/components/ToDoListItem.qml:90
+#: ../qml/components/ToDoListItem.qml:92 ../qml/dialogs/TaskEditDialog.qml:91
 msgid "no deadline"
 msgstr ""
 
@@ -54,38 +54,47 @@ msgstr ""
 msgid "priority"
 msgstr ""
 
-#: ../qml/components/ToDoListItem.qml:85
+#: ../qml/components/ToDoListItem.qml:87
 msgid "> 1 week"
 msgstr ""
 
-#: ../qml/components/ToDoListItem.qml:86
+#: ../qml/components/ToDoListItem.qml:88
 msgid "in "
 msgstr ""
 
-#: ../qml/components/ToDoListItem.qml:87
+#: ../qml/components/ToDoListItem.qml:89
 msgid "tomorrow"
 msgstr ""
 
-#: ../qml/components/ToDoListItem.qml:88
+#: ../qml/components/ToDoListItem.qml:90
 msgid "today"
 msgstr ""
 
-#: ../qml/components/ToDoListItem.qml:89
+#: ../qml/components/ToDoListItem.qml:91
 msgid "overdue"
 msgstr ""
 
-#: ../qml/panels/ListPanel.qml:53
-msgid "All"
-msgstr ""
-
-#: ../qml/panels/ListPanel.qml:53 ../qml/panels/ListPanel.qml:63
-#: ../qml/panels/ListPanel.qml:81 ../qml/panels/ListPanel.qml:83
+#: ../qml/dialogs/TaskEditDialog.qml:50 ../qml/panels/ListPanel.qml:54
+#: ../qml/panels/ListPanel.qml:56 ../qml/panels/ListPanel.qml:64
+#: ../qml/panels/ListPanel.qml:82 ../qml/panels/ListPanel.qml:84
 #: ../qml/panels/TodoEditPanel.qml:77 ../qml/panels/TodoEditPanel.qml:80
 msgid "other"
 msgstr ""
 
-#: ../qml/panels/ListPanel.qml:54 ../qml/panels/ListPanel.qml:63
-#: ../qml/panels/ListPanel.qml:68 ../qml/panels/ListPanel.qml:70
+#: ../qml/dialogs/TaskEditDialog.qml:101
+msgid "abort"
+msgstr ""
+
+#: ../qml/dialogs/TaskEditDialog.qml:105
+msgid "apply changes"
+msgstr ""
+
+#: ../qml/panels/ListPanel.qml:54
+msgid "All"
+msgstr ""
+
+#: ../qml/panels/ListPanel.qml:55 ../qml/panels/ListPanel.qml:64
+#: ../qml/panels/ListPanel.qml:69 ../qml/panels/ListPanel.qml:71
 msgid "all"
 msgstr ""
 

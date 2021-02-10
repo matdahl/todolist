@@ -2,6 +2,7 @@ import QtQuick 2.7
 import Ubuntu.Components 1.3
 
 import "../components"
+import "../dialogs"
 
 Item {
     id: root
@@ -52,7 +53,7 @@ Item {
         height: units.gu(6)
         model: [i18n.tr("All"),i18n.tr("other")]
         readonly property string currentCategory: model.length>0 ? selectedIndex===0 ? i18n.tr("all")
-                                                                                     : selectedIndex===model.length-1 ? i18ntr("other")
+                                                                                     : selectedIndex===model.length-1 ? i18n.tr("other")
                                                                                                                       : dbtodos.categoriesNameList[selectedIndex-1]
                                                                  : ""
         Component.onCompleted: {
@@ -122,12 +123,18 @@ Item {
                                                                                          : otherOpenTodos
                                         : dbtodos.openTodosModel
         delegate: ToDoListItem{
+            id: listItem
             onRemove: dbtodos.removeOpenTodo(itemid)
             onEdit: {
-                editPanel.set(todo,"edit")
-                stack.push(editPanel)
+                editDialog.open(listView.model.get(index))
             }
             onAchieved: print("achieving not implemented yet :(")
+        }
+        TaskEditDialog{
+            id: editDialog
+            maximalPriority: settings.maximalPriority
+            categoryList:  dbtodos.categoriesNameList
+            onApply: dbtodos.updateOpenTodo(task)
         }
     }
 }

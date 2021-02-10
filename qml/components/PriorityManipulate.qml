@@ -22,6 +22,7 @@ Item{
 
     property int spacing: units.gu(0.25)
 
+    property bool initialised: false
 
     Rectangle{
         id: back
@@ -31,7 +32,7 @@ Item{
             bottomMargin: units.gu(0.5)
         }
         radius: height/2
-        color: theme.palette.normal.foreground
+        color: theme.palette.normal.base
 
         Label{
             text: "+"
@@ -64,7 +65,7 @@ Item{
         }
         height: 0.75*back.height
         width: back.width - 2*back.radius
-        color: theme.palette.normal.base
+        color: theme.palette.disabled.background
         Row{
             padding: root.spacing
             spacing: root.spacing
