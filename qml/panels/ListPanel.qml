@@ -6,6 +6,10 @@ import "../dialogs"
 
 Item {
     id: root
+
+    readonly property alias selectedCategory: sections.currentCategory
+    readonly property alias selectedCategoryIndex: sections.selectedIndex
+
     // the model containing all open todos with appropriate category
     SortFilterModel{
         id: filteredOpenTodos
@@ -87,26 +91,11 @@ Item {
             modelChanged()
             selectedIndex = index
         }
-
-        onSelectedIndexChanged: taskInsertPanel.expanded = false
-    }
-
-    TaskInsertPanel{
-        id: taskInsertPanel
-        anchors{
-            top: sections.bottom
-        }
-        enabled: sections.selectedIndex>0
-        onAdd: dbtodos.insertOpenTodo({ title: title,
-                                        category: sections.currentCategory,
-                                        priority: priority,
-                                        due: hasDue ? due.getTime() : 0
-                                      })
     }
 
     ToDoListHeader{
         id: listHeader
-        anchors.top: taskInsertPanel.bottom
+        anchors.top: sections.bottom
         onStateChanged: dbtodos.openTasksSorting = state
     }
 

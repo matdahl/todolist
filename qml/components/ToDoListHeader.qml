@@ -64,7 +64,7 @@ Item{
         }
         width: parent.width/3
         horizontalAlignment: Label.AlignHCenter
-        text: i18n.tr("due")
+        text: i18n.tr("deadline")
         MouseArea{
             anchors.fill: parent
             onClicked: root.state = "due"

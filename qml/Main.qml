@@ -48,6 +48,9 @@ MainView {
         id: settings
         category: "General"
         property int maximalPriority: 3
+        property int defaultPriority: 2
+        property bool hasDueByDefault: false
+        property int  defaultDueOffset: 1    // default number of days from today when task is due by default
     }
 
     DBtodos{
@@ -86,6 +89,7 @@ MainView {
             ]
         }
 
+
         Rectangle{
             id: background
             anchors.fill: parent
@@ -95,6 +99,8 @@ MainView {
         StackView{
             id: stack
             anchors.fill: parent
+            anchors.bottomMargin: bottomEdge.hint.visible ? bottomEdge.hint.height : 0
+            onCurrentItemChanged: bottomEdge.collapse()
         }
 
         ListPanel{
@@ -105,6 +111,11 @@ MainView {
         SettingsPanel{
             id: settingsPanel
             visible: false
+        }
+
+        TaskInsertBottomEdge{
+            id: bottomEdge
+            hint.visible: stack.currentItem === listPanel
         }
     }
 }
