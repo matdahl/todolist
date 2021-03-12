@@ -100,6 +100,7 @@ BottomEdge{
                 anchors.horizontalCenter: parent.horizontalCenter
                 width: parent.width - units.gu(8)
                 height: units.gu(4)
+                Component.onCompleted: value = settings.defaultPriority
                 onValueChanged: bottomEdge.priority = value
             }
             Label{
@@ -132,7 +133,7 @@ BottomEdge{
                 width: parent.width
                 Button{
                     width: parent.width/2 - units.gu(1)
-                    text: i18n.tr("abort")
+                    text: i18n.tr("cancel")
                     onClicked: bottomEdge.collapse()
                 }
                 Button{

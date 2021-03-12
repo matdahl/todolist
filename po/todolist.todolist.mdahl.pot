@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: todolist.todolist.mdahl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-12 17:36+0100\n"
+"POT-Creation-Date: 2021-03-12 22:31+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,7 +54,7 @@ msgid "overdue"
 msgstr ""
 
 #: ../qml/components/ToDoListItem.qml:92 ../qml/dialogs/TaskEditDialog.qml:91
-#: ../qml/panels/TaskInsertBottomEdge.qml:120
+#: ../qml/panels/TaskInsertBottomEdge.qml:121
 msgid "no deadline"
 msgstr ""
 
@@ -67,7 +67,6 @@ msgid "other"
 msgstr ""
 
 #: ../qml/dialogs/TaskEditDialog.qml:101
-#: ../qml/panels/TaskInsertBottomEdge.qml:135
 msgid "abort"
 msgstr ""
 
@@ -92,19 +91,35 @@ msgstr ""
 msgid "new category"
 msgstr ""
 
-#: ../qml/panels/SettingsPanel.qml:8
+#: ../qml/panels/SettingsPanel.qml:9
 msgid "Settings"
 msgstr ""
 
-#: ../qml/panels/SettingsPanel.qml:18
+#: ../qml/panels/SettingsPanel.qml:15
+msgid "Categories"
+msgstr ""
+
+#: ../qml/panels/SettingsPanel.qml:20
+msgid "Parameters"
+msgstr ""
+
+#: ../qml/panels/SettingsPanel.qml:24
+msgid "Highest Priority"
+msgstr ""
+
+#: ../qml/panels/SettingsPanel.qml:38
+msgid "Default Priority"
+msgstr ""
+
+#: ../qml/panels/SettingsPanel.qml:46
 msgid "Appearance"
 msgstr ""
 
-#: ../qml/panels/SettingsPanel.qml:21
+#: ../qml/panels/SettingsPanel.qml:49
 msgid "Dark Mode"
 msgstr ""
 
-#: ../qml/panels/SettingsPanel.qml:26
+#: ../qml/panels/SettingsPanel.qml:54
 msgid "Color"
 msgstr ""
 
@@ -113,7 +128,7 @@ msgid "Sort tasks by"
 msgstr ""
 
 #: ../qml/panels/SortModeSelector.qml:77
-#: ../qml/panels/TaskInsertBottomEdge.qml:106
+#: ../qml/panels/TaskInsertBottomEdge.qml:107
 msgid "Deadline"
 msgstr ""
 
@@ -146,7 +161,11 @@ msgstr ""
 msgid "insert task name"
 msgstr ""
 
-#: ../qml/panels/TaskInsertBottomEdge.qml:140
+#: ../qml/panels/TaskInsertBottomEdge.qml:136
+msgid "cancel"
+msgstr ""
+
+#: ../qml/panels/TaskInsertBottomEdge.qml:141
 msgid "insert"
 msgstr ""
 

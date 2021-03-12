@@ -109,13 +109,6 @@ Item {
         }
     }
 
-/*    ToDoListHeader{
-        id: listHeader
-        anchors.top: sections.bottom
-        onStateChanged: dbtodos.openTasksSorting = state
-    }
-*/
-
     UbuntuListView{
         id: listView
         anchors {

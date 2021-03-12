@@ -90,7 +90,6 @@ Item{
 
         init_categories()
         init_openTodos()
-        init_doneTodos()
     }
     function callback(db){/* do nothing */}
     function init_categories(){
