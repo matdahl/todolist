@@ -85,7 +85,14 @@ MainView {
                             stack.push(settingsPanel)
                         }
                     }
+                },
+                Action{
+                    iconName: "sort-listitem"
+                    visible: stack.currentItem==listPanel
+                    enabled: !sortModeSelector.isOpened
+                    onTriggered: sortModeSelector.open()
                 }
+
             ]
         }
 
@@ -116,6 +123,10 @@ MainView {
         TaskInsertBottomEdge{
             id: bottomEdge
             hint.visible: stack.currentItem === listPanel
+        }
+
+        SortModeSelector{
+            id: sortModeSelector
         }
     }
 }
