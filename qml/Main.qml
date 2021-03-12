@@ -64,7 +64,7 @@ MainView {
 
         header: PageHeader {
             id: header
-            title: i18n.tr('To Do List') + (stack.currentItem.headerSuffix ? " - "+stack.currentItem.headerSuffix : "")
+            title: i18n.tr('To Do Lists') + (stack.currentItem.headerSuffix ? " - "+stack.currentItem.headerSuffix : "")
             StyleHints{backgroundColor:colors.currentHeader}
 
             leadingActionBar.actions: [

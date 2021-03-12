@@ -38,7 +38,14 @@ Item{
         openTodosModel.clear()
         var todos = selectOpenTodos()
         for (var i=0; i<todos.length; i++){
-            openTodosModel.append(todos[i])
+            openTodosModel.append({itemid:   todos[i].itemid,
+                                   title:    todos[i].title,
+                                   category: todos[i].category,
+                                   priority: todos[i].priority,
+                                   due:      todos[i].due,
+                                   dueSORT:  todos[i].due!==0 ? Qt.formatDateTime(new Date(todos[i].due),"yyyy/MM/dd-hh:mm")
+                                                              : "9"
+                                  })
         }
         recount()
         openTodosChanged()

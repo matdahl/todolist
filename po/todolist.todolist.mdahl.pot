@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: todolist.todolist.mdahl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-12 15:59+0100\n"
+"POT-Creation-Date: 2021-03-12 17:28+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,8 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../qml/Main.qml:67 todolist.desktop.in.h:1
-msgid "To Do List"
+#: ../qml/Main.qml:67
+msgid "To Do Lists"
 msgstr ""
 
 #: ../qml/components/ToDoListHeader.qml:67
@@ -58,9 +58,9 @@ msgstr ""
 msgid "no deadline"
 msgstr ""
 
-#: ../qml/dialogs/TaskEditDialog.qml:50 ../qml/panels/ListPanel.qml:58
-#: ../qml/panels/ListPanel.qml:60 ../qml/panels/ListPanel.qml:68
-#: ../qml/panels/ListPanel.qml:86 ../qml/panels/ListPanel.qml:88
+#: ../qml/dialogs/TaskEditDialog.qml:50 ../qml/panels/ListPanel.qml:74
+#: ../qml/panels/ListPanel.qml:76 ../qml/panels/ListPanel.qml:84
+#: ../qml/panels/ListPanel.qml:102 ../qml/panels/ListPanel.qml:104
 #: ../qml/panels/TaskInsertBottomEdge.qml:14
 #: ../qml/panels/TaskInsertBottomEdge.qml:82
 msgid "other"
@@ -75,12 +75,12 @@ msgstr ""
 msgid "apply changes"
 msgstr ""
 
-#: ../qml/panels/ListPanel.qml:58
+#: ../qml/panels/ListPanel.qml:74
 msgid "All"
 msgstr ""
 
-#: ../qml/panels/ListPanel.qml:59 ../qml/panels/ListPanel.qml:68
-#: ../qml/panels/ListPanel.qml:73 ../qml/panels/ListPanel.qml:75
+#: ../qml/panels/ListPanel.qml:75 ../qml/panels/ListPanel.qml:84
+#: ../qml/panels/ListPanel.qml:89 ../qml/panels/ListPanel.qml:91
 msgid "all"
 msgstr ""
 
@@ -108,20 +108,20 @@ msgstr ""
 msgid "Color"
 msgstr ""
 
-#: ../qml/panels/SortModeSelector.qml:33
-msgid "Sort by"
+#: ../qml/panels/SortModeSelector.qml:64
+msgid "Sort tasks by"
 msgstr ""
 
-#: ../qml/panels/SortModeSelector.qml:40
+#: ../qml/panels/SortModeSelector.qml:77
 #: ../qml/panels/TaskInsertBottomEdge.qml:106
 msgid "Deadline"
 msgstr ""
 
-#: ../qml/panels/SortModeSelector.qml:40
+#: ../qml/panels/SortModeSelector.qml:77
 msgid "Name"
 msgstr ""
 
-#: ../qml/panels/SortModeSelector.qml:40
+#: ../qml/panels/SortModeSelector.qml:77
 #: ../qml/panels/TaskInsertBottomEdge.qml:96
 msgid "Priority"
 msgstr ""
@@ -148,4 +148,8 @@ msgstr ""
 
 #: ../qml/panels/TaskInsertBottomEdge.qml:140
 msgid "insert"
+msgstr ""
+
+#: todolist.desktop.in.h:1
+msgid "To Do List"
 msgstr ""

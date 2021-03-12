@@ -10,7 +10,11 @@ Item {
     readonly property alias selectedCategory: sections.currentCategory
     readonly property alias selectedCategoryIndex: sections.selectedIndex
 
-    // the model containing all open todos with appropriate category
+    /* ---------------------------------- *
+     * ----------- List models ---------- *
+     * ---------------------------------- */
+
+    // the model containing all open todos with currently selected category
     SortFilterModel{
         id: filteredOpenTodos
         model: dbtodos.openTodosModel
@@ -43,9 +47,21 @@ Item {
         }
     }
 
-    /* ------------------------ *
-     * ------ Components ------ *
-     * ------------------------ */
+    // the model containing the filtered and sorted todos which are currently shown in the ListView
+    SortFilterModel{
+        id: sortedTodosModel
+        model: sections.selectedIndex>0 ? sections.selectedIndex<sections.model.length-1 ? filteredOpenTodos
+                                                                                         : otherOpenTodos
+                                        : dbtodos.openTodosModel
+        sort.property: sortModeSelector.index===0 ? "dueSORT" :
+                       sortModeSelector.index===1 ? "title" :
+                                                    "priority"
+        sort.order: sortModeSelector.index===2? Qt.DescendingOrder : Qt.AscendingOrder
+    }
+
+    /* ---------------------------------- *
+     * ----------- Components ----------- *
+     * ---------------------------------- */
 
     // the toolbar to select the current category to display
     Sections{
@@ -93,24 +109,23 @@ Item {
         }
     }
 
-    ToDoListHeader{
+/*    ToDoListHeader{
         id: listHeader
         anchors.top: sections.bottom
         onStateChanged: dbtodos.openTasksSorting = state
     }
+*/
 
     UbuntuListView{
         id: listView
         anchors {
-            top: listHeader.bottom
+            top: sections.bottom
             left: parent.left
             right: parent.right
             bottom: parent.bottom
         }
         clip: true
-        model: sections.selectedIndex>0 ? sections.selectedIndex<sections.model.length-1 ? filteredOpenTodos
-                                                                                         : otherOpenTodos
-                                        : dbtodos.openTodosModel
+        model: sortedTodosModel
         delegate: ToDoListItem{
             id: listItem
             onRemove: dbtodos.removeOpenTodo(itemid)
