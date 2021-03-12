@@ -42,7 +42,7 @@ ListItem{
             margins: units.gu(1)
         }
         readOnly: true
-        height: 0.8*parent.height
+        height: parent.height + units.gu(1.5)
         text: title
         //font.bold: true
         verticalAlignment: Label.AlignVCenter
