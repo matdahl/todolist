@@ -7,7 +7,6 @@ Item{
 
     signal categoriesChanged()
     signal openTodosChanged()
-    signal doneTodosChanged()
 
     // list of names of all categories
     property var categoriesNameList: []
@@ -18,7 +17,6 @@ Item{
 
     property var categoriesModel: ListModel{}
     property var openTodosModel:  ListModel{}
-    property var doneTodosModel:  ListModel{}
 
     function refreshCategories(){
         if (!db) init()
@@ -70,35 +68,6 @@ Item{
         }
     }
 
-    property string openTasksSorting: "priority"
-    onOpenTasksSortingChanged: sortOpenTasks()
-
-    function sortOpenTasks(){
-        var i,j
-        switch(openTasksSorting){
-        case "priority":
-            for (i=1;i<openTodosModel.count;i++){
-                j = i
-                var curprio = openTodosModel.get(i).priority
-                while (j>0 && openTodosModel.get(j-1).priority<curprio) j--
-                if (j!==i) openTodosModel.move(i,j,1)
-            }
-            break
-        case "title":
-            for (i=1;i<openTodosModel.count;i++){
-                j = i
-                var curtitle = openTodosModel.get(i).title
-                while (j>0 && openTodosModel.get(j-1).title>curtitle) j--
-                if (j!==i) openTodosModel.move(i,j,1)
-            }
-            break
-        case "due":
-            print("TBA: sort by due not implemented yet")
-            break
-        }
-    }
-
-
     property var db
 
     property string db_name: "todos.db"
@@ -107,7 +76,6 @@ Item{
     property int    db_size: 1024
     property string db_table_categories: "categories1"
     property string db_table_todos_open: "open"
-    property string db_table_todos_done: "done"
 
     /* ------------------------------ *
      * ----- initialisation I/O ----- *
@@ -183,9 +151,6 @@ Item{
             console.error("Error when checking columns of table '"+db_table_todos_open+"': " + err)
         }
         refreshOpenTodos()
-    }
-    function init_doneTodos(){
-
     }
 
 

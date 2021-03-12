@@ -132,7 +132,8 @@ Item {
             onEdit: {
                 editDialog.open(listView.model.get(index))
             }
-            onAchieved: print("achieving not implemented yet :(")
+            // currently, todos that are achieved are simply deleted. Later, there might be an other handling for done todos
+            onAchieved: dbtodos.removeOpenTodo(itemid)
         }
         TaskEditDialog{
             id: editDialog
