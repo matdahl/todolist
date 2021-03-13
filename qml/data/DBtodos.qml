@@ -31,7 +31,6 @@ Item{
         recount()
         categoriesChanged()
     }
-
     function refreshFullCategories(){
         if (!db) init()
         fullCategoriesModel.clear()
@@ -41,7 +40,6 @@ Item{
         }
         categoriesChanged()
     }
-
     function refreshOpenTodos(){
         if (!db) init()
         openTodosModel.clear()
@@ -55,11 +53,11 @@ Item{
                                    dueSORT:  todos[i].due!==0 ? Qt.formatDateTime(new Date(todos[i].due),"yyyy/MM/dd-hh:mm")
                                                               : "9"
                                   })
+            print(JSON.stringify(openTodosModel.get(i)))
         }
         recount()
         openTodosChanged()
     }
-
     function recount(){
         totalCount = openTodosModel.count
         var n = categoriesCount.length = categoriesNameList.length+1
@@ -111,13 +109,6 @@ Item{
                 console.log("Error when creating table '"+db_table_categories+"' in database '"+db_name+"': " + err)
             }
         })
-        db.transaction(function(tx){
-            try {
-                tx.executeSql('ALTER TABLE ' + db_table_categories + ' ADD COLUMN muted INTEGER DEFAULT 0')
-            } catch(err){
-                console.log("Error when extending table '"+db_table_categories+"' in database '"+db_name+"': " + err)
-            }
-        })
         refreshCategories()
         refreshFullCategories()
     }
@@ -131,23 +122,6 @@ Item{
                 console.error("Error when creating table '"+db_table_todos_open+"' in database '"+db_name+"': " + err)
             }
         })
-        try{
-            var colnames = []
-            db.transaction(function(tx){
-                var rt = tx.executeSql("PRAGMA table_info("+db_table_todos_open+")")
-                for(var i=0;i<rt.rows.length;i++){
-                    colnames.push(rt.rows[i].name)
-                }
-            })
-            // since v1.1.0: require due column
-            if (colnames.indexOf("due")<0){
-                db.transaction(function(tx){
-                    tx.executeSql("ALTER TABLE "+db_table_todos_open+" ADD COLUMN due INTEGER")
-                })
-            }
-        } catch (err){
-            console.error("Error when checking columns of table '"+db_table_todos_open+"': " + err)
-        }
         refreshOpenTodos()
     }
 
