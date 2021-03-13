@@ -99,7 +99,8 @@ ListItem{
 
     PriorityBar{
         id: priorityBar
-        score: priority
+        value: priority
+        maxValue: settings.maximalPriority
         anchors{
             right:  parent.right
             top:    parent.top

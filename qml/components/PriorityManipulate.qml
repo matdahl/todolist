@@ -4,14 +4,13 @@ import Ubuntu.Components 1.3
 Item{
     id: root
 
-    property int maximalPriority: 6
-    onMaximalPriorityChanged: if (maximalPriority<1) maximalPriority = 1
+    property int maximalPriority: settings.maximalPriority
 
     property color color
     property int value: maximalPriority/2
     onValueChanged: {
         var half = (maximalPriority+1)/2
-        if (maximalPriority<=1 || maximalPriority===value){
+        if (maximalPriority <= 1 || value >= maximalPriority){
             color = Qt.rgba(0,1,0,1)
         } else {
             if (value<2){
@@ -74,7 +73,7 @@ Item{
             padding: root.spacing
             spacing: root.spacing
             Repeater{
-                model: value
+                model: value < maximalPriority ? value : maximalPriority
                 Rectangle{
                     height:  inner.height - 2*root.spacing
                     width: (inner.width - (maximalPriority+1)*root.spacing)/maximalPriority
