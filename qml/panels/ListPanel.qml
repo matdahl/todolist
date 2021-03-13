@@ -53,10 +53,11 @@ Item {
         model: sections.selectedIndex>0 ? sections.selectedIndex<sections.model.length-1 ? filteredOpenTodos
                                                                                          : otherOpenTodos
                                         : dbtodos.openTodosModel
-        sort.property: sortModeSelector.index===0 ? "dueSORT" :
-                       sortModeSelector.index===1 ? "title" :
-                                                    "priority"
-        sort.order: sortModeSelector.index===2? Qt.DescendingOrder : Qt.AscendingOrder
+        sort.property: sortModeSelect.index===0 ? "dueSORT" :
+                       sortModeSelect.index===1 ? "title" :
+                                                  "priority"
+        sort.order: sortModeSelect.ascending[sortModeSelect.index] ? Qt.AscendingOrder : Qt.DescendingOrder
+        sortCaseSensitivity: Qt.CaseInsensitive
     }
 
     /* ---------------------------------- *
@@ -67,6 +68,7 @@ Item {
     Sections{
         id: sections
         anchors{
+            top: sortModeSelect.bottom
             left: parent.left
             right: parent.right
         }
@@ -134,5 +136,9 @@ Item {
             categoryList:  dbtodos.categoriesNameList
             onApply: dbtodos.updateOpenTodo(task)
         }
+    }
+
+    SortModeSelect{
+        id: sortModeSelect
     }
 }

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: todolist.todolist.mdahl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-13 14:27+0000\n"
-"PO-Revision-Date: 2021-03-13 15:29+0100\n"
+"POT-Creation-Date: 2021-03-13 15:47+0000\n"
+"PO-Revision-Date: 2021-03-13 16:50+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -21,6 +21,24 @@ msgstr ""
 #: ../qml/Main.qml:67 todolist.desktop.in.h:1
 msgid "To Do Lists"
 msgstr "To Do Listen"
+
+#: ../qml/components/SortModeSelect.qml:31
+msgid "Sort tasks by:"
+msgstr "Sortiere Aufgaben nach:"
+
+#: ../qml/components/SortModeSelect.qml:43
+#: ../qml/panels/TaskInsertBottomEdge.qml:107
+msgid "Deadline"
+msgstr "Deadline"
+
+#: ../qml/components/SortModeSelect.qml:43
+msgid "Name"
+msgstr "Name"
+
+#: ../qml/components/SortModeSelect.qml:43
+#: ../qml/panels/TaskInsertBottomEdge.qml:96
+msgid "Priority"
+msgstr "Priorität"
 
 #: ../qml/components/ToDoListHeader.qml:67
 msgid "deadline"
@@ -59,9 +77,9 @@ msgstr "überfällig"
 msgid "no deadline"
 msgstr "keine Deadline"
 
-#: ../qml/dialogs/TaskEditDialog.qml:50 ../qml/panels/ListPanel.qml:74
-#: ../qml/panels/ListPanel.qml:76 ../qml/panels/ListPanel.qml:84
-#: ../qml/panels/ListPanel.qml:102 ../qml/panels/ListPanel.qml:104
+#: ../qml/dialogs/TaskEditDialog.qml:50 ../qml/panels/ListPanel.qml:76
+#: ../qml/panels/ListPanel.qml:78 ../qml/panels/ListPanel.qml:86
+#: ../qml/panels/ListPanel.qml:104 ../qml/panels/ListPanel.qml:106
 #: ../qml/panels/TaskInsertBottomEdge.qml:14
 #: ../qml/panels/TaskInsertBottomEdge.qml:82
 msgid "other"
@@ -75,12 +93,12 @@ msgstr "abbrechen"
 msgid "apply changes"
 msgstr "Änderungen übernehmen"
 
-#: ../qml/panels/ListPanel.qml:74
+#: ../qml/panels/ListPanel.qml:76
 msgid "All"
 msgstr "Alle"
 
-#: ../qml/panels/ListPanel.qml:75 ../qml/panels/ListPanel.qml:84
-#: ../qml/panels/ListPanel.qml:89 ../qml/panels/ListPanel.qml:91
+#: ../qml/panels/ListPanel.qml:77 ../qml/panels/ListPanel.qml:86
+#: ../qml/panels/ListPanel.qml:91 ../qml/panels/ListPanel.qml:93
 msgid "all"
 msgstr "alle"
 
@@ -92,67 +110,49 @@ msgstr "Kategorien bearbeiten"
 msgid "new category"
 msgstr "neue Kategorie"
 
-#: ../qml/panels/SettingsPanel.qml:9
+#: ../qml/panels/SettingsPanel.qml:8
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: ../qml/panels/SettingsPanel.qml:15
+#: ../qml/panels/SettingsPanel.qml:14
 msgid "Categories"
 msgstr "Kategorien"
 
-#: ../qml/panels/SettingsPanel.qml:20
+#: ../qml/panels/SettingsPanel.qml:19
 msgid "Parameters"
 msgstr "Parameter"
 
-#: ../qml/panels/SettingsPanel.qml:24
+#: ../qml/panels/SettingsPanel.qml:23
 msgid "Highest Priority"
 msgstr "Höchste Priorität"
 
-#: ../qml/panels/SettingsPanel.qml:38
+#: ../qml/panels/SettingsPanel.qml:37
 msgid "Default Priority"
 msgstr "Standardwert für Priorität"
 
-#: ../qml/panels/SettingsPanel.qml:46
+#: ../qml/panels/SettingsPanel.qml:45
 msgid "Set deadline by default"
 msgstr "Setze standardmäßig eine Deadline"
 
-#: ../qml/panels/SettingsPanel.qml:52
+#: ../qml/panels/SettingsPanel.qml:51
 msgid "Default offset for deadline (days)"
 msgstr "Standard Offset der Deadline (in Tagen)"
 
-#: ../qml/panels/SettingsPanel.qml:60
+#: ../qml/panels/SettingsPanel.qml:59
 msgid "Appearance"
 msgstr "Erscheinungsbild"
 
-#: ../qml/panels/SettingsPanel.qml:63
+#: ../qml/panels/SettingsPanel.qml:62
 msgid "Use default theme"
 msgstr "Standardthema verwenden"
 
-#: ../qml/panels/SettingsPanel.qml:70
+#: ../qml/panels/SettingsPanel.qml:69
 msgid "Dark Mode"
 msgstr "Dunkler Modus"
 
-#: ../qml/panels/SettingsPanel.qml:77
+#: ../qml/panels/SettingsPanel.qml:76
 msgid "Color"
 msgstr "Farbe"
-
-#: ../qml/panels/SortModeSelector.qml:64
-msgid "Sort tasks by"
-msgstr "Sortiere Aufgaben nach"
-
-#: ../qml/panels/SortModeSelector.qml:77
-#: ../qml/panels/TaskInsertBottomEdge.qml:107
-msgid "Deadline"
-msgstr "Deadline"
-
-#: ../qml/panels/SortModeSelector.qml:77
-msgid "Name"
-msgstr "Name"
-
-#: ../qml/panels/SortModeSelector.qml:77
-#: ../qml/panels/TaskInsertBottomEdge.qml:96
-msgid "Priority"
-msgstr "Priorität"
 
 #: ../qml/panels/TaskInsertBottomEdge.qml:10
 msgid "new task"

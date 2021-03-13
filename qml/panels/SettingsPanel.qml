@@ -1,6 +1,5 @@
 import QtQuick 2.7
 import Ubuntu.Components 1.3
-import "../components"
 import "../components/settings"
 
 Item{
