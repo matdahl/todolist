@@ -47,16 +47,20 @@ Item{
             right: parent.right
         }
         clip: true
-        model: dbtodos.categoriesModel
+        model: dbtodos.fullCategoriesModel
 
         delegate: ListItem{
             Label{
-                anchors.fill: parent
-                verticalAlignment: Label.AlignVCenter
+                anchors{
+                    verticalCenter: parent.verticalCenter
+                    left: icUp.right
+                    right: swMuted.left
+                }
                 horizontalAlignment: Label.AlignHCenter
                 text: name
             }
             Icon{
+                id: icUp
                 anchors{
                     top: parent.top
                     left: parent.left
@@ -70,7 +74,22 @@ Item{
                     onClicked: dbtodos.swapCategories(index-1,index)
                 }
             }
+            Switch{
+                id: swMuted
+                anchors{
+                    verticalCenter: parent.verticalCenter
+                    right: icDown.left
+                    margins: units.gu(2)
+                }
+                checked: muted===0
+                onCheckedChanged: {
+                    muted = checked ? 0 : 1
+                    dbtodos.setMutedCategory(cid,muted)
+                }
+            }
+
             Icon{
+                id: icDown
                 anchors{
                     top: parent.top
                     right: parent.right

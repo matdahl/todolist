@@ -16,18 +16,29 @@ Item{
     property int totalCount: 0
 
     property var categoriesModel: ListModel{}
+    property var fullCategoriesModel: ListModel{}
     property var openTodosModel:  ListModel{}
 
     function refreshCategories(){
         if (!db) init()
         categoriesModel.clear()
         categoriesNameList.length = 0
-        var cats = selectCategories()
+        var cats = selectUnmutedCategories()
         for (var i=0; i<cats.length; i++){
             categoriesModel.append(cats[i])
             categoriesNameList.push(cats[i].name)
         }
         recount()
+        categoriesChanged()
+    }
+
+    function refreshFullCategories(){
+        if (!db) init()
+        fullCategoriesModel.clear()
+        var cats = selectCategories()
+        for (var i=0; i<cats.length; i++){
+            fullCategoriesModel.append(cats[i])
+        }
         categoriesChanged()
     }
 
@@ -95,32 +106,20 @@ Item{
     function init_categories(){
         db.transaction(function(tx){
             try {
-                tx.executeSql('CREATE TABLE IF NOT EXISTS ' + db_table_categories + '(cid INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, UNIQUE(name))')
+                tx.executeSql('CREATE TABLE IF NOT EXISTS ' + db_table_categories + '(cid INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, muted INTEGER DEFAULT 0, UNIQUE(name))')
             } catch(err){
                 console.log("Error when creating table '"+db_table_categories+"' in database '"+db_name+"': " + err)
             }
         })
-        try{
-            var colnames = []
-            db.transaction(function(tx){
-                var rt = tx.executeSql("PRAGMA table_info("+db_table_categories+")")
-                for(var i=0;i<rt.rows.length;i++){
-                    colnames.push(rt.rows[i].name)
-                }
-            })
-            // since v1.1.0: require primary key cid column
-            if (colnames.indexOf("cid")<0){
-                db.transaction(function(tx){
-                    tx.executeSql("DROP TABLE "+db_table_categories)
-                })
-                db.transaction(function(tx){
-                    tx.executeSql('CREATE TABLE ' + db_table_categories + '(cid INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, UNIQUE(name))')
-                })
+        db.transaction(function(tx){
+            try {
+                tx.executeSql('ALTER TABLE ' + db_table_categories + ' ADD COLUMN muted INTEGER DEFAULT 0')
+            } catch(err){
+                console.log("Error when extending table '"+db_table_categories+"' in database '"+db_name+"': " + err)
             }
-        } catch (err){
-            console.error("Error when checking columns of table '"+db_table_categories+"': " + err)
-        }
+        })
         refreshCategories()
+        refreshFullCategories()
     }
     function init_openTodos(){
         var cmd = 'CREATE TABLE IF NOT EXISTS ' + db_table_todos_open + '('
@@ -161,9 +160,10 @@ Item{
         if (!db) init()
         try {
             db.transaction(function(tx){
-                tx.executeSql('INSERT OR IGNORE INTO ' + db_table_categories + '(name) VALUES(?)',[name])
+                tx.executeSql('INSERT OR IGNORE INTO ' + db_table_categories + '(name,muted) VALUES(?,0)',[name])
             })
             refreshCategories()
+            refreshFullCategories()
         } catch(err){
             console.log("Error when inserting category table '"+db_table_categories+"' in database '"+db_name+"': " + err)
         }
@@ -181,8 +181,32 @@ Item{
             console.log("Error when selecting all from table '"+db_table_categories+"' in database '"+db_name+"': " + err)
             return []
         }
-
     }
+    function selectUnmutedCategories(){
+        if (!db) init()
+        try {
+            var rt
+            db.transaction(function(tx){
+                rt = tx.executeSql('SELECT * FROM ' + db_table_categories + ' WHERE muted=0')
+            })
+            return rt.rows
+        } catch(err){
+            console.log("Error when selecting all enabled from table '"+db_table_categories+"' in database '"+db_name+"': " + err)
+            return []
+        }
+    }
+    function setMutedCategory(cid,muted){
+        if (!db) init()
+        try {
+            db.transaction(function(tx){
+                tx.executeSql('UPDATE ' + db_table_categories + ' SET muted=? WHERE cid=?',[muted,cid])
+            })
+            refreshCategories()
+        } catch(err){
+            console.log("Error when toggling muted in table '"+db_table_categories+"' in database '"+db_name+"': " + err+"\n"+JSON.stringify(todo))
+        }
+    }
+
     function removeCategory(cid){
         if (!db) init()
         try {
@@ -190,6 +214,7 @@ Item{
                 tx.executeSql('DELETE FROM ' + db_table_categories + ' WHERE cid='+cid)
             })
             refreshCategories()
+            refreshFullCategories()
         } catch(err){
             console.log("Error when deleting category from table '"+db_table_categories+"' in database '"+db_name+"': " + err)
         }
