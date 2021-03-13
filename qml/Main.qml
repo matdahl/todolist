@@ -37,10 +37,10 @@ MainView {
 
     Colors{
         id: colors
-        initialIndex: 7
+        defaultIndex: 7
     }
 
-    theme.name: colors.darkMode ? "Ubuntu.Components.Themes.SuruDark" : "Ubuntu.Components.Themes.Ambiance"
+    theme.name: colors.currentThemeName
 
     Component.onCompleted: dbtodos.init()
 

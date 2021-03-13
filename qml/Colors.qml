@@ -9,12 +9,17 @@ Item {
         id: settings
         property alias colorIndex: root.currentIndex
         property alias darkMode:   root.darkMode
+        property alias useDefaultTheme: root.useDefaultTheme
     }
 
-    // the initial color
-    property int initialIndex: 0
+    // the default color
+    property bool useDefaultTheme: true
+
+    // the default color
+    property int defaultIndex: 0
+
     // the currently selected color scheme
-    property int currentIndex: initialIndex
+    property int currentIndex: defaultIndex
 
     // ensure that index in not out of range
     readonly property int maxIndex: headerColors.length-1
@@ -28,11 +33,14 @@ Item {
 
     // states whether light or dark theme is used
     property bool darkMode: true
-    readonly property int indexTheme: darkMode ? 0 : 1
+    readonly property int indexTheme: useDefaultTheme || darkMode ? 0 : 1
+    readonly property int indexColor: useDefaultTheme ? defaultIndex : currentIndex
+
 
     // the current colors
-    readonly property color currentHeader:     headerColors[currentIndex][indexTheme]
-    readonly property color currentBackground: backgroundColors[currentIndex][indexTheme]
+    readonly property color  currentHeader:     headerColors    [indexColor][indexTheme]
+    readonly property color  currentBackground: backgroundColors[indexColor][indexTheme]
+    readonly property string currentThemeName: useDefaultTheme || darkMode ? "Ubuntu.Components.Themes.SuruDark" : "Ubuntu.Components.Themes.Ambiance"
 
     readonly property var headerColors:
         [["#000000","#ffffff"], // black and white

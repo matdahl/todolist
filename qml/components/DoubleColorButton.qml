@@ -19,6 +19,7 @@ Button{
 
     onClicked: selected(bt.index)
     Rectangle{
+        id: rect1
         width:  0.5*(parent.width-2*parent.padding-parent.spacing)
         height: (parent.height-2*parent.padding)
         x: parent.padding
@@ -34,6 +35,7 @@ Button{
         }
     }
     Rectangle{
+        id: rect2
         width:  0.5*(parent.width-2*parent.padding-parent.spacing)
         height: (parent.height-2*parent.padding)
         x: 0.5*(parent.width + parent.spacing)
@@ -47,5 +49,14 @@ Button{
             anchors.bottom: parent.bottom
             width: parent.radius
         }
+    }
+    Rectangle{
+        width:  (parent.width-2*parent.padding)
+        height: (parent.height-2*parent.padding)
+        x: parent.padding
+        y: parent.padding
+        radius: parent.padding
+        color: theme.palette.disabled.base
+        visible: !root.enabled
     }
 }

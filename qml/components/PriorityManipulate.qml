@@ -11,12 +11,16 @@ Item{
     property int value: maximalPriority/2
     onValueChanged: {
         var half = (maximalPriority+1)/2
-        if (value<2){
-            color = Qt.rgba(1,0,0,1)
-        } else if (value <= half){
-            color = Qt.rgba(1,value/half,0,1)
+        if (maximalPriority<=1 || maximalPriority===value){
+            color = Qt.rgba(0,1,0,1)
         } else {
-            color = Qt.rgba(2-value/half,1,0,1)
+            if (value<2){
+                color = Qt.rgba(1,0,0,1)
+            } else if (value <= half){
+                color = Qt.rgba(1,value/half,0,1)
+            } else {
+                color = Qt.rgba(2-value/half,1,0,1)
+            }
         }
     }
 

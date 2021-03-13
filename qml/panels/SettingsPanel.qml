@@ -46,11 +46,20 @@ Item{
             title: i18n.tr("Appearance")
         }
         SettingsMenuSwitch{
+            text: i18n.tr("Use default theme")
+            Component.onCompleted: checked = colors.useDefaultTheme
+            onCheckedChanged: colors.useDefaultTheme = checked
+        }
+
+        SettingsMenuSwitch{
+            enabled: !colors.useDefaultTheme
             text: i18n.tr("Dark Mode")
             Component.onCompleted: checked = colors.darkMode
             onCheckedChanged: colors.darkMode = checked
         }
         SettingsMenuDoubleColorSelect{
+            enabled: !colors.useDefaultTheme
+            onEnabledChanged: if (!enabled) expanded = false
             text: i18n.tr("Color")
             model: colors.headerColors
             Component.onCompleted: currentSelectedColor = colors.currentIndex

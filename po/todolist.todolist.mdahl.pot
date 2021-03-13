@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: todolist.todolist.mdahl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-12 22:31+0100\n"
+"POT-Creation-Date: 2021-03-13 12:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -116,10 +116,14 @@ msgid "Appearance"
 msgstr ""
 
 #: ../qml/panels/SettingsPanel.qml:49
+msgid "Use default theme"
+msgstr ""
+
+#: ../qml/panels/SettingsPanel.qml:56
 msgid "Dark Mode"
 msgstr ""
 
-#: ../qml/panels/SettingsPanel.qml:54
+#: ../qml/panels/SettingsPanel.qml:63
 msgid "Color"
 msgstr ""
 
