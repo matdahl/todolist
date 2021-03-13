@@ -85,7 +85,7 @@ ListItem{
         horizontalAlignment: Label.AlignHCenter
         property int nDays: ((new Date(due)).setHours(0,0,0,0)-(new Date()).setHours(0,0,0,0))/(24*3600*1000)
         text: due ? nDays>7 ? i18n.tr("> 1 week")
-                  : nDays>1 ? i18n.tr("in " + nDays + " days")
+                  : nDays>1 ? i18n.tr("in %1 days").arg(nDays)
                   : nDays===1 ? i18n.tr("tomorrow")
                   : nDays===0 ? i18n.tr("today")
                   : i18n.tr("overdue")

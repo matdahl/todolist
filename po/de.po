@@ -3,60 +3,61 @@
 # This file is distributed under the same license as the todolist.todolist.mdahl package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: todolist.todolist.mdahl\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-13 14:27+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2021-03-13 15:29+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../qml/Main.qml:67 todolist.desktop.in.h:1
 msgid "To Do Lists"
-msgstr ""
+msgstr "To Do Listen"
 
 #: ../qml/components/ToDoListHeader.qml:67
 msgid "deadline"
-msgstr ""
+msgstr "Deadline"
 
 #: ../qml/components/ToDoListHeader.qml:90
 msgid "task"
-msgstr ""
+msgstr "Aufgabe"
 
 #: ../qml/components/ToDoListHeader.qml:113
 msgid "priority"
-msgstr ""
+msgstr "Priorität"
 
 #: ../qml/components/ToDoListItem.qml:87
 msgid "> 1 week"
-msgstr ""
+msgstr "> 1 Woche"
 
 #: ../qml/components/ToDoListItem.qml:88
 msgid "in %1 days"
-msgstr ""
+msgstr "in %1 Tagen"
 
 #: ../qml/components/ToDoListItem.qml:89
 msgid "tomorrow"
-msgstr ""
+msgstr "morgen"
 
 #: ../qml/components/ToDoListItem.qml:90
 msgid "today"
-msgstr ""
+msgstr "heute"
 
 #: ../qml/components/ToDoListItem.qml:91
 msgid "overdue"
-msgstr ""
+msgstr "überfällig"
 
 #: ../qml/components/ToDoListItem.qml:92 ../qml/dialogs/TaskEditDialog.qml:91
 #: ../qml/panels/TaskInsertBottomEdge.qml:121
 msgid "no deadline"
-msgstr ""
+msgstr "keine Deadline"
 
 #: ../qml/dialogs/TaskEditDialog.qml:50 ../qml/panels/ListPanel.qml:74
 #: ../qml/panels/ListPanel.qml:76 ../qml/panels/ListPanel.qml:84
@@ -64,119 +65,125 @@ msgstr ""
 #: ../qml/panels/TaskInsertBottomEdge.qml:14
 #: ../qml/panels/TaskInsertBottomEdge.qml:82
 msgid "other"
-msgstr ""
+msgstr "sonstige"
 
 #: ../qml/dialogs/TaskEditDialog.qml:101
 msgid "abort"
-msgstr ""
+msgstr "abbrechen"
 
 #: ../qml/dialogs/TaskEditDialog.qml:105
 msgid "apply changes"
-msgstr ""
+msgstr "Änderungen übernehmen"
 
 #: ../qml/panels/ListPanel.qml:74
 msgid "All"
-msgstr ""
+msgstr "Alle"
 
 #: ../qml/panels/ListPanel.qml:75 ../qml/panels/ListPanel.qml:84
 #: ../qml/panels/ListPanel.qml:89 ../qml/panels/ListPanel.qml:91
 msgid "all"
-msgstr ""
+msgstr "alle"
 
 #: ../qml/panels/SettingsCategoriesPanel.qml:9
 msgid "Manage Categories"
-msgstr ""
+msgstr "Kategorien bearbeiten"
 
 #: ../qml/panels/SettingsCategoriesPanel.qml:19
 msgid "new category"
-msgstr ""
+msgstr "neue Kategorie"
 
 #: ../qml/panels/SettingsPanel.qml:9
 msgid "Settings"
-msgstr ""
+msgstr "Einstellungen"
 
 #: ../qml/panels/SettingsPanel.qml:15
 msgid "Categories"
-msgstr ""
+msgstr "Kategorien"
 
 #: ../qml/panels/SettingsPanel.qml:20
 msgid "Parameters"
-msgstr ""
+msgstr "Parameter"
 
 #: ../qml/panels/SettingsPanel.qml:24
 msgid "Highest Priority"
-msgstr ""
+msgstr "Höchste Priorität"
 
 #: ../qml/panels/SettingsPanel.qml:38
 msgid "Default Priority"
-msgstr ""
+msgstr "Standardwert für Priorität"
 
 #: ../qml/panels/SettingsPanel.qml:46
 msgid "Set deadline by default"
-msgstr ""
+msgstr "Setze standardmäßig eine Deadline"
 
 #: ../qml/panels/SettingsPanel.qml:52
 msgid "Default offset for deadline (days)"
-msgstr ""
+msgstr "Standard Offset der Deadline (in Tagen)"
 
 #: ../qml/panels/SettingsPanel.qml:60
 msgid "Appearance"
-msgstr ""
+msgstr "Erscheinungsbild"
 
 #: ../qml/panels/SettingsPanel.qml:63
 msgid "Use default theme"
-msgstr ""
+msgstr "Standardthema verwenden"
 
 #: ../qml/panels/SettingsPanel.qml:70
 msgid "Dark Mode"
-msgstr ""
+msgstr "Dunkler Modus"
 
 #: ../qml/panels/SettingsPanel.qml:77
 msgid "Color"
-msgstr ""
+msgstr "Farbe"
 
 #: ../qml/panels/SortModeSelector.qml:64
 msgid "Sort tasks by"
-msgstr ""
+msgstr "Sortiere Aufgaben nach"
 
 #: ../qml/panels/SortModeSelector.qml:77
 #: ../qml/panels/TaskInsertBottomEdge.qml:107
 msgid "Deadline"
-msgstr ""
+msgstr "Deadline"
 
 #: ../qml/panels/SortModeSelector.qml:77
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
 #: ../qml/panels/SortModeSelector.qml:77
 #: ../qml/panels/TaskInsertBottomEdge.qml:96
 msgid "Priority"
-msgstr ""
+msgstr "Priorität"
 
 #: ../qml/panels/TaskInsertBottomEdge.qml:10
 msgid "new task"
-msgstr ""
+msgstr "neue Aufgabe"
 
 #: ../qml/panels/TaskInsertBottomEdge.qml:65
 msgid "New Task"
-msgstr ""
+msgstr "Neue Aufgabe"
 
 #: ../qml/panels/TaskInsertBottomEdge.qml:78
 msgid "Category"
-msgstr ""
+msgstr "Kategorie"
 
 #: ../qml/panels/TaskInsertBottomEdge.qml:87
 msgid "Task name"
-msgstr ""
+msgstr "Aufgabenname"
 
 #: ../qml/panels/TaskInsertBottomEdge.qml:92
 msgid "insert task name"
-msgstr ""
+msgstr "Aufgabenname eingeben"
 
 #: ../qml/panels/TaskInsertBottomEdge.qml:136
 msgid "cancel"
-msgstr ""
+msgstr "abbrechen"
 
 #: ../qml/panels/TaskInsertBottomEdge.qml:141
 msgid "insert"
-msgstr ""
+msgstr "einfügen"
+
+#~ msgid "To Do List"
+#~ msgstr "To Do Liste"
+
+#~ msgid "in "
+#~ msgstr "in "

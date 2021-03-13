@@ -53,7 +53,6 @@ Item{
                                    dueSORT:  todos[i].due!==0 ? Qt.formatDateTime(new Date(todos[i].due),"yyyy/MM/dd-hh:mm")
                                                               : "9"
                                   })
-            print(JSON.stringify(openTodosModel.get(i)))
         }
         recount()
         openTodosChanged()

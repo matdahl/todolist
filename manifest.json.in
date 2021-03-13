@@ -2,7 +2,7 @@
     "name": "todolist.todolist.mdahl",
     "description": "A simple app to manage your to dos ",
     "architecture": "@CLICK_ARCH@",
-    "title": "To Do List",
+    "title": "To Do Lists",
     "hooks": {
         "todolist": {
             "apparmor": "todolist.apparmor",
