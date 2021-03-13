@@ -223,20 +223,18 @@ Item{
     function swapCategories(index1,index2){
         if (!db) init()
         try {
-            var cid1 = categoriesModel.get(index1).cid
-            var cid2 = categoriesModel.get(index2).cid
+            var cid1 = fullCategoriesModel.get(index1).cid
+            var cid2 = fullCategoriesModel.get(index2).cid
             db.transaction(function(tx){
                 var temp = -1
                 tx.executeSql('UPDATE ' + db_table_categories + ' SET cid=? WHERE cid=?',[temp,cid1])
                 tx.executeSql('UPDATE ' + db_table_categories + ' SET cid=? WHERE cid=?',[cid1,cid2])
                 tx.executeSql('UPDATE ' + db_table_categories + ' SET cid=? WHERE cid=?',[cid2,temp])
             })
-            categoriesModel.move(index1,index2,1)
-            categoriesModel.get(index1).cid = cid1
-            categoriesModel.get(index2).cid = cid2
-            var name1 = categoriesNameList[index1]
-            categoriesNameList[index1] = categoriesNameList[index2]
-            categoriesNameList[index2] = name1
+            fullCategoriesModel.move(index1,index2,1)
+            fullCategoriesModel.get(index1).cid = cid1
+            fullCategoriesModel.get(index2).cid = cid2
+            refreshCategories()
             categoriesChanged()
         } catch(err){
             console.log("Error when swapping categories in table '"+db_table_categories+"' in database '"+db_name+"': " + err)
