@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: todolist.todolist.mdahl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-13 13:02+0000\n"
+"POT-Creation-Date: 2021-03-13 14:25+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -112,18 +112,26 @@ msgid "Default Priority"
 msgstr ""
 
 #: ../qml/panels/SettingsPanel.qml:46
+msgid "Set deadline by default"
+msgstr ""
+
+#: ../qml/panels/SettingsPanel.qml:52
+msgid "Default offset for deadline (days)"
+msgstr ""
+
+#: ../qml/panels/SettingsPanel.qml:60
 msgid "Appearance"
 msgstr ""
 
-#: ../qml/panels/SettingsPanel.qml:49
+#: ../qml/panels/SettingsPanel.qml:63
 msgid "Use default theme"
 msgstr ""
 
-#: ../qml/panels/SettingsPanel.qml:56
+#: ../qml/panels/SettingsPanel.qml:70
 msgid "Dark Mode"
 msgstr ""
 
-#: ../qml/panels/SettingsPanel.qml:63
+#: ../qml/panels/SettingsPanel.qml:77
 msgid "Color"
 msgstr ""
 

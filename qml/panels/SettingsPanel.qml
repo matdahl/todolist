@@ -41,6 +41,20 @@ Item{
             Component.onCompleted: value = settings.defaultPriority
             onValueChanged: settings.defaultPriority = value
         }
+        SettingsMenuSwitch{
+            id: stDueByDefault
+            text: i18n.tr("Set deadline by default")
+            Component.onCompleted: checked = settings.hasDueByDefault
+            onCheckedChanged: settings.hasDueByDefault = checked
+        }
+        SettingsEntryInteger{
+            id: stDefaultDueOffset
+            text: i18n.tr("Default offset for deadline (days)")
+            minvalue: 0
+            maxvalue: 10000
+            Component.onCompleted: value = settings.defaultDueOffset
+            onValueChanged: settings.defaultDueOffset = value
+        }
 
         SettingsCaption{
             title: i18n.tr("Appearance")

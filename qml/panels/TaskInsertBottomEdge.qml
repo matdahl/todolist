@@ -23,7 +23,7 @@ BottomEdge{
         dbtodos.insertOpenTodo({ title: title,
                                  category: category,
                                  priority: priority,
-                                 due: hasDue ? due.getTime() : 0
+                                 due: hasDue ? due.setHours(0,0,0,0) : 0
                                })
     }
 
