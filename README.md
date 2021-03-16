@@ -1,6 +1,19 @@
 # To Do List
 
-A simple app to manage your to dos 
+This app allows you to organise your to-dos in a Ubuntu styled way.
+
+You can define categories and assign a priority and (optionally) a deadline to each of your task. For each category, you get a separate list. If you temporarily don't need a category, so can simple mute it. Within each list, the tasks can be sorted by deadline, name or priority. 
+
+The app provides 8 different color flavors each supporting a dark and a light mode.
+
+For the future, I plan to add a few more features to the app. If you have any feature requests or found a bug, please report them on GitHub.
+
+## Installation
+
+The app is available in the Open Store: https://open-store.io/app/todolist.matdahl
+
+Otherwise, this app can also be built using [**clickable**](https://gitlab.com/clickable/clickable).
+Once `clickable` is installed on your computer, simply clone this repository, open the root directory of it in the commandline and execute the command `clickable` with your Ubuntu Phone connected and with developer mode enabled. **Clickable** then installs and start the app on your phone.
 
 ## License
 
