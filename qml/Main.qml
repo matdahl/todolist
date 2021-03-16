@@ -28,7 +28,7 @@ import "data"
 MainView {
     id: root
     objectName: 'mainView'
-    applicationName: 'todolist.todolist.mdahl'
+    applicationName: 'todolist.matdahl'
     automaticOrientation: true
     anchorToKeyboard: true
 
