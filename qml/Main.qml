@@ -85,7 +85,13 @@ MainView {
                             stack.push(settingsPanel)
                         }
                     }
+                },
+                Action{
+                    iconName: "sort-listitem"
+                    visible: stack.currentItem===listPanel
+                    onTriggered: listPanel.showSortModeSelect = !listPanel.showSortModeSelect
                 }
+
             ]
         }
 

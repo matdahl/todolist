@@ -10,6 +10,8 @@ Item {
     readonly property alias selectedCategory: sections.currentCategory
     readonly property alias selectedCategoryIndex: sections.selectedIndex
 
+    property bool showSortModeSelect
+
     /* ---------------------------------- *
      * ----------- List models ---------- *
      * ---------------------------------- */
@@ -140,5 +142,6 @@ Item {
 
     SortModeSelect{
         id: sortModeSelect
+        expanded: showSortModeSelect
     }
 }

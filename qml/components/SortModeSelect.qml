@@ -1,9 +1,48 @@
 import QtQuick 2.7
 import Ubuntu.Components 1.3
+import Ubuntu.Components.ListItems 1.3
 import Qt.labs.settings 1.0
 
 Item {
     id: root
+
+    property bool expanded: false
+    anchors{
+        top: parent.top
+        left: parent.left
+        right: parent.right
+    }
+
+    states: [
+        State{
+            name: "collapsed"
+            when: !expanded
+            PropertyChanges {
+                target: root
+                height: divider.height
+            }
+        },
+        State{
+            name: "expanded"
+            when: expanded
+            PropertyChanges {
+                target: root
+                height: selector.itemHeight + units.gu(2) + divider.height
+            }
+        }
+
+    ]
+
+    transitions: Transition {
+        from: "collapsed"
+        to: "expanded"
+        reversible: true
+        PropertyAnimation{
+            target: root
+            property: "height"
+            duration: 400
+        }
+    }
 
     /* the index of the currently selected property by which the tasks are sorted:
         0 - Deadline
@@ -14,46 +53,85 @@ Item {
 
     property var ascending: [true,true,false]
 
-    anchors{
-        top: parent.top
-        left: parent.left
-        right: parent.right
+    Settings{
+        id: settings
+        category: "SortMode"
+        property alias index: root.index
     }
-    height: units.gu(6)
+
+    Rectangle{
+        id: back
+        anchors.fill: parent
+        color: colors.currentHeader
+        opacity: 0.8
+    }
+
+    Divider{
+        id: divider
+        anchors.bottom: parent.bottom
+    }
 
     Label{
         id: label
         anchors{
             left: parent.left
-            verticalCenter: parent.verticalCenter
-            margins: units.gu(2)
+            bottom: divider.top
+            leftMargin: units.gu(2)
         }
-        text: i18n.tr("Sort tasks by:")
+        height: selector.itemHeight + units.gu(2)
+        verticalAlignment: Label.AlignVCenter
+        text: i18n.tr("Sort tasks by")
     }
 
     OptionSelector{
         id: selector
         anchors{
+            top: divider.top
             left: label.right
             right: btAscending.left
-            margins: units.gu(1)
+            margins: units.gu(2)
+            topMargin: - (itemHeight + units.gu(1))
         }
         y: units.gu(1)
         containerHeight: 3*itemHeight
         model: [i18n.tr("Deadline"),i18n.tr("Name"),i18n.tr("Priority")]
         onSelectedIndexChanged: root.index = selectedIndex
         Component.onCompleted: selectedIndex = root.index
+        delegate: OptionSelectorDelegate{
+            Rectangle{
+                anchors.fill: parent
+                color: colors.currentHeader
+                opacity: 0.5
+            }
+            text: " "
+            Label{
+                anchors{
+                    verticalCenter: parent.verticalCenter
+                    left: parent.left
+                    margins: units.gu(1)
+                }
+                text: modelData
+            }
+        }
     }
 
     Button{
         id: btAscending
         anchors{
             right: parent.right
-            margins: units.gu(1)
+            bottom: divider.top
+            rightMargin: units.gu(2)
+            bottomMargin: units.gu(1)
         }
-        width: units.gu(4)
+        width: units.gu(5)
         height: selector.itemHeight
         y: units.gu(1)
+        Rectangle{
+            anchors.fill: parent
+            color: colors.currentHeader
+            opacity: 0.5
+        }
+
         Icon{
             anchors.centerIn: parent
             height: 0.8*parent.width
@@ -61,17 +139,9 @@ Item {
             color: theme.palette.normal.baseText
         }
         onClicked: {
-            print("click")
-            print(ascending[index])
             ascending[index] = !ascending[index]
-            print(ascending[index])
             ascendingChanged()
         }
     }
 
-    Settings{
-        id: settings
-        category: "SortMode"
-        property alias index: root.index
-    }
 }
