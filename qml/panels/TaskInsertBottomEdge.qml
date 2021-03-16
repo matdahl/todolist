@@ -1,5 +1,6 @@
 import QtQuick 2.7
 import Ubuntu.Components 1.3
+import Ubuntu.Components.ListItems 1.3
 import Ubuntu.Components.Pickers 1.3
 
 import "../components"
@@ -123,22 +124,20 @@ BottomEdge{
                 }
             }
 
-            Rectangle{
-                height: units.gu(0.125)
-                width: parent.width
-                color: theme.palette.normal.base
+            Divider{
             }
+
             Row{
                 spacing: units.gu(2)
                 width: parent.width
                 Button{
                     width: parent.width/2 - units.gu(1)
-                    text: i18n.tr("cancel")
+                    text: i18n.tr("Cancel")
                     onClicked: bottomEdge.collapse()
                 }
                 Button{
                     width: parent.width/2 - units.gu(1)
-                    text: i18n.tr("insert")
+                    text: i18n.tr("Insert")
                     color: UbuntuColors.orange
                     onClicked: {
                         bottomEdge.insert()

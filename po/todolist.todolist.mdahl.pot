@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: todolist.todolist.mdahl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-16 18:13+0000\n"
+"POT-Creation-Date: 2021-03-16 19:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,21 +21,21 @@ msgstr ""
 msgid "To Do Lists"
 msgstr ""
 
-#: ../qml/components/SortModeSelect.qml:83
+#: ../qml/components/SortModeSelect.qml:84
 msgid "Sort tasks by"
 msgstr ""
 
-#: ../qml/components/SortModeSelect.qml:97
-#: ../qml/panels/TaskInsertBottomEdge.qml:107
+#: ../qml/components/SortModeSelect.qml:98
+#: ../qml/panels/TaskInsertBottomEdge.qml:108
 msgid "Deadline"
 msgstr ""
 
-#: ../qml/components/SortModeSelect.qml:97
+#: ../qml/components/SortModeSelect.qml:98
 msgid "Name"
 msgstr ""
 
-#: ../qml/components/SortModeSelect.qml:97
-#: ../qml/panels/TaskInsertBottomEdge.qml:96
+#: ../qml/components/SortModeSelect.qml:98
+#: ../qml/panels/TaskInsertBottomEdge.qml:97
 msgid "Priority"
 msgstr ""
 
@@ -72,15 +72,15 @@ msgid "overdue"
 msgstr ""
 
 #: ../qml/components/ToDoListItem.qml:92 ../qml/dialogs/TaskEditDialog.qml:91
-#: ../qml/panels/TaskInsertBottomEdge.qml:121
+#: ../qml/panels/TaskInsertBottomEdge.qml:122
 msgid "no deadline"
 msgstr ""
 
 #: ../qml/dialogs/TaskEditDialog.qml:50 ../qml/panels/ListPanel.qml:78
 #: ../qml/panels/ListPanel.qml:80 ../qml/panels/ListPanel.qml:88
 #: ../qml/panels/ListPanel.qml:106 ../qml/panels/ListPanel.qml:108
-#: ../qml/panels/TaskInsertBottomEdge.qml:14
-#: ../qml/panels/TaskInsertBottomEdge.qml:82
+#: ../qml/panels/TaskInsertBottomEdge.qml:15
+#: ../qml/panels/TaskInsertBottomEdge.qml:83
 msgid "other"
 msgstr ""
 
@@ -153,30 +153,30 @@ msgstr ""
 msgid "Color"
 msgstr ""
 
-#: ../qml/panels/TaskInsertBottomEdge.qml:10
+#: ../qml/panels/TaskInsertBottomEdge.qml:11
 msgid "new task"
 msgstr ""
 
-#: ../qml/panels/TaskInsertBottomEdge.qml:65
+#: ../qml/panels/TaskInsertBottomEdge.qml:66
 msgid "New Task"
 msgstr ""
 
-#: ../qml/panels/TaskInsertBottomEdge.qml:78
+#: ../qml/panels/TaskInsertBottomEdge.qml:79
 msgid "Category"
 msgstr ""
 
-#: ../qml/panels/TaskInsertBottomEdge.qml:87
+#: ../qml/panels/TaskInsertBottomEdge.qml:88
 msgid "Task name"
 msgstr ""
 
-#: ../qml/panels/TaskInsertBottomEdge.qml:92
+#: ../qml/panels/TaskInsertBottomEdge.qml:93
 msgid "insert task name"
 msgstr ""
 
-#: ../qml/panels/TaskInsertBottomEdge.qml:136
-msgid "cancel"
+#: ../qml/panels/TaskInsertBottomEdge.qml:135
+msgid "Cancel"
 msgstr ""
 
-#: ../qml/panels/TaskInsertBottomEdge.qml:141
-msgid "insert"
+#: ../qml/panels/TaskInsertBottomEdge.qml:140
+msgid "Insert"
 msgstr ""

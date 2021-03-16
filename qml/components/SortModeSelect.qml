@@ -12,6 +12,7 @@ Item {
         left: parent.left
         right: parent.right
     }
+    enabled: expanded
 
     states: [
         State{
@@ -97,6 +98,8 @@ Item {
         model: [i18n.tr("Deadline"),i18n.tr("Name"),i18n.tr("Priority")]
         onSelectedIndexChanged: root.index = selectedIndex
         Component.onCompleted: selectedIndex = root.index
+        onFocusChanged: if (!focus) currentlyExpanded = false
+        onEnabledChanged: if (!enabled) currentlyExpanded = false
         delegate: OptionSelectorDelegate{
             Rectangle{
                 anchors.fill: parent

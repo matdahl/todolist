@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: todolist.todolist.mdahl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-16 18:13+0000\n"
-"PO-Revision-Date: 2021-03-16 19:16+0100\n"
+"POT-Creation-Date: 2021-03-16 19:24+0100\n"
+"PO-Revision-Date: 2021-03-16 19:29+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -22,21 +22,21 @@ msgstr ""
 msgid "To Do Lists"
 msgstr "To Do Listen"
 
-#: ../qml/components/SortModeSelect.qml:83
+#: ../qml/components/SortModeSelect.qml:84
 msgid "Sort tasks by"
 msgstr "Sortiere Aufgaben nach"
 
-#: ../qml/components/SortModeSelect.qml:97
-#: ../qml/panels/TaskInsertBottomEdge.qml:107
+#: ../qml/components/SortModeSelect.qml:98
+#: ../qml/panels/TaskInsertBottomEdge.qml:108
 msgid "Deadline"
 msgstr "Deadline"
 
-#: ../qml/components/SortModeSelect.qml:97
+#: ../qml/components/SortModeSelect.qml:98
 msgid "Name"
 msgstr "Name"
 
-#: ../qml/components/SortModeSelect.qml:97
-#: ../qml/panels/TaskInsertBottomEdge.qml:96
+#: ../qml/components/SortModeSelect.qml:98
+#: ../qml/panels/TaskInsertBottomEdge.qml:97
 msgid "Priority"
 msgstr "Priorität"
 
@@ -73,15 +73,15 @@ msgid "overdue"
 msgstr "überfällig"
 
 #: ../qml/components/ToDoListItem.qml:92 ../qml/dialogs/TaskEditDialog.qml:91
-#: ../qml/panels/TaskInsertBottomEdge.qml:121
+#: ../qml/panels/TaskInsertBottomEdge.qml:122
 msgid "no deadline"
 msgstr "keine Deadline"
 
 #: ../qml/dialogs/TaskEditDialog.qml:50 ../qml/panels/ListPanel.qml:78
 #: ../qml/panels/ListPanel.qml:80 ../qml/panels/ListPanel.qml:88
 #: ../qml/panels/ListPanel.qml:106 ../qml/panels/ListPanel.qml:108
-#: ../qml/panels/TaskInsertBottomEdge.qml:14
-#: ../qml/panels/TaskInsertBottomEdge.qml:82
+#: ../qml/panels/TaskInsertBottomEdge.qml:15
+#: ../qml/panels/TaskInsertBottomEdge.qml:83
 msgid "other"
 msgstr "sonstige"
 
@@ -154,33 +154,33 @@ msgstr "Dunkler Modus"
 msgid "Color"
 msgstr "Farbe"
 
-#: ../qml/panels/TaskInsertBottomEdge.qml:10
+#: ../qml/panels/TaskInsertBottomEdge.qml:11
 msgid "new task"
 msgstr "neue Aufgabe"
 
-#: ../qml/panels/TaskInsertBottomEdge.qml:65
+#: ../qml/panels/TaskInsertBottomEdge.qml:66
 msgid "New Task"
 msgstr "Neue Aufgabe"
 
-#: ../qml/panels/TaskInsertBottomEdge.qml:78
+#: ../qml/panels/TaskInsertBottomEdge.qml:79
 msgid "Category"
 msgstr "Kategorie"
 
-#: ../qml/panels/TaskInsertBottomEdge.qml:87
+#: ../qml/panels/TaskInsertBottomEdge.qml:88
 msgid "Task name"
 msgstr "Aufgabenname"
 
-#: ../qml/panels/TaskInsertBottomEdge.qml:92
+#: ../qml/panels/TaskInsertBottomEdge.qml:93
 msgid "insert task name"
 msgstr "Aufgabenname eingeben"
 
-#: ../qml/panels/TaskInsertBottomEdge.qml:136
-msgid "cancel"
-msgstr "abbrechen"
+#: ../qml/panels/TaskInsertBottomEdge.qml:135
+msgid "Cancel"
+msgstr "Abbrechen"
 
-#: ../qml/panels/TaskInsertBottomEdge.qml:141
-msgid "insert"
-msgstr "einfügen"
+#: ../qml/panels/TaskInsertBottomEdge.qml:140
+msgid "Insert"
+msgstr "Einfügen"
 
 #~ msgid "To Do List"
 #~ msgstr "To Do Liste"
