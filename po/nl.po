@@ -1,0 +1,183 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the todolist.todolist.mdahl package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: todolist.todolist.mdahl\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-16 19:24+0100\n"
+"PO-Revision-Date: 2021-03-17 14:34+0100\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.2\n"
+"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: nl\n"
+
+#: ../qml/Main.qml:67 todolist.desktop.in.h:1
+msgid "To Do Lists"
+msgstr "Takenlijst"
+
+#: ../qml/components/SortModeSelect.qml:84
+msgid "Sort tasks by"
+msgstr "Taken sorteren op"
+
+#: ../qml/components/SortModeSelect.qml:98
+#: ../qml/panels/TaskInsertBottomEdge.qml:108
+msgid "Deadline"
+msgstr "Einddatum"
+
+#: ../qml/components/SortModeSelect.qml:98
+msgid "Name"
+msgstr "Naam"
+
+#: ../qml/components/SortModeSelect.qml:98
+#: ../qml/panels/TaskInsertBottomEdge.qml:97
+msgid "Priority"
+msgstr "Prioriteit"
+
+#: ../qml/components/ToDoListHeader.qml:67
+msgid "deadline"
+msgstr "Einddatum"
+
+#: ../qml/components/ToDoListHeader.qml:90
+msgid "task"
+msgstr "Taak"
+
+#: ../qml/components/ToDoListHeader.qml:113
+msgid "priority"
+msgstr "Prioriteit"
+
+#: ../qml/components/ToDoListItem.qml:87
+msgid "> 1 week"
+msgstr "> 1 week"
+
+#: ../qml/components/ToDoListItem.qml:88
+msgid "in %1 days"
+msgstr "Over %1 dagen"
+
+#: ../qml/components/ToDoListItem.qml:89
+msgid "tomorrow"
+msgstr "Morgen"
+
+#: ../qml/components/ToDoListItem.qml:90
+msgid "today"
+msgstr "Vandaag"
+
+#: ../qml/components/ToDoListItem.qml:91
+msgid "overdue"
+msgstr "Verstreken"
+
+#: ../qml/components/ToDoListItem.qml:92 ../qml/dialogs/TaskEditDialog.qml:91
+#: ../qml/panels/TaskInsertBottomEdge.qml:122
+msgid "no deadline"
+msgstr "Geen einddatum"
+
+#: ../qml/dialogs/TaskEditDialog.qml:50 ../qml/panels/ListPanel.qml:78
+#: ../qml/panels/ListPanel.qml:80 ../qml/panels/ListPanel.qml:88
+#: ../qml/panels/ListPanel.qml:106 ../qml/panels/ListPanel.qml:108
+#: ../qml/panels/TaskInsertBottomEdge.qml:15
+#: ../qml/panels/TaskInsertBottomEdge.qml:83
+msgid "other"
+msgstr "Overig"
+
+#: ../qml/dialogs/TaskEditDialog.qml:101
+msgid "abort"
+msgstr "Afbreken"
+
+#: ../qml/dialogs/TaskEditDialog.qml:105
+msgid "apply changes"
+msgstr "Wijzigingen toepassen"
+
+#: ../qml/panels/ListPanel.qml:78
+msgid "All"
+msgstr "Alles"
+
+#: ../qml/panels/ListPanel.qml:79 ../qml/panels/ListPanel.qml:88
+#: ../qml/panels/ListPanel.qml:93 ../qml/panels/ListPanel.qml:95
+msgid "all"
+msgstr "Alles"
+
+#: ../qml/panels/SettingsCategoriesPanel.qml:9
+msgid "Manage Categories"
+msgstr "Categorieën beheren"
+
+#: ../qml/panels/SettingsCategoriesPanel.qml:19
+msgid "new category"
+msgstr "Categorie toevoegen"
+
+#: ../qml/panels/SettingsPanel.qml:8
+msgid "Settings"
+msgstr "Instellingen"
+
+#: ../qml/panels/SettingsPanel.qml:14
+msgid "Categories"
+msgstr "Categorieën"
+
+#: ../qml/panels/SettingsPanel.qml:19
+msgid "Parameters"
+msgstr "Aanvullende opties"
+
+#: ../qml/panels/SettingsPanel.qml:23
+msgid "Highest Priority"
+msgstr "Hoogste prioriteit"
+
+#: ../qml/panels/SettingsPanel.qml:37
+msgid "Default Priority"
+msgstr "Standaardprioriteit"
+
+#: ../qml/panels/SettingsPanel.qml:45
+msgid "Set deadline by default"
+msgstr "Standaard einddatum instellen"
+
+#: ../qml/panels/SettingsPanel.qml:51
+msgid "Default offset for deadline (days)"
+msgstr "Verschil tussen begin- en einddatum (in dagen)"
+
+#: ../qml/panels/SettingsPanel.qml:59
+msgid "Appearance"
+msgstr "Uiterlijk"
+
+#: ../qml/panels/SettingsPanel.qml:62
+msgid "Use default theme"
+msgstr "Standaardthema"
+
+#: ../qml/panels/SettingsPanel.qml:69
+msgid "Dark Mode"
+msgstr "Donker thema"
+
+#: ../qml/panels/SettingsPanel.qml:76
+msgid "Color"
+msgstr "Kleur"
+
+#: ../qml/panels/TaskInsertBottomEdge.qml:11
+msgid "new task"
+msgstr "Nieuwe taak"
+
+#: ../qml/panels/TaskInsertBottomEdge.qml:66
+msgid "New Task"
+msgstr "Nieuwe taak"
+
+#: ../qml/panels/TaskInsertBottomEdge.qml:79
+msgid "Category"
+msgstr "Categorie"
+
+#: ../qml/panels/TaskInsertBottomEdge.qml:88
+msgid "Task name"
+msgstr "Taaknaam"
+
+#: ../qml/panels/TaskInsertBottomEdge.qml:93
+msgid "insert task name"
+msgstr "Voer een taaknaam in"
+
+#: ../qml/panels/TaskInsertBottomEdge.qml:135
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: ../qml/panels/TaskInsertBottomEdge.qml:140
+msgid "Insert"
+msgstr "Invoegen"
