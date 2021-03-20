@@ -1,0 +1,182 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the todolist.matdahl package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: todolist.matdahl\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-18 18:07+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: NORWEGIAN <LL@li.org>\n"
+"Language: nb\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../qml/Main.qml:67 todolist.desktop.in.h:1
+msgid "To Do Lists"
+msgstr "Gjøremålslister"
+
+#: ../qml/components/SortModeSelect.qml:84
+msgid "Sort tasks by"
+msgstr "Sorter oppgaver etter"
+
+#: ../qml/components/SortModeSelect.qml:98
+#: ../qml/panels/TaskInsertBottomEdge.qml:108
+msgid "Deadline"
+msgstr "Frist"
+
+#: ../qml/components/SortModeSelect.qml:98
+msgid "Name"
+msgstr "Navn"
+
+#: ../qml/components/SortModeSelect.qml:98
+#: ../qml/panels/TaskInsertBottomEdge.qml:97
+msgid "Priority"
+msgstr "Prioritet"
+
+#: ../qml/components/ToDoListHeader.qml:67
+msgid "deadline"
+msgstr "frist"
+
+#: ../qml/components/ToDoListHeader.qml:90
+msgid "task"
+msgstr "oppgave"
+
+#: ../qml/components/ToDoListHeader.qml:113
+msgid "priority"
+msgstr "prioritet"
+
+#: ../qml/components/ToDoListItem.qml:87
+msgid "> 1 week"
+msgstr "1 uke"
+
+#: ../qml/components/ToDoListItem.qml:88
+msgid "in %1 days"
+msgstr "i løpet av %1 dager"
+
+#: ../qml/components/ToDoListItem.qml:89
+msgid "tomorrow"
+msgstr "i morgen"
+
+#: ../qml/components/ToDoListItem.qml:90
+msgid "today"
+msgstr "i dag"
+
+#: ../qml/components/ToDoListItem.qml:91
+msgid "overdue"
+msgstr "forfalt"
+
+#: ../qml/components/ToDoListItem.qml:92 ../qml/dialogs/TaskEditDialog.qml:91
+#: ../qml/panels/TaskInsertBottomEdge.qml:122
+msgid "no deadline"
+msgstr "ingen frist"
+
+#: ../qml/dialogs/TaskEditDialog.qml:50 ../qml/panels/ListPanel.qml:78
+#: ../qml/panels/ListPanel.qml:80 ../qml/panels/ListPanel.qml:88
+#: ../qml/panels/ListPanel.qml:106 ../qml/panels/ListPanel.qml:108
+#: ../qml/panels/TaskInsertBottomEdge.qml:15
+#: ../qml/panels/TaskInsertBottomEdge.qml:83
+msgid "other"
+msgstr "annet"
+
+#: ../qml/dialogs/TaskEditDialog.qml:101
+msgid "abort"
+msgstr "avbryt"
+
+#: ../qml/dialogs/TaskEditDialog.qml:105
+msgid "apply changes"
+msgstr "bruk endringer"
+
+#: ../qml/panels/ListPanel.qml:78
+msgid "All"
+msgstr "Alle"
+
+#: ../qml/panels/ListPanel.qml:79 ../qml/panels/ListPanel.qml:88
+#: ../qml/panels/ListPanel.qml:93 ../qml/panels/ListPanel.qml:95
+msgid "all"
+msgstr "alle"
+
+#: ../qml/panels/SettingsCategoriesPanel.qml:9
+msgid "Manage Categories"
+msgstr "Administrere kategorier"
+
+#: ../qml/panels/SettingsCategoriesPanel.qml:19
+msgid "new category"
+msgstr "ny kategori"
+
+#: ../qml/panels/SettingsPanel.qml:8
+msgid "Settings"
+msgstr "Innstillinger"
+
+#: ../qml/panels/SettingsPanel.qml:14
+msgid "Categories"
+msgstr "Kategorier"
+
+#: ../qml/panels/SettingsPanel.qml:19
+msgid "Parameters"
+msgstr "Parametre"
+
+#: ../qml/panels/SettingsPanel.qml:23
+msgid "Highest Priority"
+msgstr "Høyeste prioritet"
+
+#: ../qml/panels/SettingsPanel.qml:37
+msgid "Default Priority"
+msgstr "Standard prioritet"
+
+#: ../qml/panels/SettingsPanel.qml:45
+msgid "Set deadline by default"
+msgstr "Sett frist som standard"
+
+#: ../qml/panels/SettingsPanel.qml:51
+msgid "Default offset for deadline (days)"
+msgstr "Standardforskyvning for frist (dager)"
+
+#: ../qml/panels/SettingsPanel.qml:59
+msgid "Appearance"
+msgstr "Utseende"
+
+#: ../qml/panels/SettingsPanel.qml:62
+msgid "Use default theme"
+msgstr "Bruk standardtema"
+
+#: ../qml/panels/SettingsPanel.qml:69
+msgid "Dark Mode"
+msgstr "Mørk modus"
+
+#: ../qml/panels/SettingsPanel.qml:76
+msgid "Color"
+msgstr "Farge"
+
+#: ../qml/panels/TaskInsertBottomEdge.qml:11
+msgid "new task"
+msgstr "ny oppgave"
+
+#: ../qml/panels/TaskInsertBottomEdge.qml:66
+msgid "New Task"
+msgstr "Ny oppgave"
+
+#: ../qml/panels/TaskInsertBottomEdge.qml:79
+msgid "Category"
+msgstr "Kategori"
+
+#: ../qml/panels/TaskInsertBottomEdge.qml:88
+msgid "Task name"
+msgstr "Oppgavenavn"
+
+#: ../qml/panels/TaskInsertBottomEdge.qml:93
+msgid "insert task name"
+msgstr "sett inn oppgavenavn"
+
+#: ../qml/panels/TaskInsertBottomEdge.qml:135
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: ../qml/panels/TaskInsertBottomEdge.qml:140
+msgid "Insert"
+msgstr "Sett inn"
