@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../qml/Main.qml:67 todolist.desktop.in.h:1
 msgid "To Do Lists"
-msgstr "Gøremålslister"
+msgstr "ToDo lister"
 
 #: ../qml/components/SortModeSelect.qml:84
 msgid "Sort tasks by"
