@@ -51,7 +51,9 @@ Item{
                                    priority: todos[i].priority,
                                    due:      todos[i].due,
                                    dueSORT:  todos[i].due!==0 ? Qt.formatDateTime(new Date(todos[i].due),"yyyy/MM/dd-hh:mm")
-                                                              : "9"
+                                                              : "9",
+                                   repetition: todos[i].repetition,
+                                   repetitionCount: todos[i].repetitionCount
                                   })
         }
         recount()
@@ -121,6 +123,31 @@ Item{
                 console.error("Error when creating table '"+db_table_todos_open+"' in database '"+db_name+"': " + err)
             }
         })
+        // check if all required colunms are in table and create missing ones
+        try{
+            var colnames = []
+            db.transaction(function(tx){
+                var rt = tx.executeSql("PRAGMA table_info("+db_table_todos_open+")")
+                for(var i=0;i<rt.rows.length;i++){
+                    colnames.push(rt.rows[i].name)
+                }
+            })
+            // since v1.1.0: require columns 'repetition' and 'repetitionCount'
+            if (colnames.indexOf("repetition")<0){
+                print("[INFO] openTodos table: add column 'repetition'")
+                db.transaction(function(tx){
+                    tx.executeSql("ALTER TABLE "+db_table_todos_open+" ADD repetition TEXT DEFAULT '-'")
+                })
+            }
+            if (colnames.indexOf("repetitionCount")<0){
+                print("[INFO] openTodos table: add column 'repetitionCount'")
+                db.transaction(function(tx){
+                    tx.executeSql("ALTER TABLE "+db_table_todos_open+" ADD repetitionCount INTEGER DEFAULT 1")
+                })
+            }
+        } catch (err){
+            console.error("Error when checking columns of table '"+db_table_todos_open+"': " + err)
+        }
         refreshOpenTodos()
     }
 
@@ -224,8 +251,8 @@ Item{
         if (!db) init()
         try {
             db.transaction(function(tx){
-                tx.executeSql('INSERT OR IGNORE INTO ' + db_table_todos_open + '(title,category,priority,due) VALUES(?,?,?,?)',
-                              [todo.title,todo.category,todo.priority,todo.due])
+                tx.executeSql('INSERT OR IGNORE INTO ' + db_table_todos_open + '(title,category,priority,due,repetition,repetitionCount) VALUES(?,?,?,?,?,?)',
+                              [todo.title,todo.category,todo.priority,todo.due,todo.repetition,todo.repetitionCount])
             })
             refreshOpenTodos()
         } catch(err){
@@ -236,8 +263,8 @@ Item{
         if (!db) init()
         try {
             db.transaction(function(tx){
-                tx.executeSql('UPDATE ' + db_table_todos_open + ' SET title=?,category=?,priority=?,due=? WHERE itemid='+todo.itemid,
-                              [todo.title,todo.category,todo.priority,todo.due])
+                tx.executeSql('UPDATE ' + db_table_todos_open + ' SET title=?,category=?,priority=?,due=?,repetition=?,repetitionCount=? WHERE itemid='+todo.itemid,
+                              [todo.title,todo.category,todo.priority,todo.due,todo.repetition,todo.repetitionCount])
             })
             refreshOpenTodos()
         } catch(err){

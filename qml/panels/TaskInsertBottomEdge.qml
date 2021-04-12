@@ -28,7 +28,7 @@ BottomEdge{
                                  category: category,
                                  priority: priority,
                                  due: hasDue ? due.setHours(0,0,0,0) : 0,
-                                 repetition: hasRepetition ? repetitionUnit : "",
+                                 repetition: hasRepetition ? repetitionUnit : "-",
                                  repetitionCount: repetitionCount
                                })
     }

@@ -97,6 +97,16 @@ ListItem{
         font.bold: due && nDays<1
     }
 
+    Icon{
+        anchors{
+            top: parent.top
+            right: priorityBar.left
+        }
+        height: root.height/3
+        name: "media-playlist-repeat"
+        visible: repetition !== "-"
+    }
+
     PriorityBar{
         id: priorityBar
         value: priority
