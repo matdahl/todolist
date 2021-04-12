@@ -24,6 +24,7 @@ import QtQuick.LocalStorage 2.0 as Sql
 
 import "panels"
 import "data"
+import "dialogs"
 
 MainView {
     id: root
@@ -122,6 +123,10 @@ MainView {
         TaskInsertBottomEdge{
             id: bottomEdge
             hint.visible: stack.currentItem === listPanel
+        }
+
+        RepetitionSelectPopover{
+            id: repetitionSelectPopover
         }
     }
 }

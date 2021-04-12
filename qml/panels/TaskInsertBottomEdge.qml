@@ -18,18 +18,23 @@ BottomEdge{
     property string category: "NONE"
     property int    priority: settings.defaultPriority
     property bool   hasDue:   settings.hasDueByDefault
+    property bool   hasRepetition: false
+    property string repetitionUnit: "d"
+    property int    repetitionCount: 7
     property date   due
 
     function insert(){
         dbtodos.insertOpenTodo({ title: title,
                                  category: category,
                                  priority: priority,
-                                 due: hasDue ? due.setHours(0,0,0,0) : 0
+                                 due: hasDue ? due.setHours(0,0,0,0) : 0,
+                                 repetition: hasRepetition ? repetitionUnit : "",
+                                 repetitionCount: repetitionCount
                                })
     }
 
     contentComponent: Rectangle {
-        height: root.height
+        height: root.height - header.height
         width:  root.width
         color: colors.currentBackground
         Component.onCompleted: {
@@ -59,6 +64,7 @@ BottomEdge{
             }
             catSelect.selectedIndex = i
 
+            switchRepetition.checked = bottomEdge.hasRepetition
         }
 
         PageHeader{
@@ -66,82 +72,120 @@ BottomEdge{
             title: i18n.tr("New Task")
             StyleHints{backgroundColor:colors.currentHeader}
         }
-        Column{
+        ScrollView{
+            id: scroll
+            property int margin: units.gu(4)
             anchors{
-                verticalCenter: parent.verticalCenter
+                top: header.bottom
                 left: parent.left
                 right: parent.right
-                margins: units.gu(4)
+                bottom: parent.bottom
             }
-            spacing: units.gu(2)
-
-            Label{
-                text: i18n.tr("Category") +":"
-            }
-            OptionSelector{
-                id: catSelect
-                model: dbtodos.categoriesNameList.concat(i18n.tr("other"))
-                containerHeight: 4*itemHeight
-                onSelectedIndexChanged: bottomEdge.category = model[selectedIndex]
-            }
-            Label{
-                text: i18n.tr("Task name") +":"
-            }
-            TextField{
-                id: inputTitle
-                width: parent.width
-                placeholderText: i18n.tr("insert task name") + " ..."
-                onTextChanged: bottomEdge.title = text
-            }
-            Label{
-                text: i18n.tr("Priority") +":"
-            }
-            PriorityManipulate{
-                id: inputPriority
-                anchors.horizontalCenter: parent.horizontalCenter
-                width: parent.width - units.gu(8)
-                height: units.gu(4)
-                Component.onCompleted: value = settings.defaultPriority
-                onValueChanged: bottomEdge.priority = value
-            }
-            Label{
-                text: i18n.tr("Deadline") +":"
-            }
-            Row{
-                width: parent.width
+            Column{
+                id: col
+                width: scroll.width
                 spacing: units.gu(2)
-                Switch{
-                    id: switchDue
-                    anchors.verticalCenter: btDue.verticalCenter
-                    onCheckedChanged: bottomEdge.hasDue = checked
-                }
-                Button{
-                    id: btDue
-                    width: parent.width - switchDue.width - parent.spacing
-                    enabled: bottomEdge.hasDue
-                    text: enabled ? Qt.formatDate(bottomEdge.due,"ddd dd/MM/yyyy") : i18n.tr("no deadline")
-                    onClicked: PickerPanel.openDatePicker(bottomEdge,"due","Days|Months|Years")
-                }
-            }
+                padding: scroll.margin
 
-            Divider{
-            }
-
-            Row{
-                spacing: units.gu(2)
-                width: parent.width
-                Button{
-                    width: parent.width/2 - units.gu(1)
-                    text: i18n.tr("Cancel")
-                    onClicked: bottomEdge.collapse()
+                Label{
+                    text: i18n.tr("Category") +":"
                 }
-                Button{
-                    width: parent.width/2 - units.gu(1)
-                    text: i18n.tr("Insert")
-                    color: UbuntuColors.orange
-                    onClicked: {
-                        bottomEdge.insert()
-                        bottomEdge.collapse()
+                OptionSelector{
+                    id: catSelect
+                    width: col.width - 2*col.padding
+                    model: dbtodos.categoriesNameList.concat(i18n.tr("other"))
+                    containerHeight: 4*itemHeight
+                    onSelectedIndexChanged: bottomEdge.category = model[selectedIndex]
+                }
+                Label{
+                    text: i18n.tr("Task name") +":"
+                }
+                TextField{
+                    id: inputTitle
+                    width: col.width - 2*col.padding
+                    placeholderText: i18n.tr("insert task name") + " ..."
+                    onTextChanged: bottomEdge.title = text
+                }
+                Label{
+                    text: i18n.tr("Priority") +":"
+                }
+                PriorityManipulate{
+                    id: inputPriority
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    width: parent.width - units.gu(8)
+                    height: units.gu(4)
+                    Component.onCompleted: value = settings.defaultPriority
+                    onValueChanged: bottomEdge.priority = value
+                }
+                Label{
+                    text: i18n.tr("Deadline") +":"
+                }
+                Row{
+                    width: col.width - 2*col.padding
+                    spacing: units.gu(4)
+                    Switch{
+                        id: switchDue
+                        anchors.verticalCenter: btDue.verticalCenter
+                        onCheckedChanged: bottomEdge.hasDue = checked
+                    }
+                    Button{
+                        id: btDue
+                        width: parent.width - switchDue.width - 2*parent.spacing
+                        enabled: bottomEdge.hasDue
+                        text: enabled ? Qt.formatDate(bottomEdge.due,"ddd dd/MM/yyyy") : i18n.tr("no deadline")
+                        onClicked: PickerPanel.openDatePicker(bottomEdge,"due","Days|Months|Years")
+                    }
+                }
+                Label{
+                    text: i18n.tr("Repetition") +":"
+                }
+                Row{
+                    width: col.width - 2*col.padding
+                    spacing: units.gu(4)
+                    Switch{
+                        id: switchRepetition
+                        anchors.verticalCenter: btRepetition.verticalCenter
+                        onCheckedChanged: bottomEdge.hasRepetition = checked
+                    }
+                    Button{
+                        id: btRepetition
+                        width: parent.width - switchRepetition.width - 2*parent.spacing
+                        enabled: bottomEdge.hasRepetition
+                        text: enabled ? interval==="m" ? i18n.tr("monthly","every %1 months",intervalCount).arg(intervalCount)
+                                                       : interval==="w" ? i18n.tr("weekly","every %1 weeks",intervalCount).arg(intervalCount)
+                                                                        : i18n.tr("daily","every %1 days",intervalCount).arg(intervalCount)
+                                      : i18n.tr("no repetition")
+                        onClicked: repetitionSelectPopover.open(btRepetition)
+                        property string interval: "w"
+                        property int    intervalCount: 1
+                    }
+                }
+
+
+                Divider{
+                    anchors{
+                        left: parent.left
+                        right: parent.right
+                        margins: col.padding
+                    }
+                }
+
+                Row{
+                    spacing: units.gu(2)
+                    width: col.width - 2*col.padding
+                    Button{
+                        width: parent.width/2 - units.gu(1)
+                        text: i18n.tr("Cancel")
+                        onClicked: bottomEdge.collapse()
+                    }
+                    Button{
+                        width: parent.width/2 - units.gu(1)
+                        text: i18n.tr("Insert")
+                        color: UbuntuColors.orange
+                        onClicked: {
+                            bottomEdge.insert()
+                            bottomEdge.collapse()
+                        }
                     }
                 }
             }

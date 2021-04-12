@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: todolist.matdahl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-18 18:07+0000\n"
+"POT-Creation-Date: 2021-04-12 18:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,8 +16,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: ../qml/Main.qml:67 todolist.desktop.in.h:1
+#: ../qml/Main.qml:68 todolist.desktop.in.h:1
 msgid "To Do Lists"
 msgstr ""
 
@@ -26,7 +27,7 @@ msgid "Sort tasks by"
 msgstr ""
 
 #: ../qml/components/SortModeSelect.qml:98
-#: ../qml/panels/TaskInsertBottomEdge.qml:108
+#: ../qml/panels/TaskInsertBottomEdge.qml:121
 msgid "Deadline"
 msgstr ""
 
@@ -35,7 +36,7 @@ msgid "Name"
 msgstr ""
 
 #: ../qml/components/SortModeSelect.qml:98
-#: ../qml/panels/TaskInsertBottomEdge.qml:97
+#: ../qml/panels/TaskInsertBottomEdge.qml:110
 msgid "Priority"
 msgstr ""
 
@@ -72,15 +73,27 @@ msgid "overdue"
 msgstr ""
 
 #: ../qml/components/ToDoListItem.qml:92 ../qml/dialogs/TaskEditDialog.qml:91
-#: ../qml/panels/TaskInsertBottomEdge.qml:122
+#: ../qml/panels/TaskInsertBottomEdge.qml:135
 msgid "no deadline"
+msgstr ""
+
+#: ../qml/dialogs/RepetitionSelectPopover.qml:42
+msgid "days"
+msgstr ""
+
+#: ../qml/dialogs/RepetitionSelectPopover.qml:42
+msgid "months"
+msgstr ""
+
+#: ../qml/dialogs/RepetitionSelectPopover.qml:42
+msgid "weeks"
 msgstr ""
 
 #: ../qml/dialogs/TaskEditDialog.qml:50 ../qml/panels/ListPanel.qml:78
 #: ../qml/panels/ListPanel.qml:80 ../qml/panels/ListPanel.qml:88
 #: ../qml/panels/ListPanel.qml:106 ../qml/panels/ListPanel.qml:108
 #: ../qml/panels/TaskInsertBottomEdge.qml:15
-#: ../qml/panels/TaskInsertBottomEdge.qml:83
+#: ../qml/panels/TaskInsertBottomEdge.qml:96
 msgid "other"
 msgstr ""
 
@@ -157,26 +170,52 @@ msgstr ""
 msgid "new task"
 msgstr ""
 
-#: ../qml/panels/TaskInsertBottomEdge.qml:66
+#: ../qml/panels/TaskInsertBottomEdge.qml:72
 msgid "New Task"
 msgstr ""
 
-#: ../qml/panels/TaskInsertBottomEdge.qml:79
+#: ../qml/panels/TaskInsertBottomEdge.qml:91
 msgid "Category"
 msgstr ""
 
-#: ../qml/panels/TaskInsertBottomEdge.qml:88
+#: ../qml/panels/TaskInsertBottomEdge.qml:101
 msgid "Task name"
 msgstr ""
 
-#: ../qml/panels/TaskInsertBottomEdge.qml:93
+#: ../qml/panels/TaskInsertBottomEdge.qml:106
 msgid "insert task name"
 msgstr ""
 
-#: ../qml/panels/TaskInsertBottomEdge.qml:135
+#: ../qml/panels/TaskInsertBottomEdge.qml:140
+msgid "Repetition"
+msgstr ""
+
+#: ../qml/panels/TaskInsertBottomEdge.qml:154
+msgid "monthly"
+msgid_plural "every %1 months"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../qml/panels/TaskInsertBottomEdge.qml:155
+msgid "weekly"
+msgid_plural "every %1 weeks"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../qml/panels/TaskInsertBottomEdge.qml:156
+msgid "daily"
+msgid_plural "every %1 days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../qml/panels/TaskInsertBottomEdge.qml:157
+msgid "no repetition"
+msgstr ""
+
+#: ../qml/panels/TaskInsertBottomEdge.qml:178
 msgid "Cancel"
 msgstr ""
 
-#: ../qml/panels/TaskInsertBottomEdge.qml:140
+#: ../qml/panels/TaskInsertBottomEdge.qml:183
 msgid "Insert"
 msgstr ""
