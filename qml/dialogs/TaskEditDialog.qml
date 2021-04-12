@@ -26,19 +26,24 @@ Item{
     property int    priority: 0
     property date   due: new Date()
     property bool   hasDue: false
+    property bool   hasRepetition: false
+    property string repetitionUnit: "d"
+    property int    repetitionCount: 7
 
     property int    maximalPriority: 6
     property var    categoryList
 
     function open(task){
+        print("open: ",JSON.stringify(task))
         itemid   = task.itemid
         title    = task.title
         category = task.category
         priority = task.priority
-       // print(root.priority)
         hasDue   = task.due
-       // print(root.priority)
         due      = hasDue ? new Date(task.due) : new Date()
+        hasRepetition = task.repetition !== "-"
+        repetitionUnit = hasRepetition ? task.repetition : "d"
+        repetitionCount = task.repetitionCount
         PopupUtils.open(dialogComponent)
     }
 
@@ -77,7 +82,7 @@ Item{
             }
             Row{
                 width: parent.width
-                spacing: units.gu(2)
+                spacing: units.gu(4)
                 Switch{
                     id: switchDue
                     anchors.verticalCenter: btDue.verticalCenter
@@ -86,10 +91,38 @@ Item{
                 }
                 Button{
                     id: btDue
-                    width: parent.width - switchDue.width - parent.spacing
+                    width: parent.width - switchDue.width - 2*parent.spacing
                     enabled: root.hasDue
                     text: enabled ? Qt.formatDate(root.due,"ddd dd/MM/yyyy") : i18n.tr("no deadline")
                     onClicked: PickerPanel.openDatePicker(root,"due","Days|Months|Years")
+                }
+            }
+            Row{
+                width:parent.width
+                spacing: units.gu(4)
+                Switch{
+                    id: switchRepetition
+                    anchors.verticalCenter: btRepetition.verticalCenter
+                    Component.onCompleted: checked = root.hasRepetition
+                    onCheckedChanged: root.hasRepetition = checked
+                }
+                Button{
+                    id: btRepetition
+                    width: parent.width - switchRepetition.width - 2*parent.spacing
+                    enabled: root.hasRepetition
+                    text: enabled ? interval==="m" ? i18n.tr("monthly","every %1 months",intervalCount).arg(intervalCount)
+                                                   : interval==="w" ? i18n.tr("weekly","every %1 weeks",intervalCount).arg(intervalCount)
+                                                                    : i18n.tr("daily","every %1 days",intervalCount).arg(intervalCount)
+                                  : i18n.tr("no repetition")
+                    onClicked: repetitionSelectPopover.open(btRepetition)
+                    property string interval
+                    property int    intervalCount
+                    Component.onCompleted: {
+                        interval = root.repetitionUnit
+                        intervalCount = root.repetitionCount
+                    }
+                    onIntervalChanged: root.interval = interval
+                    onIntervalCountChanged: root.intervalCount = intervalCount
                 }
             }
             Rectangle{

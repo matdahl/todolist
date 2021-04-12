@@ -158,6 +158,8 @@ BottomEdge{
                         onClicked: repetitionSelectPopover.open(btRepetition)
                         property string interval: "w"
                         property int    intervalCount: 1
+                        onIntervalChanged: bottomEdge.interval = interval
+                        onIntervalCountChanged: bottomEdge.intervalCount = intervalCount
                     }
                 }
 

@@ -11,7 +11,7 @@ ListItem{
     // signal to mark this item as archieved
     signal achieved(int itemid)
 
-    height: units.gu(6)
+    height: units.gu(7)
     leadingActions: ListItemActions{
         actions: [
             Action{
