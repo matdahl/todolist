@@ -78,6 +78,8 @@ Item{
         }
     }
 
+
+
     property var db
 
     property string db_name: "todos.db"
@@ -318,4 +320,38 @@ Item{
 
     }
 
+    function achieveOpenTodo(itemid){
+        // get full todo object
+        var i
+        var todo
+        for (i=0;i<openTodosModel.count;i++){
+            if (openTodosModel.get(i).itemid===itemid){
+                todo = openTodosModel.get(i)
+                break
+            }
+        }
+
+        // do nothing if todo was not found
+        if (!todo)
+            return
+
+        if (todo.repetitionUnit==="-"){
+            // delete todo (tbr later)
+            removeOpenTodo(itemid)
+        } else {
+            // update deadline
+            var newdue = new Date((new Date).setHours(0,0,0,0))
+            switch (todo.repetitionUnit){
+            case "d":
+                openTodosModel.get(i).due = new Date(newdue.setDate(newdue.getDate+todo.repetitionCount))
+                break
+            case "w":
+                openTodosModel.get(i).due = new Date(newdue.setDate(newdue.getDate+7*todo.repetitionCount))
+                break
+            case "m":
+                openTodosModel.get(i).due = new Date(newdue.setMonth(newdue.getMonth+todo.repetitionCount))
+                break
+            }
+        }
+    }
 }

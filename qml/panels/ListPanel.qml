@@ -125,8 +125,6 @@ Item {
         model: sortedTodosModel
         delegate: ToDoListItem{
             onEdit: taskEditDialog.open(listView.model.get(index))
-            // currently, todos that are achieved are simply deleted. Later, there might be an other handling for done todos
-            onAchieved: dbtodos.removeOpenTodo(itemid)
         }
     }
 

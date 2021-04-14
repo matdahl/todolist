@@ -6,8 +6,6 @@ ListItem{
 
     // signal to edit this item
     signal edit(var todo)
-    // signal to mark this item as archieved
-    signal achieved(int itemid)
 
     height: units.gu(7)
     leadingActions: ListItemActions{
@@ -26,7 +24,7 @@ ListItem{
             },
             Action{
                 iconName: "ok"
-                onTriggered: achieved(itemid)
+                onTriggered: dbtodos.achieveOpenTodo(itemid)
             }
         ]
     }
