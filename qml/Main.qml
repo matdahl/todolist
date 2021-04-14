@@ -128,5 +128,12 @@ MainView {
         RepetitionSelectPopover{
             id: repetitionSelectPopover
         }
+
+
+        /* ---- dialogs ---- */
+
+        TaskEditDialog{
+            id: taskEditDialog
+        }
     }
 }

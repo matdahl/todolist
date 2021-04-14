@@ -4,8 +4,6 @@ import Ubuntu.Components 1.3
 ListItem{
     id: root
 
-    // signal to delete this item
-    signal remove(int itemid)
     // signal to edit this item
     signal edit(var todo)
     // signal to mark this item as archieved
@@ -16,7 +14,7 @@ ListItem{
         actions: [
             Action{
                 iconName: "delete"
-                onTriggered: remove(itemid)
+                onTriggered: dbtodos.removeOpenTodo(itemid)
             }
         ]
     }

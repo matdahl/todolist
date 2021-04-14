@@ -8,15 +8,15 @@ import "../components"
 Item{
     id: root
 
-    signal apply(var task)
-
     function accepted(){
-        apply({
+        dbtodos.updateOpenTodo({
                   itemid: itemid,
                   title:  title,
                   category: category,
                   priority: priority,
-                  due: hasDue? due.getTime() : 0
+                  due: hasDue? due.getTime() : 0,
+                  repetition: hasRepetition ? repetitionUnit : "-",
+                  repetitionCount: repetitionCount
               })
     }
 
@@ -30,8 +30,7 @@ Item{
     property string repetitionUnit: "d"
     property int    repetitionCount: 7
 
-    property int    maximalPriority: 6
-    property var    categoryList
+    property var categoryList:  dbtodos.categoriesNameList
 
     function open(task){
         print("open: ",JSON.stringify(task))
@@ -44,6 +43,7 @@ Item{
         hasRepetition = task.repetition !== "-"
         repetitionUnit = hasRepetition ? task.repetition : "d"
         repetitionCount = task.repetitionCount
+
         PopupUtils.open(dialogComponent)
     }
 
@@ -73,7 +73,7 @@ Item{
             }
             PriorityManipulate{
                 height: units.gu(4)
-                maximalPriority: root.maximalPriority
+                maximalPriority: settings.maximalPriority
                 Component.onCompleted: {
                     value = root.priority
                     initialised = true
@@ -121,10 +121,11 @@ Item{
                         interval = root.repetitionUnit
                         intervalCount = root.repetitionCount
                     }
-                    onIntervalChanged: root.interval = interval
-                    onIntervalCountChanged: root.intervalCount = intervalCount
+                    onIntervalChanged: root.repetitionUnit = interval
+                    onIntervalCountChanged: root.repetitionCount = intervalCount
                 }
             }
+
             Rectangle{
                 height: units.gu(0.125)
                 color: theme.palette.normal.base

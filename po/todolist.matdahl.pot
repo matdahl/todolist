@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: todolist.matdahl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 18:51+0000\n"
+"POT-Creation-Date: 2021-04-14 16:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -52,27 +52,27 @@ msgstr ""
 msgid "priority"
 msgstr ""
 
-#: ../qml/components/ToDoListItem.qml:87
+#: ../qml/components/ToDoListItem.qml:85
 msgid "> 1 week"
 msgstr ""
 
-#: ../qml/components/ToDoListItem.qml:88
+#: ../qml/components/ToDoListItem.qml:86
 msgid "in %1 days"
 msgstr ""
 
-#: ../qml/components/ToDoListItem.qml:89
+#: ../qml/components/ToDoListItem.qml:87
 msgid "tomorrow"
 msgstr ""
 
-#: ../qml/components/ToDoListItem.qml:90
+#: ../qml/components/ToDoListItem.qml:88
 msgid "today"
 msgstr ""
 
-#: ../qml/components/ToDoListItem.qml:91
+#: ../qml/components/ToDoListItem.qml:89
 msgid "overdue"
 msgstr ""
 
-#: ../qml/components/ToDoListItem.qml:92 ../qml/dialogs/TaskEditDialog.qml:96
+#: ../qml/components/ToDoListItem.qml:90 ../qml/dialogs/TaskEditDialog.qml:96
 #: ../qml/panels/TaskInsertBottomEdge.qml:135
 msgid "no deadline"
 msgstr ""
@@ -123,11 +123,11 @@ msgstr[1] ""
 msgid "no repetition"
 msgstr ""
 
-#: ../qml/dialogs/TaskEditDialog.qml:134
+#: ../qml/dialogs/TaskEditDialog.qml:135
 msgid "abort"
 msgstr ""
 
-#: ../qml/dialogs/TaskEditDialog.qml:138
+#: ../qml/dialogs/TaskEditDialog.qml:139
 msgid "apply changes"
 msgstr ""
 

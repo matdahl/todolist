@@ -260,6 +260,7 @@ Item{
         }
     }
     function updateOpenTodo(todo){
+        print("update todo: ",JSON.stringify(todo))
         if (!db) init()
         try {
             db.transaction(function(tx){
