@@ -10,7 +10,7 @@ Item{
 
     property var db
 
-    property string dbName: "todos.db"
+    property string dbName: "todos.db-test"
     property string dbVersion: "1.0"
     property string dbDescription: "todos storage"
     property int    dbSize: 1024
@@ -30,7 +30,7 @@ Item{
     function init_categories(){
         db.transaction(function(tx){
             try {
-                tx.executeSql('CREATE TABLE IF NOT EXISTS ' + dbTableCcategories + '(cid INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, muted INTEGER DEFAULT 0, UNIQUE(name))')
+                tx.executeSql('CREATE TABLE IF NOT EXISTS ' + dbTableCategories + '(cid INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, muted INTEGER DEFAULT 0, UNIQUE(name))')
             } catch(err){
                 console.error("[ERROR] DBconnector: when creating table '"+dbTableCategories+"': " + err)
             }
@@ -79,13 +79,14 @@ Item{
     function insertCategory(name){
         if (!db) init()
         try {
+            var rt
             db.transaction(function(tx){
-                tx.executeSql('INSERT OR IGNORE INTO ' + dbTableCategories + '(name,muted) VALUES(?,0)',[name])
+                rt = tx.executeSql('INSERT OR IGNORE INTO ' + dbTableCategories + '(name,muted) VALUES(?,0)',[name])
             })
-            return true
+            return rt.insertID
         } catch(err){
             console.error("[ERROR] DBconnector: when inserting category into table '"+dbTableCategories+"': " + err)
-            return false
+            return -1
         }
     }
     function updateCategory(cat){

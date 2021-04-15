@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: todolist.matdahl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-14 17:14+0000\n"
+"POT-Creation-Date: 2021-04-15 17:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: ../qml/Main.qml:68 todolist.desktop.in.h:1
+#: ../qml/Main.qml:70 todolist.desktop.in.h:1
 msgid "To Do Lists"
 msgstr ""
 
@@ -77,6 +77,20 @@ msgstr ""
 msgid "no deadline"
 msgstr ""
 
+#: ../qml/data/TodoModels.qml:30 ../qml/data/TodoModels.qml:31
+#: ../qml/panels/ListPanel.qml:79 ../qml/panels/ListPanel.qml:88
+#: ../qml/panels/ListPanel.qml:93 ../qml/panels/ListPanel.qml:95
+msgid "all"
+msgstr ""
+
+#: ../qml/data/TodoModels.qml:40 ../qml/data/TodoModels.qml:41
+#: ../qml/dialogs/TaskEditDialog.qml:55 ../qml/panels/ListPanel.qml:80
+#: ../qml/panels/ListPanel.qml:88 ../qml/panels/ListPanel.qml:106
+#: ../qml/panels/ListPanel.qml:108 ../qml/panels/TaskInsertBottomEdge.qml:15
+#: ../qml/panels/TaskInsertBottomEdge.qml:96
+msgid "other"
+msgstr ""
+
 #: ../qml/dialogs/RepetitionSelectPopover.qml:42
 msgid "days"
 msgstr ""
@@ -87,14 +101,6 @@ msgstr ""
 
 #: ../qml/dialogs/RepetitionSelectPopover.qml:42
 msgid "weeks"
-msgstr ""
-
-#: ../qml/dialogs/TaskEditDialog.qml:55 ../qml/panels/ListPanel.qml:78
-#: ../qml/panels/ListPanel.qml:80 ../qml/panels/ListPanel.qml:88
-#: ../qml/panels/ListPanel.qml:106 ../qml/panels/ListPanel.qml:108
-#: ../qml/panels/TaskInsertBottomEdge.qml:15
-#: ../qml/panels/TaskInsertBottomEdge.qml:96
-msgid "other"
 msgstr ""
 
 #: ../qml/dialogs/TaskEditDialog.qml:113
@@ -129,15 +135,6 @@ msgstr ""
 
 #: ../qml/dialogs/TaskEditDialog.qml:139
 msgid "apply changes"
-msgstr ""
-
-#: ../qml/panels/ListPanel.qml:78
-msgid "All"
-msgstr ""
-
-#: ../qml/panels/ListPanel.qml:79 ../qml/panels/ListPanel.qml:88
-#: ../qml/panels/ListPanel.qml:93 ../qml/panels/ListPanel.qml:95
-msgid "all"
 msgstr ""
 
 #: ../qml/panels/SettingsCategoriesPanel.qml:9

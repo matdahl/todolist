@@ -31,7 +31,7 @@ Item{
             color: theme.palette.normal.positive
             onClicked: {
                 if (inputNewCategory.text.length>0){
-                    dbtodos.insertCategory(inputNewCategory.text)
+                    models.newCategory(inputNewCategory.text)
                     inputNewCategory.text = ""
                 }
             }
@@ -47,7 +47,7 @@ Item{
             right: parent.right
         }
         clip: true
-        model: dbtodos.fullCategoriesModel
+        model: models.categoriesModel
 
         delegate: ListItem{
             Label{

@@ -54,11 +54,13 @@ MainView {
         property int  defaultDueOffset: 1    // default number of days from today when task is due by default
     }
 
+    TodoModels{
+        id: models
+    }
+
     DBtodos{
         id: dbtodos
     }
-
-    property var categories: []
 
     Page {
         anchors.fill: parent

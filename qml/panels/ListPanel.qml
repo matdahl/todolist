@@ -75,7 +75,7 @@ Item {
             right: parent.right
         }
         height: units.gu(6)
-        model: [i18n.tr("All"),i18n.tr("other")]
+        model: models.sectionTitles
         readonly property string currentCategory: model.length>0 ? selectedIndex===0 ? i18n.tr("all")
                                                                                      : selectedIndex===model.length-1 ? i18n.tr("other")
                                                                                                                       : dbtodos.categoriesNameList[selectedIndex-1]
