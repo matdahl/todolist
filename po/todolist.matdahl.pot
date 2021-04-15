@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: todolist.matdahl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-15 17:36+0000\n"
+"POT-Creation-Date: 2021-04-15 18:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,16 +77,13 @@ msgstr ""
 msgid "no deadline"
 msgstr ""
 
-#: ../qml/data/TodoModels.qml:30 ../qml/data/TodoModels.qml:31
-#: ../qml/panels/ListPanel.qml:79 ../qml/panels/ListPanel.qml:88
-#: ../qml/panels/ListPanel.qml:93 ../qml/panels/ListPanel.qml:95
+#: ../qml/data/TodoModels.qml:55 ../qml/data/TodoModels.qml:56
 msgid "all"
 msgstr ""
 
-#: ../qml/data/TodoModels.qml:40 ../qml/data/TodoModels.qml:41
-#: ../qml/dialogs/TaskEditDialog.qml:55 ../qml/panels/ListPanel.qml:80
-#: ../qml/panels/ListPanel.qml:88 ../qml/panels/ListPanel.qml:106
-#: ../qml/panels/ListPanel.qml:108 ../qml/panels/TaskInsertBottomEdge.qml:15
+#: ../qml/data/TodoModels.qml:61 ../qml/data/TodoModels.qml:62
+#: ../qml/dialogs/TaskEditDialog.qml:55
+#: ../qml/panels/TaskInsertBottomEdge.qml:15
 #: ../qml/panels/TaskInsertBottomEdge.qml:96
 msgid "other"
 msgstr ""

@@ -108,7 +108,7 @@ Item{
                 actions:[
                     Action{
                         iconName: "delete"
-                        onTriggered: dbtodos.removeCategory(cid)
+                        onTriggered: models.removeCategory(cid)
                     }
                 ]
             }

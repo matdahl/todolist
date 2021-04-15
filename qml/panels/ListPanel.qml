@@ -7,8 +7,8 @@ import "../dialogs"
 Item {
     id: root
 
-    readonly property alias selectedCategory: sections.currentCategory
-    readonly property alias selectedCategoryIndex: sections.selectedIndex
+    //readonly property alias selectedCategory: "sections.currentCategory"
+    //readonly property alias selectedCategoryIndex: sections.selectedIndex
 
     property bool showSortModeSelect
 
@@ -76,18 +76,17 @@ Item {
         }
         height: units.gu(6)
         model: models.sectionTitles
-        readonly property string currentCategory: model.length>0 ? selectedIndex===0 ? i18n.tr("all")
+        Component.onCompleted: models.sectionsTitlesChanged.connect(refresh)
+        function refresh(){
+            var index = selectedIndex
+            modelChanged()
+            selectedIndex = index
+        }
+
+/*        readonly property string currentCategory: model.length>0 ? selectedIndex===0 ? i18n.tr("all")
                                                                                      : selectedIndex===model.length-1 ? i18n.tr("other")
                                                                                                                       : dbtodos.categoriesNameList[selectedIndex-1]
                                                                  : ""
-        Component.onCompleted: {
-            dbtodos.categoriesChanged.connect(refresh)
-            dbtodos.openTodosChanged.connect(recount)
-        }
-        function refresh(){
-            model = [i18n.tr("all")].concat(dbtodos.categoriesNameList).concat([i18n.tr("other")])
-            recount()
-        }
         function recount(){
             if (dbtodos.totalCount>0){
                 model[0] = "<b>"+i18n.tr("all")+" ("+dbtodos.totalCount+")</b>"
@@ -111,6 +110,7 @@ Item {
             modelChanged()
             selectedIndex = index
         }
+        */
     }
 
     UbuntuListView{
