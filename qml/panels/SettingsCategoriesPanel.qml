@@ -83,8 +83,9 @@ Item{
                 }
                 checked: muted===0
                 onCheckedChanged: {
-                    muted = checked ? 0 : 1
-                    dbtodos.setMutedCategory(cid,muted)
+                    var mutedNew = checked ? 0 : 1
+                    if (mutedNew!==muted)
+                        models.setCategoryMuted(cid,mutedNew)
                 }
             }
 

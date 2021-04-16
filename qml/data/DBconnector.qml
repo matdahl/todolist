@@ -93,11 +93,11 @@ Item{
         if (!db) init()
         try {
             db.transaction(function(tx){
-                tx.executeSql('UPDATE ' + dbTableCategories + ' SET muted=? WHERE cid=?',[muted,cid])
+                tx.executeSql('UPDATE ' + dbTableCategories + ' SET muted=? WHERE cid=?',[cat.muted,cat.cid])
             })
             return true
         } catch(err){
-            console.error("[ERROR] DBconnector: when updating category in table '"+dbTableCategories+"': " + err+"\n"+JSON.stringify(todo))
+            console.error("[ERROR] DBconnector: when updating category in table '"+dbTableCategories+"': " + err)
             return false
         }
     }

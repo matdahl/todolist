@@ -19,7 +19,7 @@ Item {
 
     /* ----- todo models ----- */
 
-
+    property var openTodoModel: ListModel{}
 
     /* ----- section titles ----- */
 
@@ -73,6 +73,15 @@ Item {
         }
     }
 
+    function getTodoCount(cid){
+        var count = 0
+        for (var i=0;i<openTodoModel.count;i++){
+            if (openTodoModel.get(i).cid===cid)
+                count += 1
+        }
+        return count
+    }
+
     /* ----- categories manipulate ----- */
 
     // add a new, unmuted category
@@ -121,5 +130,44 @@ Item {
             }
         }
         return false
+    }
+
+    // update the muted property of a category
+    function setCategoryMuted(cid,muted){
+        var cat = getCategoryByCid(cid)
+
+        if (cat.muted===muted)
+            return
+
+        // update in categoriesModel
+        cat.muted = muted
+
+        // update in database
+        if (!dbcon.updateCategory(cat))
+            return
+
+        if (muted===1){
+            // remove from unmutedCategoriesModel
+            for (var i=0;i<unmutedCategoriesModel.count;i++){
+                if (unmutedCategoriesModel.get(i).cid===cat.cid){
+                    unmutedCategoriesModel.remove(i)
+                    todoCounts.splice(i+1,1)
+                    sectionTitles.splice(i+1,1)
+                    sectionsTitlesChanged()
+                    return
+                }
+            }
+        } else {
+            // insert into unmutedCategoriesModel
+            var j
+            for (j=0;j<unmutedCategoriesModel.count;j++)
+                if (unmutedCategoriesModel.cid>cat.cid)
+                    break
+            unmutedCategoriesModel.insert(j,cat)
+            var count = getTodoCount(cat.cid)
+            todoCounts.splice(j+1,0,count)
+            sectionTitles.splice(j+1,0,count>0 ? "<b>"+cat.name+" ("+count+")</b>" : cat.name+" (0)")
+            sectionsTitlesChanged()
+        }
     }
 }
