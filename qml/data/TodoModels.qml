@@ -35,31 +35,33 @@ Item {
     Component.onCompleted: {
         var i
 
-        print("init todo model")
-
-        // init categories
+        // init categories (insertion sort)
         var cats = dbcon.selectCategories()
         for (i=0;i<cats.length;i++){
-            categoriesModel.append(cats[i])
-            if (cats[i].muted===0){
-                unmutedCategoriesModel.append(cats[i])
-                todoCounts.push(0)
-            }
+            for (var j=0;j<categoriesModel.count;j++)
+                if (cats[i].cid<categoriesModel.get(j).cid)
+                    break
+            categoriesModel.insert(j,cats[i])
+            unmutedCategoriesModel.insert(j,cats[i])
         }
+        for (i=unmutedCategoriesModel.count-1;i>0;i--)
+            if (unmutedCategoriesModel.get(i).muted!==0)
+                unmutedCategoriesModel.remove(i)
+
+        // init counters
+        for (i=0;i<unmutedCategoriesModel.count;i++)
+            todoCounts.push(0)
 
         // init todos
 
         // count todos
 
         // init section titles
-        sectionTitles.push(todoTotalCount>0 ? "<b>"+i18n.tr("all")+" ("+todoTotalCount+")</b>"
-                                            : i18n.tr("all") +" (0)")
+        sectionTitles.push(makeTitle(i18n.tr("all"),todoTotalCount))
         for (i=0;i<unmutedCategoriesModel.count;i++){
-            sectionTitles.push(todoCounts[i]>0 ? "<b>" + unmutedCategoriesModel.get(i).name + " ("+todoCounts[i]+")</b>"
-                                               : unmutedCategoriesModel.get(i).name + " (0)")
+            sectionTitles.push(makeTitle(unmutedCategoriesModel.get(i).name,todoCounts[i]))
         }
-        sectionTitles.push(todoOtherCount>0 ? "<b>"+i18n.tr("other")+" ("+todoOtherCount+")</b>"
-                                            : i18n.tr("other") +" (0)")
+        sectionTitles.push(makeTitle(i18n.tr("other"),todoOtherCount))
         sectionsTitlesChanged()
     }
 
@@ -82,9 +84,14 @@ Item {
         return count
     }
 
+
+    function makeTitle(name,count){
+        return count>0 ? "<b>" + name + " ("+count+")</b>"
+                       : name + " (0)"
+    }
+
     /* ----- categories manipulate ----- */
 
-    // add a new, unmuted category
     function newCategory(name){
         // add to database
         var cid = dbcon.insertCategory(name)
@@ -102,11 +109,10 @@ Item {
         unmutedCategoriesModel.append(cat)
 
         // update section titles
-        sectionTitles.splice(sectionTitles.length-1,0,cat.name+" (0)")
+        sectionTitles.splice(sectionTitles.length-1,0,makeTitle(cat.name,0))
         sectionsTitlesChanged()
     }
 
-    // removes a category
     function removeCategory(cid){
         // remove from database
         if (dbcon.removeCategory(cid)){
@@ -132,7 +138,6 @@ Item {
         return false
     }
 
-    // update the muted property of a category
     function setCategoryMuted(cid,muted){
         var cat = getCategoryByCid(cid)
 
@@ -166,7 +171,50 @@ Item {
             unmutedCategoriesModel.insert(j,cat)
             var count = getTodoCount(cat.cid)
             todoCounts.splice(j+1,0,count)
-            sectionTitles.splice(j+1,0,count>0 ? "<b>"+cat.name+" ("+count+")</b>" : cat.name+" (0)")
+            sectionTitles.splice(j+1,0,makeTitle(cat.name,count))
+            sectionsTitlesChanged()
+        }
+    }
+
+    function swapCategories(index1,index2){
+        if (index1<0 || index2<0 || index1>categoriesModel.count || index2>categoriesModel.count)
+            return false
+
+        var cat1 = categoriesModel.get(index1)
+        var cat2 = categoriesModel.get(index2)
+
+        if (!dbcon.swapCategories(cat1.cid,cat2.cid))
+            return false
+
+        // swap in categoriesModel
+        var temp = cat1.cid
+        cat1.cid = cat2.cid
+        cat2.cid = temp
+        categoriesModel.move(index2,index1,1)
+
+        // swap in unmutedCategoriesModel
+        var idx1 = -1
+        var idx2 = -1
+        for (var i=0; i<unmutedCategoriesModel.count;i++){
+            var cid = unmutedCategoriesModel.get(i).cid
+            if (cid===cat2.cid)
+                idx1 = i
+            if (cid===cat1.cid)
+                idx2 = i
+            if (idx1>-1 && idx2>-1)
+                break
+        }
+        if (idx1>-1)
+            unmutedCategoriesModel.get(idx1).cid = cat1.cid
+        if (idx2>-1)
+            unmutedCategoriesModel.get(idx2).cid = cat2.cid
+        if (idx1>-1 && idx2>-1){
+            unmutedCategoriesModel.move(idx2,idx1,1)
+            var countTemp = todoCounts[idx1]
+            todoCounts[idx1] = todoCounts[idx2]
+            todoCounts[idx2] = countTemp
+            sectionTitles[idx1+1] = makeTitle(unmutedCategoriesModel.get(idx1).name,todoCounts[idx1])
+            sectionTitles[idx2+1] = makeTitle(unmutedCategoriesModel.get(idx2).name,todoCounts[idx2])
             sectionsTitlesChanged()
         }
     }

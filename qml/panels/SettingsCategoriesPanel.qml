@@ -71,7 +71,7 @@ Item{
                 visible: index>0
                 MouseArea{
                     anchors.fill: parent
-                    onClicked: dbtodos.swapCategories(index-1,index)
+                    onClicked:  models.swapCategories(index,index-1)
                 }
             }
             Switch{
@@ -101,7 +101,7 @@ Item{
                 visible: index<catListView.model.count-1
                 MouseArea{
                     anchors.fill: parent
-                    onClicked: dbtodos.swapCategories(index+1,index)
+                    onClicked: models.swapCategories(index,index+1)
                 }
             }
 
