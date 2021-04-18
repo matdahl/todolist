@@ -24,7 +24,7 @@ ListItem{
             },
             Action{
                 iconName: "ok"
-                onTriggered: dbtodos.achieveOpenTodo(itemid)
+                onTriggered: models.achieveTodo(itemid)
             }
         ]
     }

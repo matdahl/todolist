@@ -152,6 +152,14 @@ Item {
         return count>0 ? "<b>" + name + " ("+count+")</b>" : name + " (0)"
     }
 
+    function getOpenTodoIndex(itemid){
+        for (var i=0;i<openTodoModel.count;i++){
+            if (openTodoModel.get(i).itemid===itemid)
+                return i
+        }
+        return -1
+    }
+
     /* ----- categories manipulate ----- */
 
     function newCategory(name){
@@ -322,4 +330,34 @@ Item {
         return false
     }
 
+    function updateOpenTodo(newtodo){
+        var idx = getOpenTodoIndex(newtodo.itemid)
+        var oldtodo = openTodoModel.get(idx)
+        if (oldtodo && dbcon.updateOpenTodo(newtodo)){
+            // check if category has changed
+            if (oldtodo.category!==newtodo.category){
+                var oldindex = getCategoryIndex(oldtodo.category)
+                var newindex = getCategoryIndex(newtodo.category)
+                if (oldindex===-1){
+                    for(var i=0;openTodoModelOther.count;i++){
+                        if (openTodoModelOther.get(i).itemid===oldtodo.itemid){
+                            openTodoModelOther.remove(i)
+                            break
+                        }
+                    }
+                }
+                if (newindex===-1)
+                    openTodoModelOther.append(newtodo)
+                decTodoCount(oldindex)
+                incTodoCount(newindex)
+            }
+            // update in model
+            openTodoModel.set(idx,newtodo)
+        }
+        return false
+    }
+
+    function achieveTodo(itemid){
+        print("achieve",itemid)
+    }
 }

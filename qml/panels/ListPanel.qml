@@ -7,8 +7,9 @@ import "../dialogs"
 Item {
     id: root
 
-    //readonly property alias selectedCategory: "sections.currentCategory"
-    //readonly property alias selectedCategoryIndex: sections.selectedIndex
+    readonly property string selectedCategory: sections.selectedIndex===0 || sections.selectedIndex>models.unmutedCategoriesNameList.length
+                                                        ? ""
+                                                        : models.unmutedCategoriesNameList[sections.selectedIndex-1]
 
     property bool showSortModeSelect
 

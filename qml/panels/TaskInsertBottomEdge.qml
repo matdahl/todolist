@@ -12,8 +12,6 @@ BottomEdge{
     hint.iconName: "add"
     onCollapseStarted: hint.status = BottomEdgeHint.Active
 
-    property string selectedCategory: listPanel.selectedCategoryIndex>0 ? listPanel.selectedCategory : i18n.tr("other")
-
     property string title: ""
     property string category: "NONE"
     property int    priority: settings.defaultPriority
@@ -47,11 +45,12 @@ BottomEdge{
         function reset(){
             // reset variables in bottomEdge
             bottomEdge.title = ""
-            bottomEdge.category = bottomEdge.selectedCategory
+            bottomEdge.category = listPanel.selectedCategory
             bottomEdge.priority = settings.defaultPriority
             bottomEdge.hasDue = settings.hasDueByDefault
             var d = new Date()
             bottomEdge.due = new Date(d.setDate(d.getDate()+settings.defaultDueOffset))
+
             // reset values in components
             inputTitle.text = bottomEdge.title
             inputPriority.maximalPriority = settings.maximalPriority
@@ -59,11 +58,9 @@ BottomEdge{
             switchDue.checked = bottomEdge.hasDue
             catSelect.currentlyExpanded = false
             var i=0
-            for (i=0;i<catSelect.model.length-1;i++){
-                if (catSelect.model[i]=== bottomEdge.category){
+            for (i=0;i<catSelect.model.length-1;i++)
+                if (catSelect.model[i]=== bottomEdge.category)
                     break
-                }
-            }
             catSelect.selectedIndex = i
 
             switchRepetition.checked = bottomEdge.hasRepetition

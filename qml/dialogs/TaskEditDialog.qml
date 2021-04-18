@@ -9,7 +9,7 @@ Item{
     id: root
 
     function accepted(){
-        dbtodos.updateOpenTodo({
+        models.updateOpenTodo({
                   itemid: itemid,
                   title:  title,
                   category: category,
@@ -33,7 +33,6 @@ Item{
     property var categoryList:  dbtodos.categoriesNameList
 
     function open(task){
-        print("open: ",JSON.stringify(task))
         itemid   = task.itemid
         title    = task.title
         category = task.category
@@ -52,11 +51,10 @@ Item{
         Dialog{
             id: dialog
             OptionSelector{
-                model: root.categoryList.concat(i18n.tr("other"))
+                model: models.unmutedCategoriesNameList.concat(models.catNameOther)
                 containerHeight: 4*itemHeight
                 Component.onCompleted: {
-                    var i
-                    for (i=0;i<model.length-1;i++){
+                    for (var i=0;i<model.length-1;i++){
                         if (model[i]=== root.category){
                             break
                         }
