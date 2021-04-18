@@ -125,31 +125,27 @@ Item {
         return count
     }
 
-    function incTodoCount(category){
-        var index = getCategoryIndex(category)
+    function incTodoCount(index){
         sectionTitles[0]   = makeTitle(catNameAll,todoTotalCount)
         if (index===-1){
             sectionTitles[sectionTitles.length-1] = makeTitle(catNameOther,todoOtherCount)
             sectionsTitlesChanged()
         } else {
             todoCounts[index]  += 1
-            sectionTitles[index+1] = makeTitle(unmutedCategoriesModel.get(index).name,todoCounts[index])
-            return true
+            sectionTitles[index+1] = makeTitle(unmutedCategoriesNameList[index],todoCounts[index])
+            sectionsTitlesChanged()
         }
-        return false
     }
-    function decTodoCount(category){
-        var index = getCategoryIndex(category)
+    function decTodoCount(index){
         sectionTitles[0]   = makeTitle(catNameAll,todoTotalCount)
         if (index===-1){
             sectionTitles[sectionTitles.length-1] = makeTitle(catNameOther,todoOtherCount)
             sectionsTitlesChanged()
         } else {
             todoCounts[index]  -= 1
-            sectionTitles[index+1] = makeTitle(unmutedCategoriesModel.get(index).name,todoCounts[index])
-            return true
+            sectionTitles[index+1] = makeTitle(unmutedCategoriesNameList[index],todoCounts[index])
+            sectionsTitlesChanged()
         }
-        return false
     }
 
     function makeTitle(name,count){
@@ -295,10 +291,11 @@ Item {
         if (itemid>-1){
             todo.itemid = itemid
             openTodoModel.append(todo)
-            if (getCategoryIndex(todo.category)===-1)
+            var index = getCategoryIndex(todo.category)
+            print(index)
+            if (index===-1)
                 openTodoModelOther.append(todo)
-            incTodoCount(todo.category)
-
+            incTodoCount(index)
             return true
         }
         return false
@@ -310,13 +307,14 @@ Item {
                 if (openTodoModel.get(i).itemid===itemid){
                     var category = openTodoModel.get(i).category
                     openTodoModel.remove(i)
-                    if (getCategoryIndex(category)===-1){
+                    var index = getCategoryIndex(category)
+                    if (index===-1){
                         for (var j=0;j<openTodoModelOther.count;j++){
                             if (openTodoModelOther.get(j).itemid===itemid)
                                 openTodoModelOther.remove(j)
                         }
                     }
-                    decTodoCount(category)
+                    decTodoCount(index)
                     return true
                 }
             }
