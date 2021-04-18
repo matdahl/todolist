@@ -104,9 +104,9 @@ Item{
                     id: btRepetition
                     width: parent.width - switchRepetition.width - 2*parent.spacing
                     enabled: root.hasRepetition
-                    text: enabled ? interval==="m" ? i18n.tr("monthly","every %1 months",intervalCount).arg(intervalCount)
-                                                   : interval==="w" ? i18n.tr("weekly","every %1 weeks",intervalCount).arg(intervalCount)
-                                                                    : i18n.tr("daily","every %1 days",intervalCount).arg(intervalCount)
+                    text: enabled ? interval==="m" ? intervalCount===1 ? i18n.tr("monthly") : i18n.tr("every %1 months").arg(intervalCount)
+                                                   : interval==="w" ? intervalCount===1 ? i18n.tr("weekly") : i18n.tr("every %1 weeks").arg(intervalCount)
+                                                                    : intervalCount===1 ? i18n.tr("daily")  : i18n.tr("every %1 days").arg(intervalCount)
                                   : i18n.tr("no repetition")
                     onClicked: repetitionSelectPopover.open(btRepetition)
                     property string interval
@@ -126,11 +126,11 @@ Item{
             }
 
             Button{
-                text: i18n.tr("abort")
+                text: i18n.tr("Cancel")
                 onClicked: PopupUtils.close(dialog)
             }
             Button{
-                text: i18n.tr("apply changes")
+                text: i18n.tr("Apply changes")
                 color: UbuntuColors.orange
                 onClicked: {
                     root.accepted()
