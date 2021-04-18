@@ -11,7 +11,11 @@ ListItem{
 
     ListItemLayout{
         id: layout
-        title.text: root.text
+        summary{
+            text: root.text
+            textSize: Label.Medium
+            color: theme.palette.normal.backgroundText
+        }
 
         RepetitionIntervalButton{
             id: button
