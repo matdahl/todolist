@@ -115,12 +115,9 @@ Item {
 
     function getTodoCount(category){
         var count = 0
-        print("count '"+category+"'")
         for (var i=0;i<openTodoModel.count;i++){
-            print(JSON.stringify(openTodoModel.get(i)))
             if (openTodoModel.get(i).category===category)
                 count += 1
-            print(count)
         }
         return count
     }
@@ -240,7 +237,7 @@ Item {
                 if (unmutedCategoriesModel.get(j).cid>cat.cid)
                     break
             unmutedCategoriesModel.insert(j,cat)
-            var count = getTodoCount(cat.cid)
+            var count = getTodoCount(cat.name)
             todoCounts.splice(j,0,count)
             unmutedCategoriesNameList.splice(j,0,cat.name)
             sectionTitles.splice(j+1,0,makeTitle(cat.name,count))

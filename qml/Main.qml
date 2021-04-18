@@ -57,6 +57,9 @@ MainView {
         property int defaultPriority: 2
         property bool hasDueByDefault: false
         property int  defaultDueOffset: 1    // default number of days from today when task is due by default
+        property bool   hasRepetitionByDefault: false
+        property string defaultRepetitionUnit: "w"
+        property int    defaultRepetitionCount: 1
     }
 
     /* -----------------
