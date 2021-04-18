@@ -7,27 +7,55 @@ msgid ""
 msgstr ""
 "Project-Id-Version: todolist.matdahl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-16 19:26+0000\n"
-"PO-Revision-Date: 2021-03-17 16:43+0100\n"
+"POT-Creation-Date: 2021-04-18 14:37+0000\n"
+"PO-Revision-Date: 2021-04-18 16:48+0200\n"
+"Last-Translator: \n"
 "Language-Team: \n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.3\n"
-"Last-Translator: \n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"Language: fr\n"
 
-#: ../qml/Main.qml:67 todolist.desktop.in.h:1
+#: ../qml/Main.qml:82 todolist.desktop.in.h:1
 msgid "To Do Lists"
 msgstr "To Do lists"
+
+#: ../qml/components/RepetitionIntervalButton.qml:8
+msgid "every %1 months"
+msgstr "tous les %1 mois"
+
+#: ../qml/components/RepetitionIntervalButton.qml:8
+msgid "monthly"
+msgstr "mensuel"
+
+#: ../qml/components/RepetitionIntervalButton.qml:9
+msgid "every %1 weeks"
+msgstr "toutes les %1 semaines"
+
+#: ../qml/components/RepetitionIntervalButton.qml:9
+msgid "weekly"
+msgstr "hebdomadaire"
+
+#: ../qml/components/RepetitionIntervalButton.qml:10
+msgid "daily"
+msgstr "journalier"
+
+#: ../qml/components/RepetitionIntervalButton.qml:10
+msgid "every %1 days"
+msgstr "tous les %1 jours"
+
+#: ../qml/components/RepetitionIntervalButton.qml:11
+msgid "no repetition"
+msgstr "pas de répétition"
 
 #: ../qml/components/SortModeSelect.qml:84
 msgid "Sort tasks by"
 msgstr "Trier les todos par"
 
 #: ../qml/components/SortModeSelect.qml:98
-#: ../qml/panels/TaskInsertBottomEdge.qml:108
+#: ../qml/panels/TaskInsertBottomEdge.qml:131
 msgid "Deadline"
 msgstr "Date limite"
 
@@ -36,7 +64,7 @@ msgid "Name"
 msgstr "Titre"
 
 #: ../qml/components/SortModeSelect.qml:98
-#: ../qml/panels/TaskInsertBottomEdge.qml:97
+#: ../qml/panels/TaskInsertBottomEdge.qml:120
 msgid "Priority"
 msgstr "Priorité"
 
@@ -52,55 +80,59 @@ msgstr "chose à faire"
 msgid "priority"
 msgstr "priorité"
 
-#: ../qml/components/ToDoListItem.qml:87
+#: ../qml/components/ToDoListItem.qml:83
 msgid "> 1 week"
 msgstr "> 1 semaine"
 
-#: ../qml/components/ToDoListItem.qml:88
+#: ../qml/components/ToDoListItem.qml:84
 msgid "in %1 days"
 msgstr "dans %1 jours"
 
-#: ../qml/components/ToDoListItem.qml:89
+#: ../qml/components/ToDoListItem.qml:85
 msgid "tomorrow"
 msgstr "demain"
 
-#: ../qml/components/ToDoListItem.qml:90
+#: ../qml/components/ToDoListItem.qml:86
 msgid "today"
 msgstr "aujourd'hui"
 
-#: ../qml/components/ToDoListItem.qml:91
+#: ../qml/components/ToDoListItem.qml:87
 msgid "overdue"
 msgstr "en retard"
 
-#: ../qml/components/ToDoListItem.qml:92 ../qml/dialogs/TaskEditDialog.qml:91
-#: ../qml/panels/TaskInsertBottomEdge.qml:122
+#: ../qml/components/ToDoListItem.qml:88 ../qml/dialogs/TaskEditDialog.qml:90
+#: ../qml/panels/TaskInsertBottomEdge.qml:145
 msgid "no deadline"
 msgstr "pas de date limite"
 
-#: ../qml/dialogs/TaskEditDialog.qml:50 ../qml/panels/ListPanel.qml:78
-#: ../qml/panels/ListPanel.qml:80 ../qml/panels/ListPanel.qml:88
-#: ../qml/panels/ListPanel.qml:106 ../qml/panels/ListPanel.qml:108
-#: ../qml/panels/TaskInsertBottomEdge.qml:15
-#: ../qml/panels/TaskInsertBottomEdge.qml:83
+#: ../qml/data/TodoModels.qml:21
+msgid "all"
+msgstr "tout"
+
+#: ../qml/data/TodoModels.qml:22
 msgid "other"
 msgstr "autre"
 
-#: ../qml/dialogs/TaskEditDialog.qml:101
-msgid "abort"
-msgstr "annuler"
+#: ../qml/dialogs/RepetitionSelectPopover.qml:42
+msgid "days"
+msgstr "jours"
 
-#: ../qml/dialogs/TaskEditDialog.qml:105
-msgid "apply changes"
-msgstr "enregistrer les changements"
+#: ../qml/dialogs/RepetitionSelectPopover.qml:42
+msgid "months"
+msgstr "mois"
 
-#: ../qml/panels/ListPanel.qml:78
-msgid "All"
-msgstr "Tout"
+#: ../qml/dialogs/RepetitionSelectPopover.qml:42
+msgid "weeks"
+msgstr "semaines"
 
-#: ../qml/panels/ListPanel.qml:79 ../qml/panels/ListPanel.qml:88
-#: ../qml/panels/ListPanel.qml:93 ../qml/panels/ListPanel.qml:95
-msgid "all"
-msgstr "tout"
+#: ../qml/dialogs/TaskEditDialog.qml:122
+#: ../qml/panels/TaskInsertBottomEdge.qml:183
+msgid "Cancel"
+msgstr "Annuler"
+
+#: ../qml/dialogs/TaskEditDialog.qml:126
+msgid "Apply changes"
+msgstr "Enregistrer les changements"
 
 #: ../qml/panels/SettingsCategoriesPanel.qml:9
 msgid "Manage Categories"
@@ -110,47 +142,51 @@ msgstr "Modifier les catégories"
 msgid "new category"
 msgstr "nouvelle catégorie"
 
-#: ../qml/panels/SettingsPanel.qml:8
+#: ../qml/panels/SettingsPanel.qml:10
 msgid "Settings"
 msgstr "Paramètres"
 
-#: ../qml/panels/SettingsPanel.qml:14
+#: ../qml/panels/SettingsPanel.qml:19
 msgid "Categories"
 msgstr "Catégories"
 
-#: ../qml/panels/SettingsPanel.qml:19
+#: ../qml/panels/SettingsPanel.qml:24
 msgid "Parameters"
 msgstr "Paramètres"
 
-#: ../qml/panels/SettingsPanel.qml:23
+#: ../qml/panels/SettingsPanel.qml:28
 msgid "Highest Priority"
 msgstr "Priorité suprême"
 
-#: ../qml/panels/SettingsPanel.qml:37
+#: ../qml/panels/SettingsPanel.qml:42
 msgid "Default Priority"
 msgstr "Priorité par défaut"
 
-#: ../qml/panels/SettingsPanel.qml:45
+#: ../qml/panels/SettingsPanel.qml:50
 msgid "Set deadline by default"
 msgstr "Mettre une date limite par défaut"
 
-#: ../qml/panels/SettingsPanel.qml:51
+#: ../qml/panels/SettingsPanel.qml:56
 msgid "Default offset for deadline (days)"
 msgstr "Décalage par défaut de la date limite (jours)"
 
-#: ../qml/panels/SettingsPanel.qml:59
+#: ../qml/panels/SettingsPanel.qml:64
+msgid "Default repetition interval"
+msgstr "Intervalle de répétition par défaut"
+
+#: ../qml/panels/SettingsPanel.qml:67
 msgid "Appearance"
 msgstr "Apparence"
 
-#: ../qml/panels/SettingsPanel.qml:62
+#: ../qml/panels/SettingsPanel.qml:70
 msgid "Use default theme"
 msgstr "Utiliser le thème par défaut"
 
-#: ../qml/panels/SettingsPanel.qml:69
+#: ../qml/panels/SettingsPanel.qml:77
 msgid "Dark Mode"
 msgstr "Mode sombre"
 
-#: ../qml/panels/SettingsPanel.qml:76
+#: ../qml/panels/SettingsPanel.qml:84
 msgid "Color"
 msgstr "Couleur"
 
@@ -158,26 +194,32 @@ msgstr "Couleur"
 msgid "new task"
 msgstr "nouvelle chose"
 
-#: ../qml/panels/TaskInsertBottomEdge.qml:66
+#: ../qml/panels/TaskInsertBottomEdge.qml:78
 msgid "New Task"
 msgstr "Nouvelle chose"
 
-#: ../qml/panels/TaskInsertBottomEdge.qml:79
+#: ../qml/panels/TaskInsertBottomEdge.qml:101
 msgid "Category"
 msgstr "Catégorie"
 
-#: ../qml/panels/TaskInsertBottomEdge.qml:88
+#: ../qml/panels/TaskInsertBottomEdge.qml:111
 msgid "Task name"
 msgstr "Titre de la to do"
 
-#: ../qml/panels/TaskInsertBottomEdge.qml:93
+#: ../qml/panels/TaskInsertBottomEdge.qml:116
 msgid "insert task name"
 msgstr "insérer le titre"
 
-#: ../qml/panels/TaskInsertBottomEdge.qml:135
-msgid "Cancel"
-msgstr "Annuler"
+#: ../qml/panels/TaskInsertBottomEdge.qml:150
+msgid "Repetition"
+msgstr "Répétition"
 
-#: ../qml/panels/TaskInsertBottomEdge.qml:140
+#: ../qml/panels/TaskInsertBottomEdge.qml:188
 msgid "Insert"
 msgstr "Insérer"
+
+#~ msgid "abort"
+#~ msgstr "annuler"
+
+#~ msgid "All"
+#~ msgstr "Tout"
