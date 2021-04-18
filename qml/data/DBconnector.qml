@@ -16,7 +16,7 @@ Item{
     property int    dbSize: 1024
 
     property string dbTableCategories: "categories1"
-    property string dbTableOpenTodos: "open"
+    property string dbTableOpenTodos: "open1"
 
     /* ------------------------------ *
      * ----- initialisation I/O ----- *
@@ -38,7 +38,7 @@ Item{
     }
     function init_openTodos(){
         var cmd = 'CREATE TABLE IF NOT EXISTS ' + dbTableOpenTodos + '('
-        cmd    += 'itemid INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, category TEXT, priority INTEGER, due INTEGER)'
+        cmd    += 'itemid INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, category TEXT, priority INTEGER, due INTEGER, repetition TEXT DEFAULT "-",repetitionCount INTEGER DEFAULT 1)'
         db.transaction(function(tx){
             try {
                 tx.executeSql(cmd)
@@ -151,14 +151,15 @@ Item{
     function insertOpenTodo(todo){
         if (!db) init()
         try {
+            var rt
             db.transaction(function(tx){
-                tx.executeSql('INSERT OR IGNORE INTO ' + dbTableOpenTodos + '(title,category,priority,due,repetition,repetitionCount) VALUES(?,?,?,?,?,?)',
-                              [todo.title,todo.category,todo.priority,todo.due,todo.repetition,todo.repetitionCount])
+                rt = tx.executeSql('INSERT OR IGNORE INTO ' + dbTableOpenTodos + '(title,category,priority,due,repetition,repetitionCount) VALUES(?,?,?,?,?,?)',
+                                  [todo.title,todo.category,todo.priority,todo.due,todo.repetition,todo.repetitionCount])
             })
-            return true
+            return parseInt(rt.insertId)
         } catch(err){
             console.error("[ERROR] DBconnector: when inserting todo table '"+dbTableOpenTodos+"': " + err)
-            return false
+            return -1
         }
     }
     function updateOpenTodo(todo){

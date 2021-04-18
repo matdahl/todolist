@@ -24,13 +24,15 @@ BottomEdge{
     property date   due
 
     function insert(){
-        dbtodos.insertOpenTodo({ title: title,
-                                 category: category,
-                                 priority: priority,
-                                 due: hasDue ? due.setHours(0,0,0,0) : 0,
-                                 repetition: hasRepetition ? repetitionUnit : "-",
-                                 repetitionCount: repetitionCount
-                               })
+        models.newTodo({
+                         itemid: -1,
+                         title: title,
+                         category: category,
+                         priority: priority,
+                         due: hasDue ? due.setHours(0,0,0,0) : 0,
+                         repetition: hasRepetition ? repetitionUnit : "-",
+                         repetitionCount: repetitionCount
+        })
     }
 
     contentComponent: Rectangle {
@@ -71,6 +73,10 @@ BottomEdge{
             id: header
             title: i18n.tr("New Task")
             StyleHints{backgroundColor:colors.currentHeader}
+            MouseArea{
+                anchors.fill: parent
+                onClicked: bottomEdge.collapse()
+            }
         }
         ScrollView{
             id: scroll
@@ -93,7 +99,7 @@ BottomEdge{
                 OptionSelector{
                     id: catSelect
                     width: col.width - 2*col.padding
-                    model: dbtodos.categoriesNameList.concat(i18n.tr("other"))
+                    model: models.unmutedCategoriesNameList.concat(models.catNameOther)
                     containerHeight: 4*itemHeight
                     onSelectedIndexChanged: bottomEdge.category = model[selectedIndex]
                 }

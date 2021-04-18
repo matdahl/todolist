@@ -12,7 +12,7 @@ ListItem{
         actions: [
             Action{
                 iconName: "delete"
-                onTriggered: dbtodos.removeOpenTodo(itemid)
+                onTriggered: models.removeOpenTodo(itemid)
             }
         ]
     }
