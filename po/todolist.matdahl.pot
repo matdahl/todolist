@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: todolist.matdahl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-18 13:57+0000\n"
+"POT-Creation-Date: 2021-04-18 14:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,12 +21,40 @@ msgstr ""
 msgid "To Do Lists"
 msgstr ""
 
+#: ../qml/components/RepetitionIntervalButton.qml:8
+msgid "every %1 months"
+msgstr ""
+
+#: ../qml/components/RepetitionIntervalButton.qml:8
+msgid "monthly"
+msgstr ""
+
+#: ../qml/components/RepetitionIntervalButton.qml:9
+msgid "every %1 weeks"
+msgstr ""
+
+#: ../qml/components/RepetitionIntervalButton.qml:9
+msgid "weekly"
+msgstr ""
+
+#: ../qml/components/RepetitionIntervalButton.qml:10
+msgid "daily"
+msgstr ""
+
+#: ../qml/components/RepetitionIntervalButton.qml:10
+msgid "every %1 days"
+msgstr ""
+
+#: ../qml/components/RepetitionIntervalButton.qml:11
+msgid "no repetition"
+msgstr ""
+
 #: ../qml/components/SortModeSelect.qml:84
 msgid "Sort tasks by"
 msgstr ""
 
 #: ../qml/components/SortModeSelect.qml:98
-#: ../qml/panels/TaskInsertBottomEdge.qml:124
+#: ../qml/panels/TaskInsertBottomEdge.qml:131
 msgid "Deadline"
 msgstr ""
 
@@ -35,7 +63,7 @@ msgid "Name"
 msgstr ""
 
 #: ../qml/components/SortModeSelect.qml:98
-#: ../qml/panels/TaskInsertBottomEdge.qml:113
+#: ../qml/panels/TaskInsertBottomEdge.qml:120
 msgid "Priority"
 msgstr ""
 
@@ -72,7 +100,7 @@ msgid "overdue"
 msgstr ""
 
 #: ../qml/components/ToDoListItem.qml:88 ../qml/dialogs/TaskEditDialog.qml:90
-#: ../qml/panels/TaskInsertBottomEdge.qml:138
+#: ../qml/panels/TaskInsertBottomEdge.qml:145
 msgid "no deadline"
 msgstr ""
 
@@ -96,47 +124,12 @@ msgstr ""
 msgid "weeks"
 msgstr ""
 
-#: ../qml/dialogs/TaskEditDialog.qml:107
-#: ../qml/panels/TaskInsertBottomEdge.qml:157
-msgid "every %1 months"
-msgstr ""
-
-#: ../qml/dialogs/TaskEditDialog.qml:107
-#: ../qml/panels/TaskInsertBottomEdge.qml:157
-msgid "monthly"
-msgstr ""
-
-#: ../qml/dialogs/TaskEditDialog.qml:108
-#: ../qml/panels/TaskInsertBottomEdge.qml:158
-msgid "every %1 weeks"
-msgstr ""
-
-#: ../qml/dialogs/TaskEditDialog.qml:108
-#: ../qml/panels/TaskInsertBottomEdge.qml:158
-msgid "weekly"
-msgstr ""
-
-#: ../qml/dialogs/TaskEditDialog.qml:109
-#: ../qml/panels/TaskInsertBottomEdge.qml:159
-msgid "daily"
-msgstr ""
-
-#: ../qml/dialogs/TaskEditDialog.qml:109
-#: ../qml/panels/TaskInsertBottomEdge.qml:159
-msgid "every %1 days"
-msgstr ""
-
-#: ../qml/dialogs/TaskEditDialog.qml:110
-#: ../qml/panels/TaskInsertBottomEdge.qml:160
-msgid "no repetition"
-msgstr ""
-
-#: ../qml/dialogs/TaskEditDialog.qml:129
+#: ../qml/dialogs/TaskEditDialog.qml:122
 #: ../qml/panels/TaskInsertBottomEdge.qml:183
 msgid "Cancel"
 msgstr ""
 
-#: ../qml/dialogs/TaskEditDialog.qml:133
+#: ../qml/dialogs/TaskEditDialog.qml:126
 msgid "Apply changes"
 msgstr ""
 
@@ -148,47 +141,51 @@ msgstr ""
 msgid "new category"
 msgstr ""
 
-#: ../qml/panels/SettingsPanel.qml:8
+#: ../qml/panels/SettingsPanel.qml:10
 msgid "Settings"
 msgstr ""
 
-#: ../qml/panels/SettingsPanel.qml:14
+#: ../qml/panels/SettingsPanel.qml:19
 msgid "Categories"
 msgstr ""
 
-#: ../qml/panels/SettingsPanel.qml:19
+#: ../qml/panels/SettingsPanel.qml:24
 msgid "Parameters"
 msgstr ""
 
-#: ../qml/panels/SettingsPanel.qml:23
+#: ../qml/panels/SettingsPanel.qml:28
 msgid "Highest Priority"
 msgstr ""
 
-#: ../qml/panels/SettingsPanel.qml:37
+#: ../qml/panels/SettingsPanel.qml:42
 msgid "Default Priority"
 msgstr ""
 
-#: ../qml/panels/SettingsPanel.qml:45
+#: ../qml/panels/SettingsPanel.qml:50
 msgid "Set deadline by default"
 msgstr ""
 
-#: ../qml/panels/SettingsPanel.qml:51
+#: ../qml/panels/SettingsPanel.qml:56
 msgid "Default offset for deadline (days)"
 msgstr ""
 
-#: ../qml/panels/SettingsPanel.qml:59
+#: ../qml/panels/SettingsPanel.qml:64
+msgid "Default repetition interval"
+msgstr ""
+
+#: ../qml/panels/SettingsPanel.qml:67
 msgid "Appearance"
 msgstr ""
 
-#: ../qml/panels/SettingsPanel.qml:62
+#: ../qml/panels/SettingsPanel.qml:70
 msgid "Use default theme"
 msgstr ""
 
-#: ../qml/panels/SettingsPanel.qml:69
+#: ../qml/panels/SettingsPanel.qml:77
 msgid "Dark Mode"
 msgstr ""
 
-#: ../qml/panels/SettingsPanel.qml:76
+#: ../qml/panels/SettingsPanel.qml:84
 msgid "Color"
 msgstr ""
 
@@ -196,23 +193,23 @@ msgstr ""
 msgid "new task"
 msgstr ""
 
-#: ../qml/panels/TaskInsertBottomEdge.qml:71
+#: ../qml/panels/TaskInsertBottomEdge.qml:78
 msgid "New Task"
 msgstr ""
 
-#: ../qml/panels/TaskInsertBottomEdge.qml:94
+#: ../qml/panels/TaskInsertBottomEdge.qml:101
 msgid "Category"
 msgstr ""
 
-#: ../qml/panels/TaskInsertBottomEdge.qml:104
+#: ../qml/panels/TaskInsertBottomEdge.qml:111
 msgid "Task name"
 msgstr ""
 
-#: ../qml/panels/TaskInsertBottomEdge.qml:109
+#: ../qml/panels/TaskInsertBottomEdge.qml:116
 msgid "insert task name"
 msgstr ""
 
-#: ../qml/panels/TaskInsertBottomEdge.qml:143
+#: ../qml/panels/TaskInsertBottomEdge.qml:150
 msgid "Repetition"
 msgstr ""
 
