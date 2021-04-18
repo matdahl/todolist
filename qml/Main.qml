@@ -139,11 +139,6 @@ MainView {
             hint.visible: stack.currentItem === listPanel
         }
 
-        RepetitionSelectPopover{
-            id: repetitionSelectPopover
-        }
-
-
         /* -------------------
          * ----- dialogs -----
          * ------------------- */

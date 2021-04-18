@@ -100,23 +100,16 @@ Item{
                     Component.onCompleted: checked = root.hasRepetition
                     onCheckedChanged: root.hasRepetition = checked
                 }
-                Button{
+                RepetitionIntervalButton{
                     id: btRepetition
                     width: parent.width - switchRepetition.width - 2*parent.spacing
                     enabled: root.hasRepetition
-                    text: enabled ? interval==="m" ? intervalCount===1 ? i18n.tr("monthly") : i18n.tr("every %1 months").arg(intervalCount)
-                                                   : interval==="w" ? intervalCount===1 ? i18n.tr("weekly") : i18n.tr("every %1 weeks").arg(intervalCount)
-                                                                    : intervalCount===1 ? i18n.tr("daily")  : i18n.tr("every %1 days").arg(intervalCount)
-                                  : i18n.tr("no repetition")
-                    onClicked: repetitionSelectPopover.open(btRepetition)
-                    property string interval
-                    property int    intervalCount
+                    onIntervalChanged: root.repetitionUnit = interval
+                    onIntervalCountChanged: root.repetitionCount = intervalCount
                     Component.onCompleted: {
                         interval = root.repetitionUnit
                         intervalCount = root.repetitionCount
                     }
-                    onIntervalChanged: root.repetitionUnit = interval
-                    onIntervalCountChanged: root.repetitionCount = intervalCount
                 }
             }
 

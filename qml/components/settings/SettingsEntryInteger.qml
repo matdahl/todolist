@@ -4,9 +4,6 @@ import Ubuntu.Components.ListItems 1.3
 
 import ".."
 
-/*
- * An item for the settings list which pushs a new subpage to the stack if clicked on
- */
 ListItem{
     id: root
 

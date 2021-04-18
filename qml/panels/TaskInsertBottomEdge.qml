@@ -51,6 +51,10 @@ BottomEdge{
             var d = new Date()
             bottomEdge.due = new Date(d.setDate(d.getDate()+settings.defaultDueOffset))
 
+            bottomEdge.hasRepetition   = settings.hasRepetitionByDefault
+            bottomEdge.repetitionUnit  = settings.defaultRepetitionUnit
+            bottomEdge.repetitionCount = settings.defaultRepetitionCount
+
             // reset values in components
             inputTitle.text = bottomEdge.title
             inputPriority.maximalPriority = settings.maximalPriority
@@ -62,8 +66,11 @@ BottomEdge{
                 if (catSelect.model[i]=== bottomEdge.category)
                     break
             catSelect.selectedIndex = i
-
             switchRepetition.checked = bottomEdge.hasRepetition
+
+            btRepetition.interval = bottomEdge.repetitionUnit
+            btRepetition.intervalCount = bottomEdge.repetitionCount
+
         }
 
         PageHeader{
@@ -150,19 +157,12 @@ BottomEdge{
                         anchors.verticalCenter: btRepetition.verticalCenter
                         onCheckedChanged: bottomEdge.hasRepetition = checked
                     }
-                    Button{
+                    RepetitionIntervalButton{
                         id: btRepetition
                         width: parent.width - switchRepetition.width - 2*parent.spacing
                         enabled: bottomEdge.hasRepetition
-                        text: enabled ? interval==="m" ? intervalCount===1 ? i18n.tr("monthly") : i18n.tr("every %1 months").arg(intervalCount)
-                                                       : interval==="w" ? intervalCount===1 ? i18n.tr("weekly") : i18n.tr("every %1 weeks").arg(intervalCount)
-                                                                        : intervalCount===1 ? i18n.tr("daily")  : i18n.tr("every %1 days").arg(intervalCount)
-                                      : i18n.tr("no repetition")
-                        onClicked: repetitionSelectPopover.open(btRepetition)
-                        property string interval: "w"
-                        property int    intervalCount: 1
-                        onIntervalChanged: bottomEdge.interval = interval
-                        onIntervalCountChanged: bottomEdge.intervalCount = intervalCount
+                        onIntervalChanged: bottomEdge.repetitionUnit = interval
+                        onIntervalCountChanged: bottomEdge.repetitionCount = intervalCount
                     }
                 }
 
