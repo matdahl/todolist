@@ -36,14 +36,19 @@ MainView {
     width: units.gu(45)
     height: units.gu(75)
 
+    /* -------------------
+     * ----- theming -----
+     * ------------------- */
+
     Colors{
         id: colors
         defaultIndex: 7
     }
-
     theme.name: colors.currentThemeName
 
-    Component.onCompleted: dbtodos.init()
+    /* --------------------
+     * ----- settings -----
+     * -------------------- */
 
     Settings{
         id: settings
@@ -54,13 +59,17 @@ MainView {
         property int  defaultDueOffset: 1    // default number of days from today when task is due by default
     }
 
+    /* -----------------
+     * ----- model -----
+     * ----------------- */
+
     TodoModels{
         id: models
     }
 
-    DBtodos{
-        id: dbtodos
-    }
+    /* ----------------------
+     * ----- components -----
+     * ---------------------- */
 
     Page {
         anchors.fill: parent
@@ -132,7 +141,9 @@ MainView {
         }
 
 
-        /* ---- dialogs ---- */
+        /* -------------------
+         * ----- dialogs -----
+         * ------------------- */
 
         TaskEditDialog{
             id: taskEditDialog

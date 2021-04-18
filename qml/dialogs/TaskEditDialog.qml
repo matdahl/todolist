@@ -30,8 +30,6 @@ Item{
     property string repetitionUnit: "d"
     property int    repetitionCount: 7
 
-    property var categoryList:  dbtodos.categoriesNameList
-
     function open(task){
         itemid   = task.itemid
         title    = task.title
@@ -54,11 +52,9 @@ Item{
                 model: models.unmutedCategoriesNameList.concat(models.catNameOther)
                 containerHeight: 4*itemHeight
                 Component.onCompleted: {
-                    for (var i=0;i<model.length-1;i++){
-                        if (model[i]=== root.category){
+                    for (var i=0;i<model.length-1;i++)
+                        if (model[i]=== root.category)
                             break
-                        }
-                    }
                     selectedIndex = i
                 }
                 onSelectedIndexChanged: root.category = model[selectedIndex]

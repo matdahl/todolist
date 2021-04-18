@@ -15,8 +15,8 @@ Item{
     property string dbDescription: "todos storage"
     property int    dbSize: 1024
 
-    property string dbTableCategories: "categories1"
-    property string dbTableOpenTodos: "open1"
+    property string dbTableCategories: "categories"
+    property string dbTableOpenTodos: "open"
 
     /* ------------------------------ *
      * ----- initialisation I/O ----- *
