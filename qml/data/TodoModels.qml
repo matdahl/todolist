@@ -358,6 +358,26 @@ Item {
     }
 
     function achieveTodo(itemid){
-        print("achieve",itemid)
+        var todo = openTodoModel.get(getOpenTodoIndex(itemid))
+        var newdue = new Date()
+        switch (todo.repetition){
+        case 'd':
+            newdue = new Date(newdue.setDate(newdue.getDate()+todo.repetitionCount))
+            todo.due = newdue.setHours(0,0,0,0)
+            updateOpenTodo(todo)
+            break
+        case 'w':
+            newdue = new Date(newdue.setDate(newdue.getDate()+7*todo.repetitionCount))
+            todo.due = newdue.setHours(0,0,0,0)
+            updateOpenTodo(todo)
+            break
+        case 'm':
+            newdue = new Date(newdue.setMonth(newdue.getMonth()+todo.repetitionCount))
+            todo.due = newdue.setHours(0,0,0,0)
+            updateOpenTodo(todo)
+            break
+        default:
+            removeOpenTodo(itemid)
+        }
     }
 }
