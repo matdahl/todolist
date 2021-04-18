@@ -10,12 +10,12 @@ Item{
 
     property var db
 
-    property string dbName: "todos.db-test"
+    property string dbName: "todos.db"
     property string dbVersion: "1.0"
     property string dbDescription: "todos storage"
     property int    dbSize: 1024
 
-    property string dbTableCategories: "categories"
+    property string dbTableCategories: "categories1"
     property string dbTableOpenTodos: "open"
 
     /* ------------------------------ *
